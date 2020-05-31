@@ -1,0 +1,999 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- Devart (www.devart.com), Data-Generator document file -->
+<!-- Modifying this generated file will probably render it invalid -->
+<DataGenDocument xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="5.0">
+  <Settings>
+    <Provider>59f90733-4d68-4fdf-82a7-f0fcbf5460aa</Provider>
+    <ConnectionString>User Id=root;Host=localhost;Database=covid19;Character Set=compatibility</ConnectionString>
+    <CategoryId>00000000-0000-0000-0000-000000000000</CategoryId>
+    <AllowNulls>true</AllowNulls>
+    <IncludeNullsPercent>10</IncludeNullsPercent>
+    <AllowEmptyString>false</AllowEmptyString>
+    <IncludeEmptyStringPercent>10</IncludeEmptyStringPercent>
+    <DatabaseName>covid19</DatabaseName>
+    <PopulationType>RowsCount</PopulationType>
+    <RowsToGenerate>1500</RowsToGenerate>
+    <ProportionOfExistingData>10</ProportionOfExistingData>
+    <TimeTicksToPopulate>100000000</TimeTicksToPopulate>
+    <GenerateUniqueValues>false</GenerateUniqueValues>
+    <TruncateTables>true</TruncateTables>
+    <DistributionMode>Seed</DistributionMode>
+    <Seed>1</Seed>
+    <LastSeedValue>0</LastSeedValue>
+    <Language>US</Language>
+  </Settings>
+  <Tables>
+    <Table Name="camas">
+      <Checked>false</Checked>
+      <Settings>
+        <Truncate>true</Truncate>
+        <RowsToGenerate>0</RowsToGenerate>
+        <PopulationDetails>
+          <PopulationType>RowsCount</PopulationType>
+          <RowsCount>1500</RowsCount>
+          <LookupProportion>30</LookupProportion>
+          <ProportionOfExistingData>10</ProportionOfExistingData>
+          <TimeTicksToPopulate>100000000</TimeTicksToPopulate>
+        </PopulationDetails>
+      </Settings>
+      <Columns>
+        <Column Name="NroCama">
+          <Checked>false</Checked>
+          <DataType>INT</DataType>
+        </Column>
+      </Columns>
+    </Table>
+    <Table Name="departamento">
+      <Checked>false</Checked>
+      <Settings>
+        <Truncate>true</Truncate>
+        <RowsToGenerate>0</RowsToGenerate>
+        <PopulationDetails>
+          <PopulationType>RowsCount</PopulationType>
+          <RowsCount>1500</RowsCount>
+          <LookupProportion>30</LookupProportion>
+          <ProportionOfExistingData>10</ProportionOfExistingData>
+          <TimeTicksToPopulate>100000000</TimeTicksToPopulate>
+        </PopulationDetails>
+      </Settings>
+      <Columns>
+        <Column Name="NroDepartamento">
+          <Checked>false</Checked>
+          <DataType>INT</DataType>
+        </Column>
+        <Column Name="EspecialidadDepto">
+          <Checked>false</Checked>
+          <DataType>VARCHAR</DataType>
+          <Length>45</Length>
+        </Column>
+      </Columns>
+    </Table>
+    <Table Name="hospital">
+      <Checked>false</Checked>
+      <Settings>
+        <Truncate>true</Truncate>
+        <RowsToGenerate>0</RowsToGenerate>
+        <PopulationDetails>
+          <PopulationType>RowsCount</PopulationType>
+          <RowsCount>1500</RowsCount>
+          <LookupProportion>30</LookupProportion>
+          <ProportionOfExistingData>10</ProportionOfExistingData>
+          <TimeTicksToPopulate>100000000</TimeTicksToPopulate>
+        </PopulationDetails>
+      </Settings>
+      <Columns>
+        <Column Name="NroHospital">
+          <Checked>false</Checked>
+          <DataType>INT</DataType>
+        </Column>
+        <Column Name="Nombre_Hospital">
+          <Checked>false</Checked>
+          <DataType>VARCHAR</DataType>
+          <Length>45</Length>
+        </Column>
+      </Columns>
+    </Table>
+    <Table Name="personas">
+      <Checked>false</Checked>
+      <Settings>
+        <Truncate>true</Truncate>
+        <RowsToGenerate>0</RowsToGenerate>
+        <PopulationDetails>
+          <PopulationType>RowsCount</PopulationType>
+          <RowsCount>1500</RowsCount>
+          <LookupProportion>30</LookupProportion>
+          <ProportionOfExistingData>10</ProportionOfExistingData>
+          <TimeTicksToPopulate>100000000</TimeTicksToPopulate>
+        </PopulationDetails>
+      </Settings>
+      <Columns>
+        <Column Name="DNI">
+          <Checked>false</Checked>
+          <DataType>INT</DataType>
+        </Column>
+        <Column Name="Nombre">
+          <Checked>false</Checked>
+          <DataType>VARCHAR</DataType>
+          <Length>45</Length>
+        </Column>
+        <Column Name="Apellido">
+          <Checked>false</Checked>
+          <DataType>VARCHAR</DataType>
+          <Length>45</Length>
+        </Column>
+        <Column Name="Sexo">
+          <Checked>false</Checked>
+          <DataType>VARCHAR</DataType>
+          <Length>45</Length>
+        </Column>
+        <Column Name="TelParticular">
+          <Checked>false</Checked>
+          <DataType>VARCHAR</DataType>
+          <Length>45</Length>
+        </Column>
+        <Column Name="Domicilio">
+          <Checked>false</Checked>
+          <DataType>VARCHAR</DataType>
+          <Length>45</Length>
+        </Column>
+        <Column Name="Persona_de_contacto">
+          <Checked>false</Checked>
+          <DataType>VARCHAR</DataType>
+          <Length>45</Length>
+        </Column>
+      </Columns>
+    </Table>
+    <Table Name="proveedores">
+      <Checked>false</Checked>
+      <Settings>
+        <Truncate>true</Truncate>
+        <RowsToGenerate>0</RowsToGenerate>
+        <PopulationDetails>
+          <PopulationType>RowsCount</PopulationType>
+          <RowsCount>1500</RowsCount>
+          <LookupProportion>30</LookupProportion>
+          <ProportionOfExistingData>10</ProportionOfExistingData>
+          <TimeTicksToPopulate>100000000</TimeTicksToPopulate>
+        </PopulationDetails>
+      </Settings>
+      <Columns>
+        <Column Name="NroProveedores">
+          <Checked>false</Checked>
+          <DataType>INT</DataType>
+        </Column>
+        <Column Name="Nombre">
+          <Checked>false</Checked>
+          <DataType>VARCHAR</DataType>
+          <Length>45</Length>
+        </Column>
+        <Column Name="Telefono">
+          <Checked>false</Checked>
+          <DataType>VARCHAR</DataType>
+          <Length>45</Length>
+        </Column>
+        <Column Name="Direccion">
+          <Checked>false</Checked>
+          <DataType>VARCHAR</DataType>
+          <Length>45</Length>
+        </Column>
+        <Column Name="Mail">
+          <Checked>false</Checked>
+          <DataType>VARCHAR</DataType>
+          <Length>75</Length>
+        </Column>
+      </Columns>
+    </Table>
+    <Table Name="suministros">
+      <Checked>false</Checked>
+      <Settings>
+        <Truncate>true</Truncate>
+        <RowsToGenerate>0</RowsToGenerate>
+        <PopulationDetails>
+          <PopulationType>RowsCount</PopulationType>
+          <RowsCount>1500</RowsCount>
+          <LookupProportion>30</LookupProportion>
+          <ProportionOfExistingData>10</ProportionOfExistingData>
+          <TimeTicksToPopulate>100000000</TimeTicksToPopulate>
+        </PopulationDetails>
+      </Settings>
+      <Columns>
+        <Column Name="CodigoSuministro">
+          <Checked>false</Checked>
+          <DataType>VARCHAR</DataType>
+          <Length>6</Length>
+        </Column>
+        <Column Name="CostoUnitario">
+          <Checked>false</Checked>
+          <DataType>FLOAT</DataType>
+        </Column>
+        <Column Name="Nombre">
+          <Checked>false</Checked>
+          <DataType>VARCHAR</DataType>
+          <Length>45</Length>
+        </Column>
+        <Column Name="Descripcion">
+          <Checked>false</Checked>
+          <DataType>VARCHAR</DataType>
+          <Length>75</Length>
+        </Column>
+      </Columns>
+    </Table>
+    <Table Name="empleados">
+      <Checked>false</Checked>
+      <Settings>
+        <Truncate>true</Truncate>
+        <RowsToGenerate>0</RowsToGenerate>
+        <PopulationDetails>
+          <PopulationType>RowsCount</PopulationType>
+          <RowsCount>1500</RowsCount>
+          <LookupProportion>30</LookupProportion>
+          <ProportionOfExistingData>10</ProportionOfExistingData>
+          <TimeTicksToPopulate>100000000</TimeTicksToPopulate>
+        </PopulationDetails>
+      </Settings>
+      <Columns>
+        <Column Name="Personas_DNI">
+          <Checked>false</Checked>
+          <DataType>INT</DataType>
+          <HasForeignKey>true</HasForeignKey>
+        </Column>
+        <Column Name="Fecha_de_Contratacion">
+          <Checked>false</Checked>
+          <DataType>DATE</DataType>
+        </Column>
+        <Column Name="Lugar_de_desempeÃ±o">
+          <Checked>false</Checked>
+          <DataType>DATE</DataType>
+        </Column>
+      </Columns>
+    </Table>
+    <Table Name="pacientes">
+      <Checked>false</Checked>
+      <Settings>
+        <Truncate>true</Truncate>
+        <RowsToGenerate>0</RowsToGenerate>
+        <PopulationDetails>
+          <PopulationType>RowsCount</PopulationType>
+          <RowsCount>1500</RowsCount>
+          <LookupProportion>30</LookupProportion>
+          <ProportionOfExistingData>10</ProportionOfExistingData>
+          <TimeTicksToPopulate>100000000</TimeTicksToPopulate>
+        </PopulationDetails>
+      </Settings>
+      <Columns>
+        <Column Name="Personas_DNI">
+          <Checked>false</Checked>
+          <DataType>INT</DataType>
+          <HasForeignKey>true</HasForeignKey>
+        </Column>
+        <Column Name="Triage">
+          <Checked>false</Checked>
+          <DataType>VARCHAR</DataType>
+          <Length>45</Length>
+        </Column>
+        <Column Name="Dia_de_Ingreso">
+          <Checked>false</Checked>
+          <DataType>DATE</DataType>
+        </Column>
+      </Columns>
+    </Table>
+    <Table Name="directormedico">
+      <Checked>false</Checked>
+      <Settings>
+        <Truncate>true</Truncate>
+        <RowsToGenerate>0</RowsToGenerate>
+        <PopulationDetails>
+          <PopulationType>RowsCount</PopulationType>
+          <RowsCount>1500</RowsCount>
+          <LookupProportion>30</LookupProportion>
+          <ProportionOfExistingData>10</ProportionOfExistingData>
+          <TimeTicksToPopulate>100000000</TimeTicksToPopulate>
+        </PopulationDetails>
+      </Settings>
+      <Columns>
+        <Column Name="Empleados_Personas_DNI">
+          <Checked>false</Checked>
+          <DataType>INT</DataType>
+          <HasForeignKey>true</HasForeignKey>
+        </Column>
+      </Columns>
+    </Table>
+    <Table Name="pacienteinternado">
+      <Checked>false</Checked>
+      <Settings>
+        <Truncate>true</Truncate>
+        <RowsToGenerate>0</RowsToGenerate>
+        <PopulationDetails>
+          <PopulationType>RowsCount</PopulationType>
+          <RowsCount>1500</RowsCount>
+          <LookupProportion>30</LookupProportion>
+          <ProportionOfExistingData>10</ProportionOfExistingData>
+          <TimeTicksToPopulate>100000000</TimeTicksToPopulate>
+        </PopulationDetails>
+      </Settings>
+      <Columns>
+        <Column Name="Internado_Personas_DNI">
+          <Checked>false</Checked>
+          <DataType>INT</DataType>
+          <HasForeignKey>true</HasForeignKey>
+        </Column>
+        <Column Name="EstadoEvolutivo">
+          <Checked>false</Checked>
+          <DataType>VARCHAR</DataType>
+          <Length>45</Length>
+        </Column>
+        <Column Name="CheckOut">
+          <Checked>false</Checked>
+          <DataType>VARCHAR</DataType>
+          <Length>45</Length>
+        </Column>
+        <Column Name="FH_Salida">
+          <Checked>false</Checked>
+          <DataType>DATETIME</DataType>
+        </Column>
+      </Columns>
+    </Table>
+    <Table Name="personalmedico">
+      <Checked>false</Checked>
+      <Settings>
+        <Truncate>true</Truncate>
+        <RowsToGenerate>0</RowsToGenerate>
+        <PopulationDetails>
+          <PopulationType>RowsCount</PopulationType>
+          <RowsCount>1500</RowsCount>
+          <LookupProportion>30</LookupProportion>
+          <ProportionOfExistingData>10</ProportionOfExistingData>
+          <TimeTicksToPopulate>100000000</TimeTicksToPopulate>
+        </PopulationDetails>
+      </Settings>
+      <Columns>
+        <Column Name="Empleados_Personas_DNI">
+          <Checked>false</Checked>
+          <DataType>INT</DataType>
+          <HasForeignKey>true</HasForeignKey>
+        </Column>
+        <Column Name="Especialidad">
+          <Checked>false</Checked>
+          <DataType>VARCHAR</DataType>
+          <Length>45</Length>
+        </Column>
+      </Columns>
+    </Table>
+    <Table Name="almacen_hospital">
+      <Checked>false</Checked>
+      <Settings>
+        <Truncate>true</Truncate>
+        <RowsToGenerate>0</RowsToGenerate>
+        <PopulationDetails>
+          <PopulationType>RowsCount</PopulationType>
+          <RowsCount>1500</RowsCount>
+          <LookupProportion>30</LookupProportion>
+          <ProportionOfExistingData>10</ProportionOfExistingData>
+          <TimeTicksToPopulate>100000000</TimeTicksToPopulate>
+        </PopulationDetails>
+      </Settings>
+      <Columns>
+        <Column Name="NroHospital">
+          <Checked>false</Checked>
+          <DataType>INT</DataType>
+          <HasForeignKey>true</HasForeignKey>
+        </Column>
+        <Column Name="CodigoSuministro">
+          <Checked>false</Checked>
+          <DataType>VARCHAR</DataType>
+          <HasForeignKey>true</HasForeignKey>
+          <Length>6</Length>
+        </Column>
+        <Column Name="Cant_TotalSum">
+          <Checked>false</Checked>
+          <DataType>INT</DataType>
+        </Column>
+      </Columns>
+    </Table>
+    <Table Name="camas_hospital">
+      <Checked>false</Checked>
+      <Settings>
+        <Truncate>true</Truncate>
+        <RowsToGenerate>0</RowsToGenerate>
+        <PopulationDetails>
+          <PopulationType>RowsCount</PopulationType>
+          <RowsCount>1500</RowsCount>
+          <LookupProportion>30</LookupProportion>
+          <ProportionOfExistingData>10</ProportionOfExistingData>
+          <TimeTicksToPopulate>100000000</TimeTicksToPopulate>
+        </PopulationDetails>
+      </Settings>
+      <Columns>
+        <Column Name="Camas_NroCama">
+          <Checked>false</Checked>
+          <DataType>INT</DataType>
+          <HasForeignKey>true</HasForeignKey>
+        </Column>
+        <Column Name="Hospital_NroHospital">
+          <Checked>false</Checked>
+          <DataType>INT</DataType>
+          <HasForeignKey>true</HasForeignKey>
+        </Column>
+      </Columns>
+    </Table>
+    <Table Name="convivientes">
+      <Checked>false</Checked>
+      <Settings>
+        <Truncate>true</Truncate>
+        <RowsToGenerate>0</RowsToGenerate>
+        <PopulationDetails>
+          <PopulationType>RowsCount</PopulationType>
+          <RowsCount>1500</RowsCount>
+          <LookupProportion>30</LookupProportion>
+          <ProportionOfExistingData>10</ProportionOfExistingData>
+          <TimeTicksToPopulate>100000000</TimeTicksToPopulate>
+        </PopulationDetails>
+      </Settings>
+      <Columns>
+        <Column Name="Conviviente_DNI">
+          <Checked>false</Checked>
+          <DataType>INT</DataType>
+        </Column>
+        <Column Name="Personas_DNI">
+          <Checked>false</Checked>
+          <DataType>INT</DataType>
+          <HasForeignKey>true</HasForeignKey>
+        </Column>
+        <Column Name="Nombre">
+          <Checked>false</Checked>
+          <DataType>VARCHAR</DataType>
+          <Length>45</Length>
+        </Column>
+      </Columns>
+    </Table>
+    <Table Name="departamento_suminstro">
+      <Checked>false</Checked>
+      <Settings>
+        <Truncate>true</Truncate>
+        <RowsToGenerate>0</RowsToGenerate>
+        <PopulationDetails>
+          <PopulationType>RowsCount</PopulationType>
+          <RowsCount>1500</RowsCount>
+          <LookupProportion>30</LookupProportion>
+          <ProportionOfExistingData>10</ProportionOfExistingData>
+          <TimeTicksToPopulate>100000000</TimeTicksToPopulate>
+        </PopulationDetails>
+      </Settings>
+      <Columns>
+        <Column Name="Departamento_NroDepartamento">
+          <Checked>false</Checked>
+          <DataType>INT</DataType>
+          <HasForeignKey>true</HasForeignKey>
+        </Column>
+        <Column Name="Suministros_CodigoSuministro">
+          <Checked>false</Checked>
+          <DataType>VARCHAR</DataType>
+          <HasForeignKey>true</HasForeignKey>
+          <Length>6</Length>
+        </Column>
+        <Column Name="CantSum">
+          <Checked>false</Checked>
+          <DataType>INT</DataType>
+        </Column>
+      </Columns>
+    </Table>
+    <Table Name="departamentos_hospital">
+      <Checked>false</Checked>
+      <Settings>
+        <Truncate>true</Truncate>
+        <RowsToGenerate>0</RowsToGenerate>
+        <PopulationDetails>
+          <PopulationType>RowsCount</PopulationType>
+          <RowsCount>1500</RowsCount>
+          <LookupProportion>30</LookupProportion>
+          <ProportionOfExistingData>10</ProportionOfExistingData>
+          <TimeTicksToPopulate>100000000</TimeTicksToPopulate>
+        </PopulationDetails>
+      </Settings>
+      <Columns>
+        <Column Name="Hospital_NroHospital">
+          <Checked>false</Checked>
+          <DataType>INT</DataType>
+          <HasForeignKey>true</HasForeignKey>
+        </Column>
+        <Column Name="Departamento_NroDepartamento">
+          <Checked>false</Checked>
+          <DataType>INT</DataType>
+          <HasForeignKey>true</HasForeignKey>
+        </Column>
+      </Columns>
+    </Table>
+    <Table Name="empleado_departamento">
+      <Checked>false</Checked>
+      <Settings>
+        <Truncate>true</Truncate>
+        <RowsToGenerate>0</RowsToGenerate>
+        <PopulationDetails>
+          <PopulationType>RowsCount</PopulationType>
+          <RowsCount>1500</RowsCount>
+          <LookupProportion>30</LookupProportion>
+          <ProportionOfExistingData>10</ProportionOfExistingData>
+          <TimeTicksToPopulate>100000000</TimeTicksToPopulate>
+        </PopulationDetails>
+      </Settings>
+      <Columns>
+        <Column Name="Empleados_Personas_DNI">
+          <Checked>false</Checked>
+          <DataType>INT</DataType>
+          <HasForeignKey>true</HasForeignKey>
+        </Column>
+        <Column Name="Departamento_NroDepartamento">
+          <Checked>false</Checked>
+          <DataType>INT</DataType>
+          <HasForeignKey>true</HasForeignKey>
+        </Column>
+      </Columns>
+    </Table>
+    <Table Name="farmaceuticos">
+      <Checked>false</Checked>
+      <Settings>
+        <Truncate>true</Truncate>
+        <RowsToGenerate>0</RowsToGenerate>
+        <PopulationDetails>
+          <PopulationType>RowsCount</PopulationType>
+          <RowsCount>1500</RowsCount>
+          <LookupProportion>30</LookupProportion>
+          <ProportionOfExistingData>10</ProportionOfExistingData>
+          <TimeTicksToPopulate>100000000</TimeTicksToPopulate>
+        </PopulationDetails>
+      </Settings>
+      <Columns>
+        <Column Name="CodigoSuministro">
+          <Checked>false</Checked>
+          <DataType>VARCHAR</DataType>
+          <HasForeignKey>true</HasForeignKey>
+          <Length>6</Length>
+        </Column>
+        <Column Name="NiveldePeticion">
+          <Checked>false</Checked>
+          <DataType>VARCHAR</DataType>
+          <Length>45</Length>
+        </Column>
+        <Column Name="Dosis">
+          <Checked>false</Checked>
+          <DataType>VARCHAR</DataType>
+          <Length>45</Length>
+        </Column>
+        <Column Name="EspecialidadFarmaceutica">
+          <Checked>false</Checked>
+          <DataType>VARCHAR</DataType>
+          <Length>45</Length>
+        </Column>
+        <Column Name="ModoDeAdministracion">
+          <Checked>false</Checked>
+          <DataType>VARCHAR</DataType>
+          <Length>45</Length>
+        </Column>
+      </Columns>
+    </Table>
+    <Table Name="horario">
+      <Checked>false</Checked>
+      <Settings>
+        <Truncate>true</Truncate>
+        <RowsToGenerate>0</RowsToGenerate>
+        <PopulationDetails>
+          <PopulationType>RowsCount</PopulationType>
+          <RowsCount>1500</RowsCount>
+          <LookupProportion>30</LookupProportion>
+          <ProportionOfExistingData>10</ProportionOfExistingData>
+          <TimeTicksToPopulate>100000000</TimeTicksToPopulate>
+        </PopulationDetails>
+      </Settings>
+      <Columns>
+        <Column Name="Lunes">
+          <Checked>false</Checked>
+          <DataType>TIME</DataType>
+        </Column>
+        <Column Name="Martes">
+          <Checked>false</Checked>
+          <DataType>TIME</DataType>
+        </Column>
+        <Column Name="Miercoles">
+          <Checked>false</Checked>
+          <DataType>TIME</DataType>
+        </Column>
+        <Column Name="Jueves">
+          <Checked>false</Checked>
+          <DataType>TIME</DataType>
+        </Column>
+        <Column Name="Viernes">
+          <Checked>false</Checked>
+          <DataType>TIME</DataType>
+        </Column>
+        <Column Name="Sabado">
+          <Checked>false</Checked>
+          <DataType>TIME</DataType>
+        </Column>
+        <Column Name="Domingo">
+          <Checked>false</Checked>
+          <DataType>TIME</DataType>
+        </Column>
+        <Column Name="PersonalMedico_Empleados_Personas_DNI">
+          <Checked>false</Checked>
+          <DataType>INT</DataType>
+          <HasForeignKey>true</HasForeignKey>
+        </Column>
+      </Columns>
+    </Table>
+    <Table Name="informacion_covid19">
+      <Checked>false</Checked>
+      <Settings>
+        <Truncate>true</Truncate>
+        <RowsToGenerate>0</RowsToGenerate>
+        <PopulationDetails>
+          <PopulationType>RowsCount</PopulationType>
+          <RowsCount>1500</RowsCount>
+          <LookupProportion>30</LookupProportion>
+          <ProportionOfExistingData>10</ProportionOfExistingData>
+          <TimeTicksToPopulate>100000000</TimeTicksToPopulate>
+        </PopulationDetails>
+      </Settings>
+      <Columns>
+        <Column Name="DirectorMedico_Empleados_Personas_DNI">
+          <Checked>false</Checked>
+          <DataType>INT</DataType>
+          <HasForeignKey>true</HasForeignKey>
+        </Column>
+        <Column Name="Infectados">
+          <Checked>false</Checked>
+          <DataType>INT</DataType>
+        </Column>
+        <Column Name="Fallecidos">
+          <Checked>false</Checked>
+          <DataType>INT</DataType>
+        </Column>
+        <Column Name="Recuperados">
+          <Checked>false</Checked>
+          <DataType>INT</DataType>
+        </Column>
+      </Columns>
+    </Table>
+    <Table Name="jefedeenfermeria">
+      <Checked>false</Checked>
+      <Settings>
+        <Truncate>true</Truncate>
+        <RowsToGenerate>0</RowsToGenerate>
+        <PopulationDetails>
+          <PopulationType>RowsCount</PopulationType>
+          <RowsCount>1500</RowsCount>
+          <LookupProportion>30</LookupProportion>
+          <ProportionOfExistingData>10</ProportionOfExistingData>
+          <TimeTicksToPopulate>100000000</TimeTicksToPopulate>
+        </PopulationDetails>
+      </Settings>
+      <Columns>
+        <Column Name="Empleados_Personas_DNI">
+          <Checked>false</Checked>
+          <DataType>INT</DataType>
+          <HasForeignKey>true</HasForeignKey>
+        </Column>
+      </Columns>
+    </Table>
+    <Table Name="medicamentos">
+      <Checked>false</Checked>
+      <Settings>
+        <Truncate>true</Truncate>
+        <RowsToGenerate>0</RowsToGenerate>
+        <PopulationDetails>
+          <PopulationType>RowsCount</PopulationType>
+          <RowsCount>1500</RowsCount>
+          <LookupProportion>30</LookupProportion>
+          <ProportionOfExistingData>10</ProportionOfExistingData>
+          <TimeTicksToPopulate>100000000</TimeTicksToPopulate>
+        </PopulationDetails>
+      </Settings>
+      <Columns>
+        <Column Name="Internado_Personas_DNI">
+          <Checked>false</Checked>
+          <DataType>INT</DataType>
+          <HasForeignKey>true</HasForeignKey>
+        </Column>
+        <Column Name="Medicamento">
+          <Checked>false</Checked>
+          <DataType>VARCHAR</DataType>
+          <Length>45</Length>
+        </Column>
+      </Columns>
+    </Table>
+    <Table Name="muestra">
+      <Checked>false</Checked>
+      <Settings>
+        <Truncate>true</Truncate>
+        <RowsToGenerate>0</RowsToGenerate>
+        <PopulationDetails>
+          <PopulationType>RowsCount</PopulationType>
+          <RowsCount>1500</RowsCount>
+          <LookupProportion>30</LookupProportion>
+          <ProportionOfExistingData>10</ProportionOfExistingData>
+          <TimeTicksToPopulate>100000000</TimeTicksToPopulate>
+        </PopulationDetails>
+      </Settings>
+      <Columns>
+        <Column Name="NroTesteo">
+          <Checked>false</Checked>
+          <DataType>INT</DataType>
+        </Column>
+        <Column Name="Pacientes_Personas_DNI">
+          <Checked>false</Checked>
+          <DataType>INT</DataType>
+          <HasForeignKey>true</HasForeignKey>
+        </Column>
+        <Column Name="Resultado">
+          <Checked>false</Checked>
+          <DataType>TINYINT</DataType>
+        </Column>
+        <Column Name="SatO2">
+          <Checked>false</Checked>
+          <DataType>FLOAT</DataType>
+        </Column>
+        <Column Name="Temperatura">
+          <Checked>false</Checked>
+          <DataType>FLOAT</DataType>
+        </Column>
+      </Columns>
+    </Table>
+    <Table Name="normales">
+      <Checked>false</Checked>
+      <Settings>
+        <Truncate>true</Truncate>
+        <RowsToGenerate>0</RowsToGenerate>
+        <PopulationDetails>
+          <PopulationType>RowsCount</PopulationType>
+          <RowsCount>1500</RowsCount>
+          <LookupProportion>30</LookupProportion>
+          <ProportionOfExistingData>10</ProportionOfExistingData>
+          <TimeTicksToPopulate>100000000</TimeTicksToPopulate>
+        </PopulationDetails>
+      </Settings>
+      <Columns>
+        <Column Name="Camas_NroCama">
+          <Checked>false</Checked>
+          <DataType>INT</DataType>
+          <HasForeignKey>true</HasForeignKey>
+        </Column>
+      </Columns>
+    </Table>
+    <Table Name="obrasocial">
+      <Checked>false</Checked>
+      <Settings>
+        <Truncate>true</Truncate>
+        <RowsToGenerate>0</RowsToGenerate>
+        <PopulationDetails>
+          <PopulationType>RowsCount</PopulationType>
+          <RowsCount>1500</RowsCount>
+          <LookupProportion>30</LookupProportion>
+          <ProportionOfExistingData>10</ProportionOfExistingData>
+          <TimeTicksToPopulate>100000000</TimeTicksToPopulate>
+        </PopulationDetails>
+      </Settings>
+      <Columns>
+        <Column Name="NroAfiliado">
+          <Checked>false</Checked>
+          <DataType>INT</DataType>
+        </Column>
+        <Column Name="Personas_DNI">
+          <Checked>false</Checked>
+          <DataType>INT</DataType>
+          <HasForeignKey>true</HasForeignKey>
+        </Column>
+        <Column Name="Empresa">
+          <Checked>false</Checked>
+          <DataType>VARCHAR</DataType>
+          <Length>45</Length>
+        </Column>
+      </Columns>
+    </Table>
+    <Table Name="paciente_cama">
+      <Checked>false</Checked>
+      <Settings>
+        <Truncate>true</Truncate>
+        <RowsToGenerate>0</RowsToGenerate>
+        <PopulationDetails>
+          <PopulationType>RowsCount</PopulationType>
+          <RowsCount>1500</RowsCount>
+          <LookupProportion>30</LookupProportion>
+          <ProportionOfExistingData>10</ProportionOfExistingData>
+          <TimeTicksToPopulate>100000000</TimeTicksToPopulate>
+        </PopulationDetails>
+      </Settings>
+      <Columns>
+        <Column Name="Internado_Personas_DNI">
+          <Checked>false</Checked>
+          <DataType>INT</DataType>
+          <HasForeignKey>true</HasForeignKey>
+        </Column>
+        <Column Name="Camas_NroCama">
+          <Checked>false</Checked>
+          <DataType>INT</DataType>
+          <HasForeignKey>true</HasForeignKey>
+        </Column>
+      </Columns>
+    </Table>
+    <Table Name="paciente_hospital">
+      <Checked>false</Checked>
+      <Settings>
+        <Truncate>true</Truncate>
+        <RowsToGenerate>0</RowsToGenerate>
+        <PopulationDetails>
+          <PopulationType>RowsCount</PopulationType>
+          <RowsCount>1500</RowsCount>
+          <LookupProportion>30</LookupProportion>
+          <ProportionOfExistingData>10</ProportionOfExistingData>
+          <TimeTicksToPopulate>100000000</TimeTicksToPopulate>
+        </PopulationDetails>
+      </Settings>
+      <Columns>
+        <Column Name="Internado_Personas_DNI">
+          <Checked>false</Checked>
+          <DataType>INT</DataType>
+          <HasForeignKey>true</HasForeignKey>
+        </Column>
+        <Column Name="Hospital_NroHospital">
+          <Checked>false</Checked>
+          <DataType>INT</DataType>
+          <HasForeignKey>true</HasForeignKey>
+        </Column>
+      </Columns>
+    </Table>
+    <Table Name="pacientedomicilio">
+      <Checked>false</Checked>
+      <Settings>
+        <Truncate>true</Truncate>
+        <RowsToGenerate>0</RowsToGenerate>
+        <PopulationDetails>
+          <PopulationType>RowsCount</PopulationType>
+          <RowsCount>1500</RowsCount>
+          <LookupProportion>30</LookupProportion>
+          <ProportionOfExistingData>10</ProportionOfExistingData>
+          <TimeTicksToPopulate>100000000</TimeTicksToPopulate>
+        </PopulationDetails>
+      </Settings>
+      <Columns>
+        <Column Name="Domicilio_Personas_DNI">
+          <Checked>false</Checked>
+          <DataType>INT</DataType>
+          <HasForeignKey>true</HasForeignKey>
+        </Column>
+        <Column Name="Direccion">
+          <Checked>false</Checked>
+          <DataType>VARCHAR</DataType>
+          <Length>65</Length>
+        </Column>
+        <Column Name="Tipo">
+          <Checked>false</Checked>
+          <DataType>VARCHAR</DataType>
+          <Length>45</Length>
+        </Column>
+      </Columns>
+    </Table>
+    <Table Name="pm_suministros">
+      <Checked>false</Checked>
+      <Settings>
+        <Truncate>true</Truncate>
+        <RowsToGenerate>0</RowsToGenerate>
+        <PopulationDetails>
+          <PopulationType>RowsCount</PopulationType>
+          <RowsCount>1500</RowsCount>
+          <LookupProportion>30</LookupProportion>
+          <ProportionOfExistingData>10</ProportionOfExistingData>
+          <TimeTicksToPopulate>100000000</TimeTicksToPopulate>
+        </PopulationDetails>
+      </Settings>
+      <Columns>
+        <Column Name="NroPedido">
+          <Checked>false</Checked>
+          <DataType>INT</DataType>
+        </Column>
+        <Column Name="PersonalMedico_Empleados_Personas_DNI">
+          <Checked>false</Checked>
+          <DataType>INT</DataType>
+          <HasForeignKey>true</HasForeignKey>
+        </Column>
+        <Column Name="Suministros_CodigoSuministro">
+          <Checked>false</Checked>
+          <DataType>VARCHAR</DataType>
+          <HasForeignKey>true</HasForeignKey>
+          <Length>6</Length>
+        </Column>
+        <Column Name="FH_Entrega">
+          <Checked>false</Checked>
+          <DataType>DATETIME</DataType>
+        </Column>
+        <Column Name="FH_Pedido">
+          <Checked>false</Checked>
+          <DataType>DATETIME</DataType>
+        </Column>
+        <Column Name="Cant_Repuesto">
+          <Checked>false</Checked>
+          <DataType>INT</DataType>
+        </Column>
+      </Columns>
+    </Table>
+    <Table Name="proveedores_suministros">
+      <Checked>false</Checked>
+      <Settings>
+        <Truncate>true</Truncate>
+        <RowsToGenerate>0</RowsToGenerate>
+        <PopulationDetails>
+          <PopulationType>RowsCount</PopulationType>
+          <RowsCount>1500</RowsCount>
+          <LookupProportion>30</LookupProportion>
+          <ProportionOfExistingData>10</ProportionOfExistingData>
+          <TimeTicksToPopulate>100000000</TimeTicksToPopulate>
+        </PopulationDetails>
+      </Settings>
+      <Columns>
+        <Column Name="Proveedores_NroProveedores">
+          <Checked>false</Checked>
+          <DataType>INT</DataType>
+          <HasForeignKey>true</HasForeignKey>
+        </Column>
+        <Column Name="Suministros_CodigoSuministro">
+          <Checked>false</Checked>
+          <DataType>VARCHAR</DataType>
+          <HasForeignKey>true</HasForeignKey>
+          <Length>6</Length>
+        </Column>
+      </Columns>
+    </Table>
+    <Table Name="terapia_intensiva">
+      <Checked>false</Checked>
+      <Settings>
+        <Truncate>true</Truncate>
+        <RowsToGenerate>0</RowsToGenerate>
+        <PopulationDetails>
+          <PopulationType>RowsCount</PopulationType>
+          <RowsCount>1500</RowsCount>
+          <LookupProportion>30</LookupProportion>
+          <ProportionOfExistingData>10</ProportionOfExistingData>
+          <TimeTicksToPopulate>100000000</TimeTicksToPopulate>
+        </PopulationDetails>
+      </Settings>
+      <Columns>
+        <Column Name="Camas_NroCama">
+          <Checked>false</Checked>
+          <DataType>INT</DataType>
+          <HasForeignKey>true</HasForeignKey>
+        </Column>
+        <Column Name="Respirador">
+          <Checked>false</Checked>
+          <DataType>TINYINT</DataType>
+        </Column>
+      </Columns>
+    </Table>
+    <Table Name="titulos_y_capacitacion">
+      <Checked>false</Checked>
+      <Settings>
+        <Truncate>true</Truncate>
+        <RowsToGenerate>0</RowsToGenerate>
+        <PopulationDetails>
+          <PopulationType>RowsCount</PopulationType>
+          <RowsCount>1500</RowsCount>
+          <LookupProportion>30</LookupProportion>
+          <ProportionOfExistingData>10</ProportionOfExistingData>
+          <TimeTicksToPopulate>100000000</TimeTicksToPopulate>
+        </PopulationDetails>
+      </Settings>
+      <Columns>
+        <Column Name="Capacitacion">
+          <Checked>false</Checked>
+          <DataType>VARCHAR</DataType>
+          <Length>45</Length>
+        </Column>
+        <Column Name="Empleados_Personas_DNI">
+          <Checked>false</Checked>
+          <DataType>INT</DataType>
+          <HasForeignKey>true</HasForeignKey>
+        </Column>
+      </Columns>
+    </Table>
+  </Tables>
+  <SynchronizationOptions xsi:type="DataSyncOptionGroup">
+    <BulkInsert>false</BulkInsert>
+  </SynchronizationOptions>
+</DataGenDocument>
