@@ -4,7 +4,7 @@
 <DataGenDocument xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="5.0">
   <Settings>
     <Provider>59f90733-4d68-4fdf-82a7-f0fcbf5460aa</Provider>
-    <ConnectionString>User Id=root;Host=localhost;Character Set=compatibility</ConnectionString>
+    <ConnectionString>User Id=root;Host=localhost;Database=covid19;Character Set=compatibility</ConnectionString>
     <CategoryId>00000000-0000-0000-0000-000000000000</CategoryId>
     <AllowNulls>true</AllowNulls>
     <IncludeNullsPercent>10</IncludeNullsPercent>
@@ -30,7 +30,7 @@
         <RowsToGenerate>0</RowsToGenerate>
         <PopulationDetails>
           <PopulationType>RowsCount</PopulationType>
-          <RowsCount>25000</RowsCount>
+          <RowsCount>5000</RowsCount>
           <LookupProportion>30</LookupProportion>
           <ProportionOfExistingData>10</ProportionOfExistingData>
           <TimeTicksToPopulate>100000000</TimeTicksToPopulate>
@@ -49,7 +49,7 @@
             <ValueDistributionMode>Seed</ValueDistributionMode>
             <SeedValue>3</SeedValue>
             <MinValue>1</MinValue>
-            <MaxValue>25000</MaxValue>
+            <MaxValue>80000</MaxValue>
             <UseDefault>false</UseDefault>
             <DefaultValue />
           </GeneratorOptions>
@@ -66,7 +66,7 @@
         <RowsToGenerate>0</RowsToGenerate>
         <PopulationDetails>
           <PopulationType>RowsCount</PopulationType>
-          <RowsCount>1450</RowsCount>
+          <RowsCount>340</RowsCount>
           <LookupProportion>30</LookupProportion>
           <ProportionOfExistingData>10</ProportionOfExistingData>
           <TimeTicksToPopulate>100000000</TimeTicksToPopulate>
@@ -82,10 +82,10 @@
             <Unique>true</Unique>
             <IsAlwaysUnique>false</IsAlwaysUnique>
             <Increment xsi:type="xsd:int">1</Increment>
-            <ValueDistributionMode>Seed</ValueDistributionMode>
+            <ValueDistributionMode>Sequential</ValueDistributionMode>
             <SeedValue>7</SeedValue>
             <MinValue>1</MinValue>
-            <MaxValue>20</MaxValue>
+            <MaxValue>340</MaxValue>
             <UseDefault>false</UseDefault>
             <DefaultValue />
           </GeneratorOptions>
@@ -102,15 +102,14 @@
             <AllowNulls>false</AllowNulls>
             <NullProportion>0</NullProportion>
             <ValueDistributionMode>Seed</ValueDistributionMode>
-            <SeedValue>7</SeedValue>
-            <Unique>true</Unique>
+            <SeedValue>0</SeedValue>
+            <Unique>false</Unique>
             <IsAlwaysUnique>false</IsAlwaysUnique>
-            <Expression>\d{5}</Expression>
+            <Expression>Epidemiología|Hepatología|Infectología|Nefrología|Neumología|Neurología|Nutriología|Oncología médica|Oncología radioterápica|Pediatría|Psiquiatría|Toxicología|Cirugía cardíaca|Neurocirugía|Oftalmología|Inmunología|Cirugía general</Expression>
           </GeneratorOptions>
-          <GeneratorType>MySqlRegularExpressionGenerator</GeneratorType>
-          <GeneratorName>ID (random)</GeneratorName>
-          <GeneratorDescription>54470, 16912, 43814, 06728, 36017, 82433, 95664, ...</GeneratorDescription>
-          <GeneratorCategory>Business</GeneratorCategory>
+          <GeneratorType>MySqlStringRegularExpressionGenerator</GeneratorType>
+          <GeneratorName>Reg Exp</GeneratorName>
+          <GeneratorDescription>values based on a regular expression</GeneratorDescription>
           <Length>45</Length>
         </Column>
       </Columns>
@@ -196,7 +195,7 @@
             <ValueDistributionMode>Seed</ValueDistributionMode>
             <SeedValue>45</SeedValue>
             <MinValue>1000000</MinValue>
-            <MaxValue>50000000</MaxValue>
+            <MaxValue>45000000</MaxValue>
             <UseDefault>false</UseDefault>
             <DefaultValue />
           </GeneratorOptions>
@@ -214,7 +213,7 @@
             <NullProportion>0</NullProportion>
             <ValueDistributionMode>Seed</ValueDistributionMode>
             <SeedValue>45</SeedValue>
-            <Unique>true</Unique>
+            <Unique>false</Unique>
             <IsAlwaysUnique>false</IsAlwaysUnique>
             <Expression>($"DEFirstNamesMale.txt")|($"DEFirstNamesFemale.txt")</Expression>
           </GeneratorOptions>
@@ -235,7 +234,7 @@
             <ValueDistributionMode>Seed</ValueDistributionMode>
             <SeedValue>45</SeedValue>
             <IsLoop>true</IsLoop>
-            <Unique>true</Unique>
+            <Unique>false</Unique>
             <IsAlwaysUnique>false</IsAlwaysUnique>
             <FileName>DELastNames.txt</FileName>
             <TrimLeft>false</TrimLeft>
@@ -259,7 +258,7 @@
             <NullProportion>0</NullProportion>
             <ValueDistributionMode>Seed</ValueDistributionMode>
             <SeedValue>46</SeedValue>
-            <Unique>true</Unique>
+            <Unique>false</Unique>
             <IsAlwaysUnique>false</IsAlwaysUnique>
             <Values>
               <WeightedListItem>
@@ -290,7 +289,7 @@
             <SeedValue>47</SeedValue>
             <Unique>true</Unique>
             <IsAlwaysUnique>false</IsAlwaysUnique>
-            <Expression>11 \d{4}\d{4}</Expression>
+            <Expression>11\d{4}\d{4}</Expression>
           </GeneratorOptions>
           <GeneratorType>MySqlRegularExpressionGenerator</GeneratorType>
           <GeneratorName>Phone Number (local)</GeneratorName>
@@ -344,7 +343,7 @@
           <GeneratorOptions xsi:type="DateGeneratorOptions">
             <AllowNulls>false</AllowNulls>
             <NullProportion>0</NullProportion>
-            <Unique>true</Unique>
+            <Unique>false</Unique>
             <IsAlwaysUnique>false</IsAlwaysUnique>
             <UseDefault>false</UseDefault>
             <ValueDistributionMode>Seed</ValueDistributionMode>
@@ -373,7 +372,7 @@
         <RowsToGenerate>0</RowsToGenerate>
         <PopulationDetails>
           <PopulationType>RowsCount</PopulationType>
-          <RowsCount>1450</RowsCount>
+          <RowsCount>8</RowsCount>
           <LookupProportion>30</LookupProportion>
           <ProportionOfExistingData>10</ProportionOfExistingData>
           <TimeTicksToPopulate>100000000</TimeTicksToPopulate>
@@ -431,7 +430,7 @@
             <SeedValue>52</SeedValue>
             <Unique>true</Unique>
             <IsAlwaysUnique>false</IsAlwaysUnique>
-            <Expression>11\d{3}\-\d{4}</Expression>
+            <Expression>11\d{8}</Expression>
           </GeneratorOptions>
           <GeneratorType>MySqlRegularExpressionGenerator</GeneratorType>
           <GeneratorName>Phone Number (local)</GeneratorName>
@@ -451,11 +450,11 @@
             <SeedValue>53</SeedValue>
             <Unique>true</Unique>
             <IsAlwaysUnique>false</IsAlwaysUnique>
-            <Expression>($"DEStreets.txt") (([1-2]\d?\d?|\D\d?)[a-f]?|(1[1-5]-1[5-9]|2[1-5]-2[5-9])), \d\D\d\d\d, ($"DECities.txt")</Expression>
+            <Expression>(([1-9]\d{1,2})|([1-3]\d{3})) (((New|Old|Hidden|West|South|East|North|White|Red|E|(S)?W|NW|S(E)?|N(E)?) )?((((Ski|Chapel|Hunting|Fox|Rose|Riddle|Rock|Prospect|Sharp) Hill)|Front|Hope|Mount|Church|Social|Riverside|Highland|(Wood(land|bridge|hurst|side|row|fort|cock))|((Deep|Iron|Rush|Edge|Park|Hazel|Bur|Glen|Rock|Quail|Stone|Flint|Button|Beach|Ash|Brent)wood)|Lake|(Cedar|Pine) Tree|Oak|((Water|Meadow|Farm|River|Bay)view)|Town|Market|Mountain|Monument))|((1st|2nd|3rd|[4-9]\d?th))) (St(reet)?|Ave(nue)?|Dr(ive)?|R(oa)?d|Ct|C(our)?t|Ln|Lane|Blvd|Cir(cle)?|Hwy|Highway|Loop|Way|Pkwy|Parkway)</Expression>
           </GeneratorOptions>
           <GeneratorType>MySqlRegularExpressionGenerator</GeneratorType>
-          <GeneratorName>DE Address Full</GeneratorName>
-          <GeneratorDescription>Lusenstraße 21-25, 13111, Bühl; Rosental 1c, 32361, Johannstorf; Heideckstraße 44, 13034, Neumühlen; ...</GeneratorDescription>
+          <GeneratorName>US Address Line 1</GeneratorName>
+          <GeneratorDescription>3581 South Ironwood Lane, 24 NW Lake Blvd, 1063 97th Street, ...</GeneratorDescription>
           <GeneratorCategory>Location</GeneratorCategory>
           <Length>45</Length>
         </Column>
@@ -636,7 +635,7 @@
             <SeedValue>57</SeedValue>
             <Unique>true</Unique>
             <IsAlwaysUnique>false</IsAlwaysUnique>
-            <Expression>Cloroquina|Paracetamol|Ivermectina|Hidroxicloroquina|detergente desinfectante de superficies para equipos médicos y pisos|preformas aptas para la fabricación de botellas por soplado|guantes para cirugía|guantes descartables|prendas de protección, del tipo de las utilizadas en cirugía y medicina, de tela sin tejer|concentradores de oxígeno por depuración de aire|aparatos de diagnóstico por exploración ultrasónica|transductores (sondas) de aparatos por exploración ultrasónica|aparatos de diagnóstico por exploración ultrasónica|aparatos de electrodiagnóstico (Monitor multiparamétrico)|sondas, catéteres y cánulas, de caucho|cánulas nasales para oxigenoterapia|cánula Guedel|tubo endotraqueal|aparatos para infusión intravenosa|laringoscopio|bomba de infusión|máscaras laríngeas|respirador portátil|aparatos de aerosolterapia y sus partes|detector de dióxido de carbono</Expression>
+            <Expression>Cloroquina|Paracetamol|Ivermectina|Hidroxicloroquina|detergente|desinfectante de superficies|guantes para cirugía|guantes descartables|prendas de protección|concentradores de oxígeno por depuración de aire|aparatos de diagnóstico por exploración ultrasónica|transductores|aparatos de diagnóstico por exploración ultrasónica|aparatos de electrodiagnóstico|Monitor multiparamétrico|sondas|catéteres|cánula de caucho|cánulas nasales para oxigenoterapia|cánula Guedel|tubo endotraqueal|aparatos para infusión intravenosa|laringoscopio|bomba de infusión|máscaras laríngeas|respirador portátil|aparatos de aerosolterapia y sus partes|detector de dióxido de carbono</Expression>
           </GeneratorOptions>
           <GeneratorType>MySqlStringRegularExpressionGenerator</GeneratorType>
           <GeneratorName>Reg Exp</GeneratorName>
@@ -646,20 +645,35 @@
         <Column Name="Descripcion">
           <Checked>true</Checked>
           <DataType>VARCHAR</DataType>
-          <GeneratorOptions xsi:type="MySqlRegularExpressionGeneratorOptions">
+          <GeneratorOptions xsi:type="MySqlLoremIpsumGeneratorOptions">
             <AllowEmptyStrings>false</AllowEmptyStrings>
             <EmptyStringProportion>10</EmptyStringProportion>
             <AllowNulls>false</AllowNulls>
             <NullProportion>0</NullProportion>
             <ValueDistributionMode>Seed</ValueDistributionMode>
             <SeedValue>58</SeedValue>
+            <MinLength>1</MinLength>
+            <MaxLength>45</MaxLength>
+            <MaxAllowedLength>75</MaxAllowedLength>
+            <MinWordsInSentence>1</MinWordsInSentence>
+            <MaxWordsInSentence>6</MaxWordsInSentence>
+            <MinSentences>1</MinSentences>
+            <MaxSentences>1</MaxSentences>
+            <MinParagraphs>1</MinParagraphs>
+            <MaxParagraphs>1</MaxParagraphs>
             <Unique>true</Unique>
             <IsAlwaysUnique>false</IsAlwaysUnique>
-            <Expression>[0-9A-Z]+</Expression>
+            <PunctuationSigns>,.!?...;</PunctuationSigns>
+            <StartParagraphWithIndent>false</StartParagraphWithIndent>
+            <AddParagraphTags>false</AddParagraphTags>
+            <AddItalicTags>false</AddItalicTags>
+            <AddBoldTags>false</AddBoldTags>
+            <AddSingleLineBreakTags>false</AddSingleLineBreakTags>
+            <AddNewLines>false</AddNewLines>
           </GeneratorOptions>
-          <GeneratorType>MySqlStringRegularExpressionGenerator</GeneratorType>
-          <GeneratorName>Reg Exp</GeneratorName>
-          <GeneratorDescription>values based on a regular expression</GeneratorDescription>
+          <GeneratorType>MySqlLoremIpsumGenerator</GeneratorType>
+          <GeneratorName>Lorem Ipsum</GeneratorName>
+          <GeneratorDescription>dummy text filler with some characteristics of a real written text</GeneratorDescription>
           <Length>75</Length>
         </Column>
       </Columns>
@@ -717,15 +731,15 @@
             <UseOffsetDetails>false</UseOffsetDetails>
             <OffsetFromColumnMinDays>0</OffsetFromColumnMinDays>
             <OffsetFromColumnMaxDays>7</OffsetFromColumnMaxDays>
-            <MinDate>1970-01-01T00:00:00</MinDate>
-            <MaxDate>2020-05-31T00:00:00-03:00</MaxDate>
+            <MinDate>1980-01-01T00:00:00</MinDate>
+            <MaxDate>2016-11-09T00:00:00</MaxDate>
             <IsRandomizeDate>true</IsRandomizeDate>
           </GeneratorOptions>
           <GeneratorType>MySqlDateGenerator</GeneratorType>
           <GeneratorName>date</GeneratorName>
           <GeneratorDescription>fill with date values</GeneratorDescription>
         </Column>
-        <Column Name="Lugar_de_desempeÃ±o">
+        <Column Name="Lugar_de_desempenio">
           <Checked>true</Checked>
           <DataType>VARCHAR</DataType>
           <GeneratorOptions xsi:type="MySqlRegularExpressionGeneratorOptions">
@@ -735,14 +749,13 @@
             <NullProportion>0</NullProportion>
             <ValueDistributionMode>Seed</ValueDistributionMode>
             <SeedValue>15</SeedValue>
-            <Unique>true</Unique>
+            <Unique>false</Unique>
             <IsAlwaysUnique>false</IsAlwaysUnique>
-            <Expression>Medico|Especialistas|Enfermeria|Auxiliares|Fisioterapeuta|Farmaceutico|Equipo de respuesta rapida|Trabajador Social|Trabajador Social|Limpieza</Expression>
+            <Expression>Enfermeria|Trabajador Social|Fisioterapeuta|Equipo de respuesta rapida|Limpieza|Auxiliares|Medico|Auxiliares|Especialistas|Farmaceutico|Cirujano|Oncologo|Pediatra|Urologo</Expression>
           </GeneratorOptions>
-          <GeneratorType>MySqlRegularExpressionGenerator</GeneratorType>
-          <GeneratorName>Lead Source</GeneratorName>
-          <GeneratorDescription>Internet, Referral, Bing Adds, Direct, Email, Google Adds, ...</GeneratorDescription>
-          <GeneratorCategory>Business</GeneratorCategory>
+          <GeneratorType>MySqlStringRegularExpressionGenerator</GeneratorType>
+          <GeneratorName>Reg Exp</GeneratorName>
+          <GeneratorDescription>values based on a regular expression</GeneratorDescription>
           <Length>45</Length>
         </Column>
       </Columns>
@@ -792,7 +805,7 @@
             <NullProportion>0</NullProportion>
             <ValueDistributionMode>Seed</ValueDistributionMode>
             <SeedValue>43</SeedValue>
-            <Unique>true</Unique>
+            <Unique>false</Unique>
             <IsAlwaysUnique>false</IsAlwaysUnique>
             <Values>
               <WeightedListItem>
@@ -861,7 +874,7 @@
         <RowsToGenerate>0</RowsToGenerate>
         <PopulationDetails>
           <PopulationType>RowsCount</PopulationType>
-          <RowsCount>1450</RowsCount>
+          <RowsCount>20</RowsCount>
           <LookupProportion>30</LookupProportion>
           <ProportionOfExistingData>10</ProportionOfExistingData>
           <TimeTicksToPopulate>100000000</TimeTicksToPopulate>
@@ -898,7 +911,7 @@
         <RowsToGenerate>0</RowsToGenerate>
         <PopulationDetails>
           <PopulationType>RowsCount</PopulationType>
-          <RowsCount>1450</RowsCount>
+          <RowsCount>1500</RowsCount>
           <LookupProportion>30</LookupProportion>
           <ProportionOfExistingData>10</ProportionOfExistingData>
           <TimeTicksToPopulate>100000000</TimeTicksToPopulate>
@@ -932,13 +945,13 @@
           <GeneratorOptions xsi:type="MySqlRegularExpressionGeneratorOptions">
             <AllowEmptyStrings>false</AllowEmptyStrings>
             <EmptyStringProportion>10</EmptyStringProportion>
-            <AllowNulls>true</AllowNulls>
+            <AllowNulls>false</AllowNulls>
             <NullProportion>10</NullProportion>
             <ValueDistributionMode>Seed</ValueDistributionMode>
             <SeedValue>41</SeedValue>
-            <Unique>true</Unique>
+            <Unique>false</Unique>
             <IsAlwaysUnique>false</IsAlwaysUnique>
-            <Expression>[0-9A-Z]+</Expression>
+            <Expression>Grave|Positivo</Expression>
           </GeneratorOptions>
           <GeneratorType>MySqlStringRegularExpressionGenerator</GeneratorType>
           <GeneratorName>Reg Exp</GeneratorName>
@@ -955,7 +968,7 @@
             <NullProportion>10</NullProportion>
             <ValueDistributionMode>Seed</ValueDistributionMode>
             <SeedValue>42</SeedValue>
-            <Unique>true</Unique>
+            <Unique>false</Unique>
             <IsAlwaysUnique>false</IsAlwaysUnique>
             <Expression>Alta|Fallecido</Expression>
           </GeneratorOptions>
@@ -970,7 +983,7 @@
           <GeneratorOptions xsi:type="MySqlDateTimeGeneratorOptions">
             <AllowNulls>true</AllowNulls>
             <NullProportion>10</NullProportion>
-            <Unique>true</Unique>
+            <Unique>false</Unique>
             <IsAlwaysUnique>false</IsAlwaysUnique>
             <UseDefault>false</UseDefault>
             <ValueDistributionMode>Seed</ValueDistributionMode>
@@ -1008,7 +1021,7 @@
         <RowsToGenerate>0</RowsToGenerate>
         <PopulationDetails>
           <PopulationType>RowsCount</PopulationType>
-          <RowsCount>1450</RowsCount>
+          <RowsCount>560</RowsCount>
           <LookupProportion>30</LookupProportion>
           <ProportionOfExistingData>10</ProportionOfExistingData>
           <TimeTicksToPopulate>100000000</TimeTicksToPopulate>
@@ -1059,13 +1072,13 @@
       </Columns>
     </Table>
     <Table Name="almacen_hospital">
-      <Checked>false</Checked>
+      <Checked>true</Checked>
       <Settings>
         <Truncate>true</Truncate>
         <RowsToGenerate>0</RowsToGenerate>
         <PopulationDetails>
           <PopulationType>RowsCount</PopulationType>
-          <RowsCount>1450</RowsCount>
+          <RowsCount>350</RowsCount>
           <LookupProportion>30</LookupProportion>
           <ProportionOfExistingData>10</ProportionOfExistingData>
           <TimeTicksToPopulate>100000000</TimeTicksToPopulate>
@@ -1073,10 +1086,10 @@
       </Settings>
       <Columns>
         <Column Name="NroHospital">
-          <Checked>false</Checked>
+          <Checked>true</Checked>
           <DataType>INT</DataType>
           <GeneratorOptions xsi:type="ForeignKeyGeneratorOptions">
-            <Unique>true</Unique>
+            <Unique>false</Unique>
             <IsAlwaysUnique>false</IsAlwaysUnique>
             <AllowNulls>false</AllowNulls>
             <NullProportion>0</NullProportion>
@@ -1094,7 +1107,7 @@
           <HasForeignKey>true</HasForeignKey>
         </Column>
         <Column Name="CodigoSuministro">
-          <Checked>false</Checked>
+          <Checked>true</Checked>
           <DataType>VARCHAR</DataType>
           <GeneratorOptions xsi:type="ForeignKeyGeneratorOptions">
             <Unique>true</Unique>
@@ -1116,19 +1129,35 @@
           <Length>6</Length>
         </Column>
         <Column Name="Cant_TotalSum">
-          <Checked>false</Checked>
+          <Checked>true</Checked>
           <DataType>INT</DataType>
+          <GeneratorOptions xsi:type="MySqlUnsignedIntegerGeneratorOptions">
+            <AllowNulls>true</AllowNulls>
+            <NullProportion>10</NullProportion>
+            <Unique>true</Unique>
+            <IsAlwaysUnique>false</IsAlwaysUnique>
+            <Increment xsi:type="xsd:int">1</Increment>
+            <ValueDistributionMode>Seed</ValueDistributionMode>
+            <SeedValue>1</SeedValue>
+            <MinValue>0</MinValue>
+            <MaxValue>23520</MaxValue>
+            <UseDefault>false</UseDefault>
+            <DefaultValue>NULL</DefaultValue>
+          </GeneratorOptions>
+          <GeneratorType>MySqlUnsignedIntegerGenerator</GeneratorType>
+          <GeneratorName>int unsigned</GeneratorName>
+          <GeneratorDescription>fill with 32-bit unsigned integer values</GeneratorDescription>
         </Column>
       </Columns>
     </Table>
     <Table Name="camas_hospital">
-      <Checked>false</Checked>
+      <Checked>true</Checked>
       <Settings>
         <Truncate>true</Truncate>
         <RowsToGenerate>0</RowsToGenerate>
         <PopulationDetails>
           <PopulationType>RowsCount</PopulationType>
-          <RowsCount>1450</RowsCount>
+          <RowsCount>5000</RowsCount>
           <LookupProportion>30</LookupProportion>
           <ProportionOfExistingData>10</ProportionOfExistingData>
           <TimeTicksToPopulate>100000000</TimeTicksToPopulate>
@@ -1136,7 +1165,7 @@
       </Settings>
       <Columns>
         <Column Name="Camas_NroCama">
-          <Checked>false</Checked>
+          <Checked>true</Checked>
           <DataType>INT</DataType>
           <GeneratorOptions xsi:type="ForeignKeyGeneratorOptions">
             <Unique>true</Unique>
@@ -1157,10 +1186,10 @@
           <HasForeignKey>true</HasForeignKey>
         </Column>
         <Column Name="Hospital_NroHospital">
-          <Checked>false</Checked>
+          <Checked>true</Checked>
           <DataType>INT</DataType>
           <GeneratorOptions xsi:type="ForeignKeyGeneratorOptions">
-            <Unique>true</Unique>
+            <Unique>false</Unique>
             <IsAlwaysUnique>false</IsAlwaysUnique>
             <AllowNulls>false</AllowNulls>
             <NullProportion>0</NullProportion>
@@ -1257,13 +1286,13 @@
       </Columns>
     </Table>
     <Table Name="departamento_suminstro">
-      <Checked>false</Checked>
+      <Checked>true</Checked>
       <Settings>
         <Truncate>true</Truncate>
         <RowsToGenerate>0</RowsToGenerate>
         <PopulationDetails>
           <PopulationType>RowsCount</PopulationType>
-          <RowsCount>1450</RowsCount>
+          <RowsCount>340</RowsCount>
           <LookupProportion>30</LookupProportion>
           <ProportionOfExistingData>10</ProportionOfExistingData>
           <TimeTicksToPopulate>100000000</TimeTicksToPopulate>
@@ -1271,7 +1300,7 @@
       </Settings>
       <Columns>
         <Column Name="Departamento_NroDepartamento">
-          <Checked>false</Checked>
+          <Checked>true</Checked>
           <DataType>INT</DataType>
           <GeneratorOptions xsi:type="ForeignKeyGeneratorOptions">
             <Unique>true</Unique>
@@ -1292,10 +1321,10 @@
           <HasForeignKey>true</HasForeignKey>
         </Column>
         <Column Name="Suministros_CodigoSuministro">
-          <Checked>false</Checked>
+          <Checked>true</Checked>
           <DataType>VARCHAR</DataType>
           <GeneratorOptions xsi:type="ForeignKeyGeneratorOptions">
-            <Unique>true</Unique>
+            <Unique>false</Unique>
             <IsAlwaysUnique>false</IsAlwaysUnique>
             <AllowNulls>false</AllowNulls>
             <NullProportion>0</NullProportion>
@@ -1314,19 +1343,35 @@
           <Length>6</Length>
         </Column>
         <Column Name="CantSum">
-          <Checked>false</Checked>
+          <Checked>true</Checked>
           <DataType>INT</DataType>
+          <GeneratorOptions xsi:type="MySqlUnsignedIntegerGeneratorOptions">
+            <AllowNulls>false</AllowNulls>
+            <NullProportion>0</NullProportion>
+            <Unique>true</Unique>
+            <IsAlwaysUnique>false</IsAlwaysUnique>
+            <Increment xsi:type="xsd:int">1</Increment>
+            <ValueDistributionMode>Seed</ValueDistributionMode>
+            <SeedValue>8</SeedValue>
+            <MinValue>0</MinValue>
+            <MaxValue>25000</MaxValue>
+            <UseDefault>false</UseDefault>
+            <DefaultValue />
+          </GeneratorOptions>
+          <GeneratorType>MySqlUnsignedIntegerGenerator</GeneratorType>
+          <GeneratorName>int unsigned</GeneratorName>
+          <GeneratorDescription>fill with 32-bit unsigned integer values</GeneratorDescription>
         </Column>
       </Columns>
     </Table>
     <Table Name="departamentos_hospital">
-      <Checked>false</Checked>
+      <Checked>true</Checked>
       <Settings>
         <Truncate>true</Truncate>
         <RowsToGenerate>0</RowsToGenerate>
         <PopulationDetails>
           <PopulationType>RowsCount</PopulationType>
-          <RowsCount>1450</RowsCount>
+          <RowsCount>340</RowsCount>
           <LookupProportion>30</LookupProportion>
           <ProportionOfExistingData>10</ProportionOfExistingData>
           <TimeTicksToPopulate>100000000</TimeTicksToPopulate>
@@ -1334,18 +1379,18 @@
       </Settings>
       <Columns>
         <Column Name="Hospital_NroHospital">
-          <Checked>false</Checked>
+          <Checked>true</Checked>
           <DataType>INT</DataType>
           <GeneratorOptions xsi:type="ForeignKeyGeneratorOptions">
-            <Unique>true</Unique>
+            <Unique>false</Unique>
             <IsAlwaysUnique>false</IsAlwaysUnique>
             <AllowNulls>false</AllowNulls>
             <NullProportion>0</NullProportion>
-            <ValueDistributionMode>Seed</ValueDistributionMode>
+            <ValueDistributionMode>Sequential</ValueDistributionMode>
             <SeedValue>10</SeedValue>
-            <RepeatValues>false</RepeatValues>
+            <RepeatValues>true</RepeatValues>
             <FromTimes>1</FromTimes>
-            <ToTimes>10</ToTimes>
+            <ToTimes>17</ToTimes>
             <ExcludeValues>false</ExcludeValues>
             <ExclusionValuesPercent>1</ExclusionValuesPercent>
           </GeneratorOptions>
@@ -1355,14 +1400,14 @@
           <HasForeignKey>true</HasForeignKey>
         </Column>
         <Column Name="Departamento_NroDepartamento">
-          <Checked>false</Checked>
+          <Checked>true</Checked>
           <DataType>INT</DataType>
           <GeneratorOptions xsi:type="ForeignKeyGeneratorOptions">
-            <Unique>true</Unique>
+            <Unique>false</Unique>
             <IsAlwaysUnique>false</IsAlwaysUnique>
             <AllowNulls>false</AllowNulls>
             <NullProportion>0</NullProportion>
-            <ValueDistributionMode>Seed</ValueDistributionMode>
+            <ValueDistributionMode>Sequential</ValueDistributionMode>
             <SeedValue>11</SeedValue>
             <RepeatValues>false</RepeatValues>
             <FromTimes>1</FromTimes>
@@ -1378,13 +1423,13 @@
       </Columns>
     </Table>
     <Table Name="empleado_departamento">
-      <Checked>false</Checked>
+      <Checked>true</Checked>
       <Settings>
         <Truncate>true</Truncate>
         <RowsToGenerate>0</RowsToGenerate>
         <PopulationDetails>
           <PopulationType>RowsCount</PopulationType>
-          <RowsCount>1450</RowsCount>
+          <RowsCount>600</RowsCount>
           <LookupProportion>30</LookupProportion>
           <ProportionOfExistingData>10</ProportionOfExistingData>
           <TimeTicksToPopulate>100000000</TimeTicksToPopulate>
@@ -1392,7 +1437,7 @@
       </Settings>
       <Columns>
         <Column Name="Empleados_Personas_DNI">
-          <Checked>false</Checked>
+          <Checked>true</Checked>
           <DataType>INT</DataType>
           <GeneratorOptions xsi:type="ForeignKeyGeneratorOptions">
             <Unique>true</Unique>
@@ -1413,7 +1458,7 @@
           <HasForeignKey>true</HasForeignKey>
         </Column>
         <Column Name="Departamento_NroDepartamento">
-          <Checked>false</Checked>
+          <Checked>true</Checked>
           <DataType>INT</DataType>
           <GeneratorOptions xsi:type="ForeignKeyGeneratorOptions">
             <Unique>true</Unique>
@@ -1421,7 +1466,7 @@
             <AllowNulls>false</AllowNulls>
             <NullProportion>0</NullProportion>
             <ValueDistributionMode>Seed</ValueDistributionMode>
-            <SeedValue>14</SeedValue>
+            <SeedValue>19</SeedValue>
             <RepeatValues>false</RepeatValues>
             <FromTimes>1</FromTimes>
             <ToTimes>10</ToTimes>
@@ -1481,7 +1526,7 @@
             <NullProportion>0</NullProportion>
             <ValueDistributionMode>Seed</ValueDistributionMode>
             <SeedValue>16</SeedValue>
-            <Unique>true</Unique>
+            <Unique>false</Unique>
             <IsAlwaysUnique>false</IsAlwaysUnique>
             <Values>
               <WeightedListItem>
@@ -1530,7 +1575,7 @@
             <NullProportion>0</NullProportion>
             <ValueDistributionMode>Seed</ValueDistributionMode>
             <SeedValue>17</SeedValue>
-            <Unique>true</Unique>
+            <Unique>false</Unique>
             <IsAlwaysUnique>false</IsAlwaysUnique>
             <Values>
               <WeightedListItem>
@@ -1604,42 +1649,35 @@
         <Column Name="EspecialidadFarmaceutica">
           <Checked>true</Checked>
           <DataType>VARCHAR</DataType>
-          <GeneratorOptions xsi:type="MySqlWeightedListGeneratorNestedValuesOptions">
+          <GeneratorOptions xsi:type="MySqlLoremIpsumGeneratorOptions">
             <AllowEmptyStrings>false</AllowEmptyStrings>
             <EmptyStringProportion>10</EmptyStringProportion>
             <AllowNulls>false</AllowNulls>
             <NullProportion>0</NullProportion>
             <ValueDistributionMode>Seed</ValueDistributionMode>
             <SeedValue>16</SeedValue>
+            <MinLength>1</MinLength>
+            <MaxLength>45</MaxLength>
+            <MaxAllowedLength>45</MaxAllowedLength>
+            <MinWordsInSentence>1</MinWordsInSentence>
+            <MaxWordsInSentence>2</MaxWordsInSentence>
+            <MinSentences>1</MinSentences>
+            <MaxSentences>1</MaxSentences>
+            <MinParagraphs>1</MinParagraphs>
+            <MaxParagraphs>1</MaxParagraphs>
             <Unique>true</Unique>
             <IsAlwaysUnique>false</IsAlwaysUnique>
-            <Values>
-              <WeightedListItem>
-                <Value xsi:type="ArrayOfWeightedListItem">
-                  <WeightedListItem>
-                    <Value xsi:type="xsd:string">EFG</Value>
-                    <Weight>10</Weight>
-                  </WeightedListItem>
-                  <WeightedListItem>
-                    <Value xsi:type="xsd:string" />
-                    <Weight>10</Weight>
-                  </WeightedListItem>
-                  <WeightedListItem>
-                    <Value xsi:type="xsd:string" />
-                    <Weight>10</Weight>
-                  </WeightedListItem>
-                  <WeightedListItem>
-                    <Value xsi:type="xsd:string" />
-                    <Weight>10</Weight>
-                  </WeightedListItem>
-                </Value>
-                <Weight>10</Weight>
-              </WeightedListItem>
-            </Values>
+            <PunctuationSigns>,.!?...;</PunctuationSigns>
+            <StartParagraphWithIndent>false</StartParagraphWithIndent>
+            <AddParagraphTags>false</AddParagraphTags>
+            <AddItalicTags>false</AddItalicTags>
+            <AddBoldTags>false</AddBoldTags>
+            <AddSingleLineBreakTags>false</AddSingleLineBreakTags>
+            <AddNewLines>false</AddNewLines>
           </GeneratorOptions>
-          <GeneratorType>MySqlWeightedListGeneratorNestedValues</GeneratorType>
-          <GeneratorName>Weighted List (nested)</GeneratorName>
-          <GeneratorDescription>a collection of values lists with specified frequency of occurrence</GeneratorDescription>
+          <GeneratorType>MySqlLoremIpsumGenerator</GeneratorType>
+          <GeneratorName>Lorem Ipsum</GeneratorName>
+          <GeneratorDescription>dummy text filler with some characteristics of a real written text</GeneratorDescription>
           <Length>45</Length>
         </Column>
         <Column Name="ModoDeAdministracion">
@@ -1652,7 +1690,7 @@
             <NullProportion>0</NullProportion>
             <ValueDistributionMode>Seed</ValueDistributionMode>
             <SeedValue>18</SeedValue>
-            <Unique>true</Unique>
+            <Unique>false</Unique>
             <IsAlwaysUnique>false</IsAlwaysUnique>
             <Values>
               <WeightedListItem>
@@ -1688,7 +1726,7 @@
         <RowsToGenerate>0</RowsToGenerate>
         <PopulationDetails>
           <PopulationType>RowsCount</PopulationType>
-          <RowsCount>1450</RowsCount>
+          <RowsCount>1500</RowsCount>
           <LookupProportion>30</LookupProportion>
           <ProportionOfExistingData>10</ProportionOfExistingData>
           <TimeTicksToPopulate>100000000</TimeTicksToPopulate>
@@ -1705,7 +1743,7 @@
             <NullProportion>0</NullProportion>
             <ValueDistributionMode>Seed</ValueDistributionMode>
             <SeedValue>19</SeedValue>
-            <Unique>true</Unique>
+            <Unique>false</Unique>
             <IsAlwaysUnique>false</IsAlwaysUnique>
             <Values>
               <WeightedListItem>
@@ -1769,7 +1807,7 @@
             <NullProportion>0</NullProportion>
             <ValueDistributionMode>Seed</ValueDistributionMode>
             <SeedValue>20</SeedValue>
-            <Unique>true</Unique>
+            <Unique>false</Unique>
             <IsAlwaysUnique>false</IsAlwaysUnique>
             <Values>
               <WeightedListItem>
@@ -1833,7 +1871,7 @@
             <NullProportion>0</NullProportion>
             <ValueDistributionMode>Seed</ValueDistributionMode>
             <SeedValue>21</SeedValue>
-            <Unique>true</Unique>
+            <Unique>false</Unique>
             <IsAlwaysUnique>false</IsAlwaysUnique>
             <Values>
               <WeightedListItem>
@@ -1897,7 +1935,7 @@
             <NullProportion>0</NullProportion>
             <ValueDistributionMode>Seed</ValueDistributionMode>
             <SeedValue>22</SeedValue>
-            <Unique>true</Unique>
+            <Unique>false</Unique>
             <IsAlwaysUnique>false</IsAlwaysUnique>
             <Values>
               <WeightedListItem>
@@ -1961,7 +1999,7 @@
             <NullProportion>0</NullProportion>
             <ValueDistributionMode>Seed</ValueDistributionMode>
             <SeedValue>23</SeedValue>
-            <Unique>true</Unique>
+            <Unique>false</Unique>
             <IsAlwaysUnique>false</IsAlwaysUnique>
             <Values>
               <WeightedListItem>
@@ -2025,7 +2063,7 @@
             <NullProportion>0</NullProportion>
             <ValueDistributionMode>Seed</ValueDistributionMode>
             <SeedValue>24</SeedValue>
-            <Unique>true</Unique>
+            <Unique>false</Unique>
             <IsAlwaysUnique>false</IsAlwaysUnique>
             <Values>
               <WeightedListItem>
@@ -2089,7 +2127,7 @@
             <NullProportion>0</NullProportion>
             <ValueDistributionMode>Seed</ValueDistributionMode>
             <SeedValue>25</SeedValue>
-            <Unique>true</Unique>
+            <Unique>false</Unique>
             <IsAlwaysUnique>false</IsAlwaysUnique>
             <Values>
               <WeightedListItem>
@@ -2167,13 +2205,13 @@
       </Columns>
     </Table>
     <Table Name="informacion_covid19">
-      <Checked>false</Checked>
+      <Checked>true</Checked>
       <Settings>
         <Truncate>true</Truncate>
         <RowsToGenerate>0</RowsToGenerate>
         <PopulationDetails>
           <PopulationType>RowsCount</PopulationType>
-          <RowsCount>1450</RowsCount>
+          <RowsCount>20</RowsCount>
           <LookupProportion>30</LookupProportion>
           <ProportionOfExistingData>10</ProportionOfExistingData>
           <TimeTicksToPopulate>100000000</TimeTicksToPopulate>
@@ -2181,7 +2219,7 @@
       </Settings>
       <Columns>
         <Column Name="DirectorMedico_Empleados_Personas_DNI">
-          <Checked>false</Checked>
+          <Checked>true</Checked>
           <DataType>INT</DataType>
           <GeneratorOptions xsi:type="ForeignKeyGeneratorOptions">
             <Unique>true</Unique>
@@ -2202,20 +2240,91 @@
           <HasForeignKey>true</HasForeignKey>
         </Column>
         <Column Name="Infectados">
-          <Checked>false</Checked>
+          <Checked>true</Checked>
           <DataType>INT</DataType>
+          <GeneratorOptions xsi:type="MySqlIntegerGeneratorOptions">
+            <AllowNulls>false</AllowNulls>
+            <NullProportion>0</NullProportion>
+            <Unique>true</Unique>
+            <IsAlwaysUnique>false</IsAlwaysUnique>
+            <Increment xsi:type="xsd:int">1</Increment>
+            <ValueDistributionMode>Seed</ValueDistributionMode>
+            <SeedValue>27</SeedValue>
+            <MinValue>0</MinValue>
+            <MaxValue>255</MaxValue>
+            <UseDefault>false</UseDefault>
+            <DefaultValue />
+          </GeneratorOptions>
+          <GeneratorType>MySqlIntegerGenerator</GeneratorType>
+          <GeneratorName>int</GeneratorName>
+          <GeneratorDescription>fill with 32-bit signed integer values</GeneratorDescription>
         </Column>
         <Column Name="Fallecidos">
-          <Checked>false</Checked>
+          <Checked>true</Checked>
           <DataType>INT</DataType>
+          <GeneratorOptions xsi:type="MySqlIntegerGeneratorOptions">
+            <AllowNulls>false</AllowNulls>
+            <NullProportion>0</NullProportion>
+            <Unique>true</Unique>
+            <IsAlwaysUnique>false</IsAlwaysUnique>
+            <Increment xsi:type="xsd:int">1</Increment>
+            <ValueDistributionMode>Sequential</ValueDistributionMode>
+            <SeedValue>27</SeedValue>
+            <MinValue>0</MinValue>
+            <MaxValue>25</MaxValue>
+            <UseDefault>false</UseDefault>
+            <DefaultValue />
+          </GeneratorOptions>
+          <GeneratorType>MySqlIntegerGenerator</GeneratorType>
+          <GeneratorName>ID (sequential)</GeneratorName>
+          <GeneratorDescription>1, 2, 3, 4, ..., 9, 10, 11, 12, ...</GeneratorDescription>
+          <GeneratorCategory>Business</GeneratorCategory>
         </Column>
         <Column Name="Recuperados">
-          <Checked>false</Checked>
+          <Checked>true</Checked>
           <DataType>INT</DataType>
+          <GeneratorOptions xsi:type="MySqlIntegerGeneratorOptions">
+            <AllowNulls>false</AllowNulls>
+            <NullProportion>0</NullProportion>
+            <Unique>true</Unique>
+            <IsAlwaysUnique>false</IsAlwaysUnique>
+            <Increment xsi:type="xsd:int">1</Increment>
+            <ValueDistributionMode>Seed</ValueDistributionMode>
+            <SeedValue>28</SeedValue>
+            <MinValue>0</MinValue>
+            <MaxValue>126</MaxValue>
+            <UseDefault>false</UseDefault>
+            <DefaultValue />
+          </GeneratorOptions>
+          <GeneratorType>MySqlIntegerGenerator</GeneratorType>
+          <GeneratorName>int</GeneratorName>
+          <GeneratorDescription>fill with 32-bit signed integer values</GeneratorDescription>
         </Column>
         <Column Name="FechaInformacion">
-          <Checked>false</Checked>
+          <Checked>true</Checked>
           <DataType>DATE</DataType>
+          <GeneratorOptions xsi:type="DateGeneratorOptions">
+            <AllowNulls>false</AllowNulls>
+            <NullProportion>0</NullProportion>
+            <Unique>false</Unique>
+            <IsAlwaysUnique>false</IsAlwaysUnique>
+            <UseDefault>false</UseDefault>
+            <ValueDistributionMode>Seed</ValueDistributionMode>
+            <SeedValue>27</SeedValue>
+            <SequentialValueTicks>864000000000</SequentialValueTicks>
+            <OffsetFromColumnMaxTimeTicks>10000000</OffsetFromColumnMaxTimeTicks>
+            <OffsetFromColumnMinTimeTicks>10000000</OffsetFromColumnMinTimeTicks>
+            <DateTimeRange>Now</DateTimeRange>
+            <UseOffsetDetails>false</UseOffsetDetails>
+            <OffsetFromColumnMinDays>0</OffsetFromColumnMinDays>
+            <OffsetFromColumnMaxDays>7</OffsetFromColumnMaxDays>
+            <MinDate>2020-06-04T00:00:00-03:00</MinDate>
+            <MaxDate>2020-06-04T00:00:00-03:00</MaxDate>
+            <IsRandomizeDate>true</IsRandomizeDate>
+          </GeneratorOptions>
+          <GeneratorType>MySqlDateGenerator</GeneratorType>
+          <GeneratorName>date</GeneratorName>
+          <GeneratorDescription>fill with date values</GeneratorDescription>
         </Column>
       </Columns>
     </Table>
@@ -2226,7 +2335,7 @@
         <RowsToGenerate>0</RowsToGenerate>
         <PopulationDetails>
           <PopulationType>RowsCount</PopulationType>
-          <RowsCount>1450</RowsCount>
+          <RowsCount>20</RowsCount>
           <LookupProportion>30</LookupProportion>
           <ProportionOfExistingData>10</ProportionOfExistingData>
           <TimeTicksToPopulate>100000000</TimeTicksToPopulate>
@@ -2263,7 +2372,7 @@
         <RowsToGenerate>0</RowsToGenerate>
         <PopulationDetails>
           <PopulationType>RowsCount</PopulationType>
-          <RowsCount>1450</RowsCount>
+          <RowsCount>1500</RowsCount>
           <LookupProportion>30</LookupProportion>
           <ProportionOfExistingData>10</ProportionOfExistingData>
           <TimeTicksToPopulate>100000000</TimeTicksToPopulate>
@@ -2279,7 +2388,7 @@
             <AllowNulls>false</AllowNulls>
             <NullProportion>0</NullProportion>
             <ValueDistributionMode>Seed</ValueDistributionMode>
-            <SeedValue>30</SeedValue>
+            <SeedValue>23</SeedValue>
             <RepeatValues>false</RepeatValues>
             <FromTimes>1</FromTimes>
             <ToTimes>10</ToTimes>
@@ -2301,7 +2410,7 @@
             <NullProportion>0</NullProportion>
             <ValueDistributionMode>Seed</ValueDistributionMode>
             <SeedValue>30</SeedValue>
-            <Unique>true</Unique>
+            <Unique>false</Unique>
             <IsAlwaysUnique>false</IsAlwaysUnique>
             <Expression>Simvastatina|Aspirina|Omeprazol|Lexotiroxina sódica|Ramipril|Amlodipina|Paracetamol|Atorvastatina</Expression>
           </GeneratorOptions>
@@ -2319,7 +2428,7 @@
         <RowsToGenerate>0</RowsToGenerate>
         <PopulationDetails>
           <PopulationType>RowsCount</PopulationType>
-          <RowsCount>1450</RowsCount>
+          <RowsCount>2500</RowsCount>
           <LookupProportion>30</LookupProportion>
           <ProportionOfExistingData>10</ProportionOfExistingData>
           <TimeTicksToPopulate>100000000</TimeTicksToPopulate>
@@ -2377,7 +2486,7 @@
             <NullProportion>0</NullProportion>
             <ValueDistributionMode>Seed</ValueDistributionMode>
             <SeedValue>31</SeedValue>
-            <Unique>true</Unique>
+            <Unique>false</Unique>
             <IsAlwaysUnique>false</IsAlwaysUnique>
             <Values>
               <WeightedListItem>
@@ -2412,7 +2521,7 @@
             <NullProportion>0</NullProportion>
             <ValueDistributionMode>Seed</ValueDistributionMode>
             <SeedValue>31</SeedValue>
-            <Unique>true</Unique>
+            <Unique>false</Unique>
             <IsAlwaysUnique>false</IsAlwaysUnique>
             <Values>
               <WeightedListItem>
@@ -2500,12 +2609,12 @@
             <NullProportion>0</NullProportion>
             <ValueDistributionMode>Seed</ValueDistributionMode>
             <SeedValue>32</SeedValue>
-            <Unique>true</Unique>
+            <Unique>false</Unique>
             <IsAlwaysUnique>false</IsAlwaysUnique>
             <Values>
               <WeightedListItem>
                 <Value xsi:type="WeightedListRangeItem">
-                  <From xsi:type="xsd:decimal">35</From>
+                  <From xsi:type="xsd:decimal">35.5</From>
                   <To xsi:type="xsd:decimal">36</To>
                   <DateTimeOffsetFromValue />
                   <DateTimeOffsetToValue />
@@ -2595,7 +2704,7 @@
         <RowsToGenerate>0</RowsToGenerate>
         <PopulationDetails>
           <PopulationType>RowsCount</PopulationType>
-          <RowsCount>22000</RowsCount>
+          <RowsCount>3500</RowsCount>
           <LookupProportion>30</LookupProportion>
           <ProportionOfExistingData>10</ProportionOfExistingData>
           <TimeTicksToPopulate>100000000</TimeTicksToPopulate>
@@ -2632,7 +2741,7 @@
         <RowsToGenerate>0</RowsToGenerate>
         <PopulationDetails>
           <PopulationType>RowsCount</PopulationType>
-          <RowsCount>10</RowsCount>
+          <RowsCount>3000</RowsCount>
           <LookupProportion>30</LookupProportion>
           <ProportionOfExistingData>10</ProportionOfExistingData>
           <TimeTicksToPopulate>100000000</TimeTicksToPopulate>
@@ -2689,7 +2798,7 @@
             <NullProportion>0</NullProportion>
             <ValueDistributionMode>Seed</ValueDistributionMode>
             <SeedValue>34</SeedValue>
-            <Unique>true</Unique>
+            <Unique>false</Unique>
             <IsAlwaysUnique>false</IsAlwaysUnique>
             <Expression>Osecac|Obsba|OSDE|Bancarios|Osuthgra|OSN|Obras Sanitarias|Activa Salud|Osuomra (UOM)|ServeSalud|Viajantes</Expression>
           </GeneratorOptions>
@@ -2701,13 +2810,13 @@
       </Columns>
     </Table>
     <Table Name="paciente_cama">
-      <Checked>false</Checked>
+      <Checked>true</Checked>
       <Settings>
         <Truncate>true</Truncate>
         <RowsToGenerate>0</RowsToGenerate>
         <PopulationDetails>
           <PopulationType>RowsCount</PopulationType>
-          <RowsCount>1450</RowsCount>
+          <RowsCount>1500</RowsCount>
           <LookupProportion>30</LookupProportion>
           <ProportionOfExistingData>10</ProportionOfExistingData>
           <TimeTicksToPopulate>100000000</TimeTicksToPopulate>
@@ -2715,7 +2824,7 @@
       </Settings>
       <Columns>
         <Column Name="Internado_Personas_DNI">
-          <Checked>false</Checked>
+          <Checked>true</Checked>
           <DataType>INT</DataType>
           <GeneratorOptions xsi:type="ForeignKeyGeneratorOptions">
             <Unique>true</Unique>
@@ -2736,7 +2845,7 @@
           <HasForeignKey>true</HasForeignKey>
         </Column>
         <Column Name="Camas_NroCama">
-          <Checked>false</Checked>
+          <Checked>true</Checked>
           <DataType>INT</DataType>
           <GeneratorOptions xsi:type="ForeignKeyGeneratorOptions">
             <Unique>true</Unique>
@@ -2759,13 +2868,13 @@
       </Columns>
     </Table>
     <Table Name="paciente_hospital">
-      <Checked>false</Checked>
+      <Checked>true</Checked>
       <Settings>
         <Truncate>true</Truncate>
         <RowsToGenerate>0</RowsToGenerate>
         <PopulationDetails>
           <PopulationType>RowsCount</PopulationType>
-          <RowsCount>1450</RowsCount>
+          <RowsCount>1500</RowsCount>
           <LookupProportion>30</LookupProportion>
           <ProportionOfExistingData>10</ProportionOfExistingData>
           <TimeTicksToPopulate>100000000</TimeTicksToPopulate>
@@ -2773,7 +2882,7 @@
       </Settings>
       <Columns>
         <Column Name="Internado_Personas_DNI">
-          <Checked>false</Checked>
+          <Checked>true</Checked>
           <DataType>INT</DataType>
           <GeneratorOptions xsi:type="ForeignKeyGeneratorOptions">
             <Unique>true</Unique>
@@ -2794,10 +2903,10 @@
           <HasForeignKey>true</HasForeignKey>
         </Column>
         <Column Name="Hospital_NroHospital">
-          <Checked>false</Checked>
+          <Checked>true</Checked>
           <DataType>INT</DataType>
           <GeneratorOptions xsi:type="ForeignKeyGeneratorOptions">
-            <Unique>true</Unique>
+            <Unique>false</Unique>
             <IsAlwaysUnique>false</IsAlwaysUnique>
             <AllowNulls>false</AllowNulls>
             <NullProportion>0</NullProportion>
@@ -2823,7 +2932,7 @@
         <RowsToGenerate>0</RowsToGenerate>
         <PopulationDetails>
           <PopulationType>RowsCount</PopulationType>
-          <RowsCount>1450</RowsCount>
+          <RowsCount>1500</RowsCount>
           <LookupProportion>30</LookupProportion>
           <ProportionOfExistingData>10</ProportionOfExistingData>
           <TimeTicksToPopulate>100000000</TimeTicksToPopulate>
@@ -2863,11 +2972,11 @@
             <SeedValue>39</SeedValue>
             <Unique>true</Unique>
             <IsAlwaysUnique>false</IsAlwaysUnique>
-            <Expression>($"DEStreets.txt") (([1-2]\d?\d?|\D\d?)[a-f]?|(1[1-5]-1[5-9]|2[1-5]-2[5-9])), \d\D\d\d\d, ($"DECities.txt")</Expression>
+            <Expression>(([1-9]\d{1,2})|([1-3]\d{3})) (((New|Old|Hidden|West|South|East|North|White|Red|E|(S)?W|NW|S(E)?|N(E)?) )?((((Ski|Chapel|Hunting|Fox|Rose|Riddle|Rock|Prospect|Sharp) Hill)|Front|Hope|Mount|Church|Social|Riverside|Highland|(Wood(land|bridge|hurst|side|row|fort|cock))|((Deep|Iron|Rush|Edge|Park|Hazel|Bur|Glen|Rock|Quail|Stone|Flint|Button|Beach|Ash|Brent)wood)|Lake|(Cedar|Pine) Tree|Oak|((Water|Meadow|Farm|River|Bay)view)|Town|Market|Mountain|Monument))|((1st|2nd|3rd|[4-9]\d?th))) (St(reet)?|Ave(nue)?|Dr(ive)?|R(oa)?d|Ct|C(our)?t|Ln|Lane|Blvd|Cir(cle)?|Hwy|Highway|Loop|Way|Pkwy|Parkway)</Expression>
           </GeneratorOptions>
           <GeneratorType>MySqlRegularExpressionGenerator</GeneratorType>
-          <GeneratorName>DE Address Full</GeneratorName>
-          <GeneratorDescription>Lusenstraße 21-25, 13111, Bühl; Rosental 1c, 32361, Johannstorf; Heideckstraße 44, 13034, Neumühlen; ...</GeneratorDescription>
+          <GeneratorName>US Address Line 1</GeneratorName>
+          <GeneratorDescription>3581 South Ironwood Lane, 24 NW Lake Blvd, 1063 97th Street, ...</GeneratorDescription>
           <GeneratorCategory>Location</GeneratorCategory>
           <Length>65</Length>
         </Column>
@@ -2881,7 +2990,7 @@
             <NullProportion>0</NullProportion>
             <ValueDistributionMode>Seed</ValueDistributionMode>
             <SeedValue>40</SeedValue>
-            <Unique>true</Unique>
+            <Unique>false</Unique>
             <IsAlwaysUnique>false</IsAlwaysUnique>
             <Expression>Departamento|Casa|Hotel</Expression>
           </GeneratorOptions>
@@ -2893,13 +3002,13 @@
       </Columns>
     </Table>
     <Table Name="pm_suministros">
-      <Checked>false</Checked>
+      <Checked>true</Checked>
       <Settings>
         <Truncate>true</Truncate>
         <RowsToGenerate>0</RowsToGenerate>
         <PopulationDetails>
           <PopulationType>RowsCount</PopulationType>
-          <RowsCount>1450</RowsCount>
+          <RowsCount>20</RowsCount>
           <LookupProportion>30</LookupProportion>
           <ProportionOfExistingData>10</ProportionOfExistingData>
           <TimeTicksToPopulate>100000000</TimeTicksToPopulate>
@@ -2907,11 +3016,28 @@
       </Settings>
       <Columns>
         <Column Name="NroPedido">
-          <Checked>false</Checked>
+          <Checked>true</Checked>
           <DataType>INT</DataType>
+          <GeneratorOptions xsi:type="MySqlIntegerGeneratorOptions">
+            <AllowNulls>false</AllowNulls>
+            <NullProportion>0</NullProportion>
+            <Unique>true</Unique>
+            <IsAlwaysUnique>false</IsAlwaysUnique>
+            <Increment xsi:type="xsd:int">1</Increment>
+            <ValueDistributionMode>Sequential</ValueDistributionMode>
+            <SeedValue>49</SeedValue>
+            <MinValue>1</MinValue>
+            <MaxValue>2147483647</MaxValue>
+            <UseDefault>false</UseDefault>
+            <DefaultValue />
+          </GeneratorOptions>
+          <GeneratorType>MySqlIntegerGenerator</GeneratorType>
+          <GeneratorName>ID (sequential)</GeneratorName>
+          <GeneratorDescription>1, 2, 3, 4, ..., 9, 10, 11, 12, ...</GeneratorDescription>
+          <GeneratorCategory>Business</GeneratorCategory>
         </Column>
         <Column Name="PersonalMedico_Empleados_Personas_DNI">
-          <Checked>false</Checked>
+          <Checked>true</Checked>
           <DataType>INT</DataType>
           <GeneratorOptions xsi:type="ForeignKeyGeneratorOptions">
             <Unique>true</Unique>
@@ -2932,7 +3058,7 @@
           <HasForeignKey>true</HasForeignKey>
         </Column>
         <Column Name="Suministros_CodigoSuministro">
-          <Checked>false</Checked>
+          <Checked>true</Checked>
           <DataType>VARCHAR</DataType>
           <GeneratorOptions xsi:type="ForeignKeyGeneratorOptions">
             <Unique>true</Unique>
@@ -2954,27 +3080,105 @@
           <Length>6</Length>
         </Column>
         <Column Name="FH_Entrega">
-          <Checked>false</Checked>
+          <Checked>true</Checked>
           <DataType>DATETIME</DataType>
+          <GeneratorOptions xsi:type="MySqlDateTimeGeneratorOptions">
+            <AllowNulls>true</AllowNulls>
+            <NullProportion>10</NullProportion>
+            <Unique>true</Unique>
+            <IsAlwaysUnique>false</IsAlwaysUnique>
+            <UseDefault>false</UseDefault>
+            <ValueDistributionMode>Seed</ValueDistributionMode>
+            <SeedValue>49</SeedValue>
+            <SequentialValueTicks>864000000000</SequentialValueTicks>
+            <OffsetFromColumnMaxTimeTicks>10000000</OffsetFromColumnMaxTimeTicks>
+            <OffsetFromColumnMinTimeTicks>10000000</OffsetFromColumnMinTimeTicks>
+            <DateTimeRange>MinMaxDate</DateTimeRange>
+            <UseOffsetDetails>false</UseOffsetDetails>
+            <OffsetFromColumnMinDays>0</OffsetFromColumnMinDays>
+            <OffsetFromColumnMaxDays>7</OffsetFromColumnMaxDays>
+            <MinDate>2010-09-04T00:00:00-03:00</MinDate>
+            <MaxDate>2020-06-04T00:00:00-03:00</MaxDate>
+            <IsRandomizeDate>true</IsRandomizeDate>
+            <MinFraction>0</MinFraction>
+            <MaxFraction>0</MaxFraction>
+            <MaxAllowedFraction>0</MaxAllowedFraction>
+            <IsRandomizeFraction>true</IsRandomizeFraction>
+            <Scale>0</Scale>
+            <Precision>0</Precision>
+            <IsRandomizeTime>true</IsRandomizeTime>
+            <MaxTime>863990000000</MaxTime>
+            <MinTime>10000000</MinTime>
+          </GeneratorOptions>
+          <GeneratorType>MySqlDateTimeGenerator</GeneratorType>
+          <GeneratorName>datetime</GeneratorName>
+          <GeneratorDescription>fill with date and time with fractional seconds values</GeneratorDescription>
         </Column>
         <Column Name="FH_Pedido">
-          <Checked>false</Checked>
+          <Checked>true</Checked>
           <DataType>DATETIME</DataType>
+          <GeneratorOptions xsi:type="MySqlDateTimeGeneratorOptions">
+            <AllowNulls>false</AllowNulls>
+            <NullProportion>10</NullProportion>
+            <Unique>true</Unique>
+            <IsAlwaysUnique>false</IsAlwaysUnique>
+            <UseDefault>false</UseDefault>
+            <ValueDistributionMode>Seed</ValueDistributionMode>
+            <SeedValue>50</SeedValue>
+            <SequentialValueTicks>864000000000</SequentialValueTicks>
+            <OffsetFromColumnMaxTimeTicks>10000000</OffsetFromColumnMaxTimeTicks>
+            <OffsetFromColumnMinTimeTicks>10000000</OffsetFromColumnMinTimeTicks>
+            <DateTimeRange>MinMaxDate</DateTimeRange>
+            <UseOffsetDetails>false</UseOffsetDetails>
+            <OffsetFromColumnMinDays>0</OffsetFromColumnMinDays>
+            <OffsetFromColumnMaxDays>7</OffsetFromColumnMaxDays>
+            <MinDate>2010-09-04T00:00:00</MinDate>
+            <MaxDate>2020-06-04T00:00:00-03:00</MaxDate>
+            <IsRandomizeDate>true</IsRandomizeDate>
+            <MinFraction>0</MinFraction>
+            <MaxFraction>0</MaxFraction>
+            <MaxAllowedFraction>0</MaxAllowedFraction>
+            <IsRandomizeFraction>true</IsRandomizeFraction>
+            <Scale>0</Scale>
+            <Precision>0</Precision>
+            <IsRandomizeTime>true</IsRandomizeTime>
+            <MaxTime>863990000000</MaxTime>
+            <MinTime>10000000</MinTime>
+          </GeneratorOptions>
+          <GeneratorType>MySqlDateTimeGenerator</GeneratorType>
+          <GeneratorName>datetime</GeneratorName>
+          <GeneratorDescription>fill with date and time with fractional seconds values</GeneratorDescription>
         </Column>
         <Column Name="Cant_Repuesto">
-          <Checked>false</Checked>
+          <Checked>true</Checked>
           <DataType>INT</DataType>
+          <GeneratorOptions xsi:type="MySqlIntegerGeneratorOptions">
+            <AllowNulls>true</AllowNulls>
+            <NullProportion>10</NullProportion>
+            <Unique>true</Unique>
+            <IsAlwaysUnique>false</IsAlwaysUnique>
+            <Increment xsi:type="xsd:int">1</Increment>
+            <ValueDistributionMode>Seed</ValueDistributionMode>
+            <SeedValue>49</SeedValue>
+            <MinValue>0</MinValue>
+            <MaxValue>1250</MaxValue>
+            <UseDefault>false</UseDefault>
+            <DefaultValue>NULL</DefaultValue>
+          </GeneratorOptions>
+          <GeneratorType>MySqlIntegerGenerator</GeneratorType>
+          <GeneratorName>int</GeneratorName>
+          <GeneratorDescription>fill with 32-bit signed integer values</GeneratorDescription>
         </Column>
       </Columns>
     </Table>
     <Table Name="proveedores_suministros">
-      <Checked>false</Checked>
+      <Checked>true</Checked>
       <Settings>
         <Truncate>true</Truncate>
         <RowsToGenerate>0</RowsToGenerate>
         <PopulationDetails>
           <PopulationType>RowsCount</PopulationType>
-          <RowsCount>1450</RowsCount>
+          <RowsCount>24</RowsCount>
           <LookupProportion>30</LookupProportion>
           <ProportionOfExistingData>10</ProportionOfExistingData>
           <TimeTicksToPopulate>100000000</TimeTicksToPopulate>
@@ -2982,10 +3186,10 @@
       </Settings>
       <Columns>
         <Column Name="Proveedores_NroProveedores">
-          <Checked>false</Checked>
+          <Checked>true</Checked>
           <DataType>INT</DataType>
           <GeneratorOptions xsi:type="ForeignKeyGeneratorOptions">
-            <Unique>true</Unique>
+            <Unique>false</Unique>
             <IsAlwaysUnique>false</IsAlwaysUnique>
             <AllowNulls>false</AllowNulls>
             <NullProportion>0</NullProportion>
@@ -3003,7 +3207,7 @@
           <HasForeignKey>true</HasForeignKey>
         </Column>
         <Column Name="Suministros_CodigoSuministro">
-          <Checked>false</Checked>
+          <Checked>true</Checked>
           <DataType>VARCHAR</DataType>
           <GeneratorOptions xsi:type="ForeignKeyGeneratorOptions">
             <Unique>true</Unique>
@@ -3033,7 +3237,7 @@
         <RowsToGenerate>0</RowsToGenerate>
         <PopulationDetails>
           <PopulationType>RowsCount</PopulationType>
-          <RowsCount>3000</RowsCount>
+          <RowsCount>1500</RowsCount>
           <LookupProportion>30</LookupProportion>
           <ProportionOfExistingData>10</ProportionOfExistingData>
           <TimeTicksToPopulate>100000000</TimeTicksToPopulate>
@@ -3071,7 +3275,7 @@
             <NullProportion>0</NullProportion>
             <ValueDistributionMode>Seed</ValueDistributionMode>
             <SeedValue>59</SeedValue>
-            <Unique>true</Unique>
+            <Unique>false</Unique>
             <IsAlwaysUnique>false</IsAlwaysUnique>
             <Values>
               <WeightedListItem>
@@ -3096,13 +3300,13 @@
       </Columns>
     </Table>
     <Table Name="titulos_y_capacitacion">
-      <Checked>false</Checked>
+      <Checked>true</Checked>
       <Settings>
         <Truncate>true</Truncate>
         <RowsToGenerate>0</RowsToGenerate>
         <PopulationDetails>
           <PopulationType>RowsCount</PopulationType>
-          <RowsCount>1450</RowsCount>
+          <RowsCount>600</RowsCount>
           <LookupProportion>30</LookupProportion>
           <ProportionOfExistingData>10</ProportionOfExistingData>
           <TimeTicksToPopulate>100000000</TimeTicksToPopulate>
@@ -3110,26 +3314,41 @@
       </Settings>
       <Columns>
         <Column Name="Capacitacion">
-          <Checked>false</Checked>
+          <Checked>true</Checked>
           <DataType>VARCHAR</DataType>
-          <GeneratorOptions xsi:type="MySqlRegularExpressionGeneratorOptions">
+          <GeneratorOptions xsi:type="MySqlLoremIpsumGeneratorOptions">
             <AllowEmptyStrings>false</AllowEmptyStrings>
             <EmptyStringProportion>10</EmptyStringProportion>
             <AllowNulls>false</AllowNulls>
             <NullProportion>0</NullProportion>
             <ValueDistributionMode>Seed</ValueDistributionMode>
             <SeedValue>60</SeedValue>
+            <MinLength>1</MinLength>
+            <MaxLength>20</MaxLength>
+            <MaxAllowedLength>45</MaxAllowedLength>
+            <MinWordsInSentence>1</MinWordsInSentence>
+            <MaxWordsInSentence>2</MaxWordsInSentence>
+            <MinSentences>1</MinSentences>
+            <MaxSentences>2</MaxSentences>
+            <MinParagraphs>1</MinParagraphs>
+            <MaxParagraphs>2</MaxParagraphs>
             <Unique>true</Unique>
             <IsAlwaysUnique>false</IsAlwaysUnique>
-            <Expression>[0-9A-Z]+</Expression>
+            <PunctuationSigns>,.!?...;</PunctuationSigns>
+            <StartParagraphWithIndent>false</StartParagraphWithIndent>
+            <AddParagraphTags>false</AddParagraphTags>
+            <AddItalicTags>false</AddItalicTags>
+            <AddBoldTags>false</AddBoldTags>
+            <AddSingleLineBreakTags>false</AddSingleLineBreakTags>
+            <AddNewLines>false</AddNewLines>
           </GeneratorOptions>
-          <GeneratorType>MySqlStringRegularExpressionGenerator</GeneratorType>
-          <GeneratorName>Reg Exp</GeneratorName>
-          <GeneratorDescription>values based on a regular expression</GeneratorDescription>
+          <GeneratorType>MySqlLoremIpsumGenerator</GeneratorType>
+          <GeneratorName>Lorem Ipsum</GeneratorName>
+          <GeneratorDescription>dummy text filler with some characteristics of a real written text</GeneratorDescription>
           <Length>45</Length>
         </Column>
         <Column Name="Empleados_Personas_DNI">
-          <Checked>false</Checked>
+          <Checked>true</Checked>
           <DataType>INT</DataType>
           <GeneratorOptions xsi:type="ForeignKeyGeneratorOptions">
             <Unique>true</Unique>
@@ -3154,12 +3373,14 @@
   </Tables>
   <SynchronizationOptions xsi:type="DataSyncOptionGroup">
     <SynchronizeType>File</SynchronizeType>
-    <SynchronizationFileName>E:\Documentos\ING_BIOMEDICA\Cuarto Año\Base de Datos\TP Final\COVID-19\DataGeneration_20200601-0955.sql</SynchronizationFileName>
+    <OpenScriptInEditor>true</OpenScriptInEditor>
+    <SynchronizationFileName>D:\Bruno\Favaloro\4 Año\BD\Trabajos Practivos\COVID-19V2\dbDummy.sql</SynchronizationFileName>
     <IncludeUseDatabase>false</IncludeUseDatabase>
     <ExecuteCustomScriptTypeBefore>UseEmbeddedScript</ExecuteCustomScriptTypeBefore>
     <ExecuteCustomScriptTypeAfter>UseEmbeddedScript</ExecuteCustomScriptTypeAfter>
     <BulkInsert>false</BulkInsert>
     <LimitBulk>false</LimitBulk>
-    <DropCheckConstraints>true</DropCheckConstraints>
+    <DisableForeignKeys>true</DisableForeignKeys>
+    <DisableDmlTriggers>false</DisableDmlTriggers>
   </SynchronizationOptions>
 </DataGenDocument>
