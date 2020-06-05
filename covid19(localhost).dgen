@@ -684,9 +684,10 @@
         <Truncate>true</Truncate>
         <RowsToGenerate>0</RowsToGenerate>
         <PopulationDetails>
-          <PopulationType>RowsCount</PopulationType>
+          <PopulationType>ProportionOfLookupTable</PopulationType>
           <RowsCount>600</RowsCount>
-          <LookupProportion>30</LookupProportion>
+          <LookupTableName>personas</LookupTableName>
+          <LookupProportion>12</LookupProportion>
           <ProportionOfExistingData>10</ProportionOfExistingData>
           <TimeTicksToPopulate>100000000</TimeTicksToPopulate>
         </PopulationDetails>
@@ -766,9 +767,10 @@
         <Truncate>true</Truncate>
         <RowsToGenerate>0</RowsToGenerate>
         <PopulationDetails>
-          <PopulationType>RowsCount</PopulationType>
+          <PopulationType>ProportionOfLookupTable</PopulationType>
           <RowsCount>3000</RowsCount>
-          <LookupProportion>30</LookupProportion>
+          <LookupTableName>personas</LookupTableName>
+          <LookupProportion>78</LookupProportion>
           <ProportionOfExistingData>10</ProportionOfExistingData>
           <TimeTicksToPopulate>100000000</TimeTicksToPopulate>
         </PopulationDetails>
@@ -814,21 +816,41 @@
                     <Value xsi:type="xsd:int">1</Value>
                     <Weight>10</Weight>
                   </WeightedListItem>
+                </Value>
+                <Weight>10</Weight>
+              </WeightedListItem>
+              <WeightedListItem>
+                <Value xsi:type="ArrayOfWeightedListItem">
                   <WeightedListItem>
                     <Value xsi:type="xsd:int">2</Value>
-                    <Weight>20</Weight>
-                  </WeightedListItem>
-                  <WeightedListItem>
-                    <Value xsi:type="xsd:int">3</Value>
                     <Weight>40</Weight>
                   </WeightedListItem>
+                </Value>
+                <Weight>40</Weight>
+              </WeightedListItem>
+              <WeightedListItem>
+                <Value xsi:type="ArrayOfWeightedListItem">
+                  <WeightedListItem>
+                    <Value xsi:type="xsd:int">3</Value>
+                    <Weight>10</Weight>
+                  </WeightedListItem>
+                </Value>
+                <Weight>20</Weight>
+              </WeightedListItem>
+              <WeightedListItem>
+                <Value xsi:type="ArrayOfWeightedListItem">
                   <WeightedListItem>
                     <Value xsi:type="xsd:int">4</Value>
-                    <Weight>50</Weight>
+                    <Weight>10</Weight>
                   </WeightedListItem>
+                </Value>
+                <Weight>30</Weight>
+              </WeightedListItem>
+              <WeightedListItem>
+                <Value xsi:type="ArrayOfWeightedListItem">
                   <WeightedListItem>
                     <Value xsi:type="xsd:int">5</Value>
-                    <Weight>80</Weight>
+                    <Weight>10</Weight>
                   </WeightedListItem>
                 </Value>
                 <Weight>10</Weight>
@@ -845,7 +867,7 @@
           <GeneratorOptions xsi:type="DateGeneratorOptions">
             <AllowNulls>false</AllowNulls>
             <NullProportion>0</NullProportion>
-            <Unique>true</Unique>
+            <Unique>false</Unique>
             <IsAlwaysUnique>false</IsAlwaysUnique>
             <UseDefault>false</UseDefault>
             <ValueDistributionMode>Seed</ValueDistributionMode>
@@ -858,7 +880,7 @@
             <OffsetFromColumnMinDays>0</OffsetFromColumnMinDays>
             <OffsetFromColumnMaxDays>7</OffsetFromColumnMaxDays>
             <MinDate>2020-03-01T00:00:00</MinDate>
-            <MaxDate>2020-06-30T00:00:00-03:00</MaxDate>
+            <MaxDate>2020-07-30T00:00:00-03:00</MaxDate>
             <IsRandomizeDate>true</IsRandomizeDate>
           </GeneratorOptions>
           <GeneratorType>MySqlDateGenerator</GeneratorType>
@@ -978,7 +1000,7 @@
           <Length>45</Length>
         </Column>
         <Column Name="FH_Salida">
-          <Checked>true</Checked>
+          <Checked>false</Checked>
           <DataType>DATETIME</DataType>
           <GeneratorOptions xsi:type="MySqlDateTimeGeneratorOptions">
             <AllowNulls>true</AllowNulls>
@@ -1110,7 +1132,7 @@
           <Checked>true</Checked>
           <DataType>VARCHAR</DataType>
           <GeneratorOptions xsi:type="ForeignKeyGeneratorOptions">
-            <Unique>true</Unique>
+            <Unique>false</Unique>
             <IsAlwaysUnique>false</IsAlwaysUnique>
             <AllowNulls>false</AllowNulls>
             <NullProportion>0</NullProportion>
@@ -1214,9 +1236,10 @@
         <Truncate>true</Truncate>
         <RowsToGenerate>0</RowsToGenerate>
         <PopulationDetails>
-          <PopulationType>RowsCount</PopulationType>
-          <RowsCount>1400</RowsCount>
-          <LookupProportion>30</LookupProportion>
+          <PopulationType>ProportionOfLookupTable</PopulationType>
+          <RowsCount>250</RowsCount>
+          <LookupTableName>personas</LookupTableName>
+          <LookupProportion>5</LookupProportion>
           <ProportionOfExistingData>10</ProportionOfExistingData>
           <TimeTicksToPopulate>100000000</TimeTicksToPopulate>
         </PopulationDetails>
@@ -1388,7 +1411,7 @@
             <NullProportion>0</NullProportion>
             <ValueDistributionMode>Sequential</ValueDistributionMode>
             <SeedValue>10</SeedValue>
-            <RepeatValues>true</RepeatValues>
+            <RepeatValues>false</RepeatValues>
             <FromTimes>1</FromTimes>
             <ToTimes>17</ToTimes>
             <ExcludeValues>false</ExcludeValues>
@@ -1409,9 +1432,9 @@
             <NullProportion>0</NullProportion>
             <ValueDistributionMode>Sequential</ValueDistributionMode>
             <SeedValue>11</SeedValue>
-            <RepeatValues>false</RepeatValues>
+            <RepeatValues>true</RepeatValues>
             <FromTimes>1</FromTimes>
-            <ToTimes>10</ToTimes>
+            <ToTimes>17</ToTimes>
             <ExcludeValues>false</ExcludeValues>
             <ExclusionValuesPercent>1</ExclusionValuesPercent>
           </GeneratorOptions>
@@ -1461,7 +1484,7 @@
           <Checked>true</Checked>
           <DataType>INT</DataType>
           <GeneratorOptions xsi:type="ForeignKeyGeneratorOptions">
-            <Unique>true</Unique>
+            <Unique>false</Unique>
             <IsAlwaysUnique>false</IsAlwaysUnique>
             <AllowNulls>false</AllowNulls>
             <NullProportion>0</NullProportion>
@@ -1726,7 +1749,7 @@
         <RowsToGenerate>0</RowsToGenerate>
         <PopulationDetails>
           <PopulationType>RowsCount</PopulationType>
-          <RowsCount>1500</RowsCount>
+          <RowsCount>600</RowsCount>
           <LookupProportion>30</LookupProportion>
           <ProportionOfExistingData>10</ProportionOfExistingData>
           <TimeTicksToPopulate>100000000</TimeTicksToPopulate>
@@ -2371,9 +2394,10 @@
         <Truncate>true</Truncate>
         <RowsToGenerate>0</RowsToGenerate>
         <PopulationDetails>
-          <PopulationType>RowsCount</PopulationType>
+          <PopulationType>ProportionOfLookupTable</PopulationType>
           <RowsCount>1500</RowsCount>
-          <LookupProportion>30</LookupProportion>
+          <LookupTableName>pacienteinternado</LookupTableName>
+          <LookupProportion>100</LookupProportion>
           <ProportionOfExistingData>10</ProportionOfExistingData>
           <TimeTicksToPopulate>100000000</TimeTicksToPopulate>
         </PopulationDetails>
@@ -2427,9 +2451,10 @@
         <Truncate>true</Truncate>
         <RowsToGenerate>0</RowsToGenerate>
         <PopulationDetails>
-          <PopulationType>RowsCount</PopulationType>
+          <PopulationType>ProportionOfLookupTable</PopulationType>
           <RowsCount>2500</RowsCount>
-          <LookupProportion>30</LookupProportion>
+          <LookupTableName>pacienteinternado</LookupTableName>
+          <LookupProportion>100</LookupProportion>
           <ProportionOfExistingData>10</ProportionOfExistingData>
           <TimeTicksToPopulate>100000000</TimeTicksToPopulate>
         </PopulationDetails>
@@ -2447,7 +2472,7 @@
             <ValueDistributionMode>Seed</ValueDistributionMode>
             <SeedValue>31</SeedValue>
             <MinValue>0</MinValue>
-            <MaxValue>500000</MaxValue>
+            <MaxValue>25000000</MaxValue>
             <UseDefault>false</UseDefault>
             <DefaultValue />
           </GeneratorOptions>
@@ -2493,14 +2518,19 @@
                 <Value xsi:type="ArrayOfWeightedListItem">
                   <WeightedListItem>
                     <Value xsi:type="xsd:short">0</Value>
-                    <Weight>90</Weight>
+                    <Weight>10</Weight>
                   </WeightedListItem>
+                </Value>
+                <Weight>30</Weight>
+              </WeightedListItem>
+              <WeightedListItem>
+                <Value xsi:type="ArrayOfWeightedListItem">
                   <WeightedListItem>
                     <Value xsi:type="xsd:short">1</Value>
                     <Weight>10</Weight>
                   </WeightedListItem>
                 </Value>
-                <Weight>10</Weight>
+                <Weight>15</Weight>
               </WeightedListItem>
             </Values>
           </GeneratorOptions>
@@ -2740,9 +2770,10 @@
         <Truncate>true</Truncate>
         <RowsToGenerate>0</RowsToGenerate>
         <PopulationDetails>
-          <PopulationType>RowsCount</PopulationType>
+          <PopulationType>ProportionOfLookupTable</PopulationType>
           <RowsCount>3000</RowsCount>
-          <LookupProportion>30</LookupProportion>
+          <LookupTableName>personas</LookupTableName>
+          <LookupProportion>5</LookupProportion>
           <ProportionOfExistingData>10</ProportionOfExistingData>
           <TimeTicksToPopulate>100000000</TimeTicksToPopulate>
         </PopulationDetails>
@@ -3230,6 +3261,78 @@
         </Column>
       </Columns>
     </Table>
+    <Table Name="salida_paciente">
+      <Checked>true</Checked>
+      <Settings>
+        <Truncate>true</Truncate>
+        <RowsToGenerate>0</RowsToGenerate>
+        <PopulationDetails>
+          <PopulationType>RowsCount</PopulationType>
+          <RowsCount>600</RowsCount>
+          <LookupProportion>30</LookupProportion>
+          <ProportionOfExistingData>10</ProportionOfExistingData>
+          <TimeTicksToPopulate>100000000</TimeTicksToPopulate>
+        </PopulationDetails>
+      </Settings>
+      <Columns>
+        <Column Name="pacienteinternado_Internado_Personas_DNI">
+          <Checked>true</Checked>
+          <DataType>INT</DataType>
+          <GeneratorOptions xsi:type="ForeignKeyGeneratorOptions">
+            <Unique>true</Unique>
+            <IsAlwaysUnique>false</IsAlwaysUnique>
+            <AllowNulls>false</AllowNulls>
+            <NullProportion>0</NullProportion>
+            <ValueDistributionMode>Seed</ValueDistributionMode>
+            <SeedValue>56</SeedValue>
+            <RepeatValues>false</RepeatValues>
+            <FromTimes>1</FromTimes>
+            <ToTimes>10</ToTimes>
+            <ExcludeValues>false</ExcludeValues>
+            <ExclusionValuesPercent>1</ExclusionValuesPercent>
+          </GeneratorOptions>
+          <GeneratorType>ForeignKeyGenerator</GeneratorType>
+          <GeneratorName>Foreign Key (auto assigned)</GeneratorName>
+          <GeneratorDescription>references a column from parent table</GeneratorDescription>
+          <HasForeignKey>true</HasForeignKey>
+        </Column>
+        <Column Name="FH_Salida">
+          <Checked>true</Checked>
+          <DataType>DATETIME</DataType>
+          <GeneratorOptions xsi:type="MySqlDateTimeGeneratorOptions">
+            <AllowNulls>false</AllowNulls>
+            <NullProportion>10</NullProportion>
+            <Unique>false</Unique>
+            <IsAlwaysUnique>false</IsAlwaysUnique>
+            <UseDefault>false</UseDefault>
+            <ValueDistributionMode>Seed</ValueDistributionMode>
+            <SeedValue>41</SeedValue>
+            <SequentialValueTicks>864000000000</SequentialValueTicks>
+            <OffsetFromColumnMaxTimeTicks>10000000</OffsetFromColumnMaxTimeTicks>
+            <OffsetFromColumnMinTimeTicks>10000000</OffsetFromColumnMinTimeTicks>
+            <DateTimeRange>MinMaxDate</DateTimeRange>
+            <UseOffsetDetails>false</UseOffsetDetails>
+            <OffsetFromColumnMinDays>0</OffsetFromColumnMinDays>
+            <OffsetFromColumnMaxDays>7</OffsetFromColumnMaxDays>
+            <MinDate>2020-04-01T00:00:00</MinDate>
+            <MaxDate>2020-06-04T00:00:00-03:00</MaxDate>
+            <IsRandomizeDate>true</IsRandomizeDate>
+            <MinFraction>0</MinFraction>
+            <MaxFraction>0</MaxFraction>
+            <MaxAllowedFraction>0</MaxAllowedFraction>
+            <IsRandomizeFraction>true</IsRandomizeFraction>
+            <Scale>0</Scale>
+            <Precision>0</Precision>
+            <IsRandomizeTime>true</IsRandomizeTime>
+            <MaxTime>863990000000</MaxTime>
+            <MinTime>10000000</MinTime>
+          </GeneratorOptions>
+          <GeneratorType>MySqlDateTimeGenerator</GeneratorType>
+          <GeneratorName>datetime</GeneratorName>
+          <GeneratorDescription>fill with date and time with fractional seconds values</GeneratorDescription>
+        </Column>
+      </Columns>
+    </Table>
     <Table Name="terapia_intensiva">
       <Checked>true</Checked>
       <Settings>
@@ -3372,7 +3475,6 @@
     </Table>
   </Tables>
   <SynchronizationOptions xsi:type="DataSyncOptionGroup">
-    <SynchronizeType>File</SynchronizeType>
     <OpenScriptInEditor>true</OpenScriptInEditor>
     <SynchronizationFileName>D:\Bruno\Favaloro\4 Año\BD\Trabajos Practivos\COVID-19V2\dbDummy.sql</SynchronizationFileName>
     <IncludeUseDatabase>false</IncludeUseDatabase>
@@ -3380,7 +3482,6 @@
     <ExecuteCustomScriptTypeAfter>UseEmbeddedScript</ExecuteCustomScriptTypeAfter>
     <BulkInsert>false</BulkInsert>
     <LimitBulk>false</LimitBulk>
-    <DisableForeignKeys>true</DisableForeignKeys>
     <DisableDmlTriggers>false</DisableDmlTriggers>
   </SynchronizationOptions>
 </DataGenDocument>
