@@ -4,7 +4,7 @@
 <DataGenDocument xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="5.0">
   <Settings>
     <Provider>59f90733-4d68-4fdf-82a7-f0fcbf5460aa</Provider>
-    <ConnectionString>User Id=root;Host=localhost;Database=covid19;Character Set=compatibility</ConnectionString>
+    <ConnectionString>User Id=root;Host=localhost;Database=covid19;Character Set=AUTO</ConnectionString>
     <CategoryId>00000000-0000-0000-0000-000000000000</CategoryId>
     <AllowNulls>true</AllowNulls>
     <IncludeNullsPercent>10</IncludeNullsPercent>
@@ -3410,7 +3410,7 @@
         <RowsToGenerate>0</RowsToGenerate>
         <PopulationDetails>
           <PopulationType>RowsCount</PopulationType>
-          <RowsCount>20</RowsCount>
+          <RowsCount>50</RowsCount>
           <LookupProportion>30</LookupProportion>
           <ProportionOfExistingData>10</ProportionOfExistingData>
           <TimeTicksToPopulate>100000000</TimeTicksToPopulate>
@@ -3442,7 +3442,7 @@
           <Checked>true</Checked>
           <DataType>INT</DataType>
           <GeneratorOptions xsi:type="ForeignKeyGeneratorOptions">
-            <Unique>true</Unique>
+            <Unique>false</Unique>
             <IsAlwaysUnique>false</IsAlwaysUnique>
             <AllowNulls>false</AllowNulls>
             <NullProportion>0</NullProportion>
@@ -3463,7 +3463,7 @@
           <Checked>true</Checked>
           <DataType>VARCHAR</DataType>
           <GeneratorOptions xsi:type="ForeignKeyGeneratorOptions">
-            <Unique>true</Unique>
+            <Unique>false</Unique>
             <IsAlwaysUnique>false</IsAlwaysUnique>
             <AllowNulls>false</AllowNulls>
             <NullProportion>0</NullProportion>
