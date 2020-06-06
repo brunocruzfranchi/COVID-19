@@ -12,9 +12,9 @@ DROP VIEW IF EXISTS FALLECIDOS;
 CREATE VIEW Datos AS (
 SELECT Dia_de_Ingreso, CheckOut, Resultado 
 	FROM (SELECT * FROM pacientes													-- Obtener los datos del pacientes internados
-	RIGHT JOIN pacienteinternado													--
+	LEFT JOIN pacienteinternado														--
 		ON pacientes.Personas_DNI = pacienteinternado.Internado_Personas_DNI)  a	--
-	NATURAL JOIN (SELECT * FROM muestra WHERE Resultado = 1) b
+	RIGHT JOIN (SELECT * FROM muestra WHERE Resultado = 1) b
 		ON a.Personas_DNI = B.Pacientes_Personas_DNI) ;
 
 CREATE VIEW ACTIVOS AS (SELECT Dia_de_Ingreso, count(*) Activos FROM Datos WHERE CheckOut IS NULL GROUP BY MONTH(Dia_de_Ingreso)) ;

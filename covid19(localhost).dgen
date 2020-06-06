@@ -2645,7 +2645,7 @@
         <PopulationDetails>
           <PopulationType>ProportionOfLookupTable</PopulationType>
           <RowsCount>2500</RowsCount>
-          <LookupTableName>pacienteinternado</LookupTableName>
+          <LookupTableName>pacientes</LookupTableName>
           <LookupProportion>100</LookupProportion>
           <ProportionOfExistingData>10</ProportionOfExistingData>
           <TimeTicksToPopulate>100000000</TimeTicksToPopulate>
