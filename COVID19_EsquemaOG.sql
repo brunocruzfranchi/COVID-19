@@ -112,11 +112,9 @@ CREATE TABLE IF NOT EXISTS `covid19`.`personas` (
   `Nombre` VARCHAR(45) NOT NULL,
   `Apellido` VARCHAR(45) NOT NULL,
   `Sexo` VARCHAR(45) NOT NULL,
-  `TelParticular` VARCHAR(45) NULL DEFAULT NULL,
-  `Domicilio` VARCHAR(45) NULL DEFAULT NULL,
-  `Persona_de_contacto` VARCHAR(45) NOT NULL,
   `F_Nacimiento` DATE NOT NULL,
-  `Lugar_de_Residencia` VARCHAR(45) NOT NULL,
+  `TelParticular` VARCHAR(45) NULL DEFAULT NULL,
+  `Persona_de_contacto` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`DNI`),
   UNIQUE INDEX `DNI_UNIQUE` (`DNI` ASC) VISIBLE)
 ENGINE = InnoDB
@@ -385,18 +383,35 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `covid19`.`medicamentos`
+-- Table `covid19`.`medicamento`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `covid19`.`medicamentos` ;
+DROP TABLE IF EXISTS `covid19`.`medicamento` ;
 
-CREATE TABLE IF NOT EXISTS `covid19`.`medicamentos` (
+CREATE TABLE IF NOT EXISTS `covid19`.`medicamento` (
+  `idMedicamento` VARCHAR(45) NOT NULL,
+  `Nombre` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`idMedicamento`),
+  UNIQUE INDEX `Codigo_Medic_UNIQUE` (`idMedicamento` ASC) VISIBLE)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `covid19`.`paciente_medicamento`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `covid19`.`paciente_medicamento` ;
+
+CREATE TABLE IF NOT EXISTS `covid19`.`paciente_medicamento` (
   `Internado_Personas_DNI` INT UNSIGNED NOT NULL,
-  `Medicamento` VARCHAR(45) NOT NULL,
-  UNIQUE INDEX `Internado_Personas_DNI_UNIQUE` (`Internado_Personas_DNI` ASC) VISIBLE,
+  `medicamento_idMedicamento` VARCHAR(45) NOT NULL,
   INDEX `fk_Medicamentos_PacienteInternado1_idx` (`Internado_Personas_DNI` ASC) VISIBLE,
   CONSTRAINT `fk_Medicamentos_PacienteInternado1`
     FOREIGN KEY (`Internado_Personas_DNI`)
-    REFERENCES `covid19`.`pacienteinternado` (`Internado_Personas_DNI`))
+    REFERENCES `covid19`.`pacienteinternado` (`Internado_Personas_DNI`),
+  CONSTRAINT `fk_paciente_medicamento_medicamento1`
+    FOREIGN KEY (`medicamento_idMedicamento`)
+    REFERENCES `covid19`.`medicamento` (`idMedicamento`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
@@ -439,20 +454,38 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `covid19`.`obrasocial`
+-- Table `covid19`.`ObraSocial`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `covid19`.`obrasocial` ;
+DROP TABLE IF EXISTS `covid19`.`ObraSocial` ;
 
-CREATE TABLE IF NOT EXISTS `covid19`.`obrasocial` (
-  `Personas_DNI` INT UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `covid19`.`ObraSocial` (
+  `idPlanMedico` VARCHAR(45) NOT NULL,
+  `Empresa` VARCHAR(45) NULL,
+  PRIMARY KEY (`idPlanMedico`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `covid19`.`ObraSocial_Persona`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `covid19`.`ObraSocial_Persona` ;
+
+CREATE TABLE IF NOT EXISTS `covid19`.`ObraSocial_Persona` (
   `NroAfiliado` INT NOT NULL,
-  `Empresa` VARCHAR(45) NOT NULL,
+  `Personas_DNI` INT UNSIGNED NOT NULL,
+  `ObraSocial_idPlanMedico` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`NroAfiliado`),
   UNIQUE INDEX `Personas_DNI_UNIQUE` (`Personas_DNI` ASC) VISIBLE,
   INDEX `fk_ObraSocial_Personas_idx` (`Personas_DNI` ASC) INVISIBLE,
+  INDEX `fk_ObraSocial_Persona_ObraSocial1_idx` (`ObraSocial_idPlanMedico` ASC) VISIBLE,
   CONSTRAINT `fk_ObraSocial_Personas`
     FOREIGN KEY (`Personas_DNI`)
-    REFERENCES `covid19`.`personas` (`DNI`))
+    REFERENCES `covid19`.`personas` (`DNI`),
+  CONSTRAINT `fk_ObraSocial_Persona_ObraSocial1`
+    FOREIGN KEY (`ObraSocial_idPlanMedico`)
+    REFERENCES `covid19`.`ObraSocial` (`idPlanMedico`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
@@ -527,6 +560,7 @@ CREATE TABLE IF NOT EXISTS `covid19`.`pm_suministros` (
   `FH_Entrega` DATETIME NULL DEFAULT NULL,
   `FH_Pedido` DATETIME NULL DEFAULT NULL,
   `Cant_Repuesto` INT NULL DEFAULT NULL,
+  `PrecioPagado` FLOAT NULL,
   PRIMARY KEY (`NroPedido`),
   UNIQUE INDEX `NroPedido_UNIQUE` (`NroPedido` ASC) VISIBLE,
   UNIQUE INDEX `PersonalMedico_Empleados_Personas_DNI_UNIQUE` (`PersonalMedico_Empleados_Personas_DNI` ASC) VISIBLE,
@@ -663,6 +697,47 @@ CREATE TABLE IF NOT EXISTS `covid19`.`muestra_empleado` (
   CONSTRAINT `fk_muestra_empleado_empleados1`
     FOREIGN KEY (`empleados_Personas_DNI`)
     REFERENCES `covid19`.`empleados` (`Personas_DNI`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `covid19`.`Domicilio`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `covid19`.`Domicilio` ;
+
+CREATE TABLE IF NOT EXISTS `covid19`.`Domicilio` (
+  `personas_DNI` INT UNSIGNED NOT NULL,
+  `Tipo` VARCHAR(45) NOT NULL,
+  `Localidad` VARCHAR(45) NOT NULL,
+  INDEX `fk_Domicilio_personas1_idx` (`personas_DNI` ASC) VISIBLE,
+  CONSTRAINT `fk_Domicilio_personas1`
+    FOREIGN KEY (`personas_DNI`)
+    REFERENCES `covid19`.`personas` (`DNI`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `covid19`.`empleado_hospital`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `covid19`.`empleado_hospital` ;
+
+CREATE TABLE IF NOT EXISTS `covid19`.`empleado_hospital` (
+  `empleados_Personas_DNI` INT UNSIGNED NOT NULL,
+  `hospital_NroHospital` INT UNSIGNED NOT NULL,
+  INDEX `fk_empleado_hospital_empleados1_idx` (`empleados_Personas_DNI` ASC) VISIBLE,
+  INDEX `fk_empleado_hospital_hospital1_idx` (`hospital_NroHospital` ASC) VISIBLE,
+  CONSTRAINT `fk_empleado_hospital_empleados1`
+    FOREIGN KEY (`empleados_Personas_DNI`)
+    REFERENCES `covid19`.`empleados` (`Personas_DNI`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_empleado_hospital_hospital1`
+    FOREIGN KEY (`hospital_NroHospital`)
+    REFERENCES `covid19`.`hospital` (`NroHospital`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
