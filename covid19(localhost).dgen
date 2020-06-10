@@ -2011,8 +2011,8 @@
           <GeneratorOptions xsi:type="MySqlWeightedListGeneratorNestedValuesOptions">
             <AllowEmptyStrings>false</AllowEmptyStrings>
             <EmptyStringProportion>10</EmptyStringProportion>
-            <AllowNulls>false</AllowNulls>
-            <NullProportion>0</NullProportion>
+            <AllowNulls>true</AllowNulls>
+            <NullProportion>45</NullProportion>
             <ValueDistributionMode>Seed</ValueDistributionMode>
             <SeedValue>19</SeedValue>
             <Unique>false</Unique>
@@ -2075,8 +2075,8 @@
           <GeneratorOptions xsi:type="MySqlWeightedListGeneratorNestedValuesOptions">
             <AllowEmptyStrings>false</AllowEmptyStrings>
             <EmptyStringProportion>10</EmptyStringProportion>
-            <AllowNulls>false</AllowNulls>
-            <NullProportion>0</NullProportion>
+            <AllowNulls>true</AllowNulls>
+            <NullProportion>40</NullProportion>
             <ValueDistributionMode>Seed</ValueDistributionMode>
             <SeedValue>20</SeedValue>
             <Unique>false</Unique>
@@ -2139,8 +2139,8 @@
           <GeneratorOptions xsi:type="MySqlWeightedListGeneratorNestedValuesOptions">
             <AllowEmptyStrings>false</AllowEmptyStrings>
             <EmptyStringProportion>10</EmptyStringProportion>
-            <AllowNulls>false</AllowNulls>
-            <NullProportion>0</NullProportion>
+            <AllowNulls>true</AllowNulls>
+            <NullProportion>48</NullProportion>
             <ValueDistributionMode>Seed</ValueDistributionMode>
             <SeedValue>21</SeedValue>
             <Unique>false</Unique>
@@ -2203,8 +2203,8 @@
           <GeneratorOptions xsi:type="MySqlWeightedListGeneratorNestedValuesOptions">
             <AllowEmptyStrings>false</AllowEmptyStrings>
             <EmptyStringProportion>10</EmptyStringProportion>
-            <AllowNulls>false</AllowNulls>
-            <NullProportion>0</NullProportion>
+            <AllowNulls>true</AllowNulls>
+            <NullProportion>41</NullProportion>
             <ValueDistributionMode>Seed</ValueDistributionMode>
             <SeedValue>22</SeedValue>
             <Unique>false</Unique>
@@ -2267,8 +2267,8 @@
           <GeneratorOptions xsi:type="MySqlWeightedListGeneratorNestedValuesOptions">
             <AllowEmptyStrings>false</AllowEmptyStrings>
             <EmptyStringProportion>10</EmptyStringProportion>
-            <AllowNulls>false</AllowNulls>
-            <NullProportion>0</NullProportion>
+            <AllowNulls>true</AllowNulls>
+            <NullProportion>30</NullProportion>
             <ValueDistributionMode>Seed</ValueDistributionMode>
             <SeedValue>23</SeedValue>
             <Unique>false</Unique>
@@ -2331,8 +2331,8 @@
           <GeneratorOptions xsi:type="MySqlWeightedListGeneratorNestedValuesOptions">
             <AllowEmptyStrings>false</AllowEmptyStrings>
             <EmptyStringProportion>10</EmptyStringProportion>
-            <AllowNulls>false</AllowNulls>
-            <NullProportion>0</NullProportion>
+            <AllowNulls>true</AllowNulls>
+            <NullProportion>26</NullProportion>
             <ValueDistributionMode>Seed</ValueDistributionMode>
             <SeedValue>24</SeedValue>
             <Unique>false</Unique>
@@ -2395,8 +2395,8 @@
           <GeneratorOptions xsi:type="MySqlWeightedListGeneratorNestedValuesOptions">
             <AllowEmptyStrings>false</AllowEmptyStrings>
             <EmptyStringProportion>10</EmptyStringProportion>
-            <AllowNulls>false</AllowNulls>
-            <NullProportion>0</NullProportion>
+            <AllowNulls>true</AllowNulls>
+            <NullProportion>53</NullProportion>
             <ValueDistributionMode>Seed</ValueDistributionMode>
             <SeedValue>25</SeedValue>
             <Unique>false</Unique>
@@ -3865,6 +3865,7 @@
     </Table>
   </Tables>
   <SynchronizationOptions xsi:type="DataSyncOptionGroup">
+    <SynchronizeType>File</SynchronizeType>
     <OpenScriptInEditor>true</OpenScriptInEditor>
     <SynchronizationFileName>D:\Bruno\Favaloro\4 Año\BD\Trabajos Practivos\COVID-19\dbDummy.sql</SynchronizationFileName>
     <IncludeUseDatabase>false</IncludeUseDatabase>

@@ -290,13 +290,13 @@ DEFAULT CHARACTER SET = utf8;
 DROP TABLE IF EXISTS `covid19`.`horario` ;
 
 CREATE TABLE IF NOT EXISTS `covid19`.`horario` (
-  `Lunes` TIME NOT NULL,
-  `Martes` TIME NOT NULL,
-  `Miercoles` TIME NOT NULL,
-  `Jueves` TIME NOT NULL,
-  `Viernes` TIME NOT NULL,
-  `Sabado` TIME NOT NULL,
-  `Domingo` TIME NOT NULL,
+  `Lunes` TIME NULL,
+  `Martes` TIME NULL,
+  `Miercoles` TIME NULL,
+  `Jueves` TIME NULL,
+  `Viernes` TIME NULL,
+  `Sabado` TIME NULL,
+  `Domingo` TIME NULL,
   `PersonalMedico_Empleados_Personas_DNI` INT UNSIGNED NOT NULL,
   INDEX `fk_Horario_PersonalMedico1_idx` (`PersonalMedico_Empleados_Personas_DNI` ASC) VISIBLE,
   CONSTRAINT `fk_Horario_PersonalMedico1`
