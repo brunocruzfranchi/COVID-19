@@ -4,7 +4,7 @@
 <DataGenDocument xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="5.0">
   <Settings>
     <Provider>59f90733-4d68-4fdf-82a7-f0fcbf5460aa</Provider>
-    <ConnectionString>User Id=root;Host=localhost;Database=covid19;Character Set=AUTO</ConnectionString>
+    <ConnectionString>User Id=root;Host=localhost;Database=covid19;Character Set=compatibility</ConnectionString>
     <CategoryId>00000000-0000-0000-0000-000000000000</CategoryId>
     <AllowNulls>true</AllowNulls>
     <IncludeNullsPercent>10</IncludeNullsPercent>
@@ -65,9 +65,10 @@
         <Truncate>true</Truncate>
         <RowsToGenerate>0</RowsToGenerate>
         <PopulationDetails>
-          <PopulationType>RowsCount</PopulationType>
+          <PopulationType>ProportionOfLookupTable</PopulationType>
           <RowsCount>17</RowsCount>
-          <LookupProportion>30</LookupProportion>
+          <LookupTableName>hospital</LookupTableName>
+          <LookupProportion>500</LookupProportion>
           <ProportionOfExistingData>10</ProportionOfExistingData>
           <TimeTicksToPopulate>100000000</TimeTicksToPopulate>
         </PopulationDetails>
@@ -75,23 +76,22 @@
       <Columns>
         <Column Name="NroDepartamento">
           <Checked>true</Checked>
-          <DataType>INT</DataType>
-          <GeneratorOptions xsi:type="MySqlIntegerGeneratorOptions">
+          <DataType>VARCHAR</DataType>
+          <GeneratorOptions xsi:type="MySqlRegularExpressionGeneratorOptions">
+            <AllowEmptyStrings>false</AllowEmptyStrings>
+            <EmptyStringProportion>10</EmptyStringProportion>
             <AllowNulls>false</AllowNulls>
             <NullProportion>0</NullProportion>
+            <ValueDistributionMode>Seed</ValueDistributionMode>
+            <SeedValue>7</SeedValue>
             <Unique>true</Unique>
             <IsAlwaysUnique>false</IsAlwaysUnique>
-            <Increment xsi:type="xsd:int">1</Increment>
-            <ValueDistributionMode>Sequential</ValueDistributionMode>
-            <SeedValue>7</SeedValue>
-            <MinValue>1</MinValue>
-            <MaxValue>18</MaxValue>
-            <UseDefault>false</UseDefault>
-            <DefaultValue />
+            <Expression>D\d{3}P\d{2}</Expression>
           </GeneratorOptions>
-          <GeneratorType>MySqlIntegerGenerator</GeneratorType>
-          <GeneratorName>int</GeneratorName>
-          <GeneratorDescription>fill with 32-bit signed integer values</GeneratorDescription>
+          <GeneratorType>MySqlStringRegularExpressionGenerator</GeneratorType>
+          <GeneratorName>Reg Exp</GeneratorName>
+          <GeneratorDescription>values based on a regular expression</GeneratorDescription>
+          <Length>45</Length>
         </Column>
         <Column Name="EspecialidadDepto">
           <Checked>true</Checked>
@@ -103,7 +103,7 @@
             <NullProportion>0</NullProportion>
             <ValueDistributionMode>Seed</ValueDistributionMode>
             <SeedValue>0</SeedValue>
-            <Unique>true</Unique>
+            <Unique>false</Unique>
             <IsAlwaysUnique>false</IsAlwaysUnique>
             <Expression>Epidemiología|Hepatología|Infectología|Nefrología|Neumología|Neurología|Nutriología|Oncología médica|Oncología radioterápica|Pediatría|Psiquiatría|Toxicología|Cirugía cardíaca|Neurocirugía|Oftalmología|Inmunología|Cirugía general</Expression>
           </GeneratorOptions>
@@ -221,6 +221,362 @@
           <GeneratorName>Reg Exp</GeneratorName>
           <GeneratorDescription>values based on a regular expression</GeneratorDescription>
           <Length>45</Length>
+        </Column>
+      </Columns>
+    </Table>
+    <Table Name="muestra">
+      <Checked>true</Checked>
+      <Settings>
+        <Truncate>true</Truncate>
+        <RowsToGenerate>0</RowsToGenerate>
+        <PopulationDetails>
+          <PopulationType>ProportionOfLookupTable</PopulationType>
+          <RowsCount>2500</RowsCount>
+          <LookupTableName>pacientes</LookupTableName>
+          <LookupProportion>100</LookupProportion>
+          <ProportionOfExistingData>10</ProportionOfExistingData>
+          <TimeTicksToPopulate>100000000</TimeTicksToPopulate>
+        </PopulationDetails>
+      </Settings>
+      <Columns>
+        <Column Name="NroTesteo">
+          <Checked>true</Checked>
+          <DataType>INT</DataType>
+          <GeneratorOptions xsi:type="MySqlIntegerGeneratorOptions">
+            <AllowNulls>false</AllowNulls>
+            <NullProportion>0</NullProportion>
+            <Unique>true</Unique>
+            <IsAlwaysUnique>false</IsAlwaysUnique>
+            <Increment xsi:type="xsd:int">1</Increment>
+            <ValueDistributionMode>Seed</ValueDistributionMode>
+            <SeedValue>31</SeedValue>
+            <MinValue>0</MinValue>
+            <MaxValue>25000000</MaxValue>
+            <UseDefault>false</UseDefault>
+            <DefaultValue />
+          </GeneratorOptions>
+          <GeneratorType>MySqlIntegerGenerator</GeneratorType>
+          <GeneratorName>int</GeneratorName>
+          <GeneratorDescription>fill with 32-bit signed integer values</GeneratorDescription>
+        </Column>
+        <Column Name="Resultado">
+          <Checked>true</Checked>
+          <DataType>TINYINT</DataType>
+          <GeneratorOptions xsi:type="MySqlWeightedListGeneratorNestedValuesOptions">
+            <AllowEmptyStrings>false</AllowEmptyStrings>
+            <EmptyStringProportion>10</EmptyStringProportion>
+            <AllowNulls>false</AllowNulls>
+            <NullProportion>0</NullProportion>
+            <ValueDistributionMode>Seed</ValueDistributionMode>
+            <SeedValue>31</SeedValue>
+            <Unique>false</Unique>
+            <IsAlwaysUnique>false</IsAlwaysUnique>
+            <Values>
+              <WeightedListItem>
+                <Value xsi:type="ArrayOfWeightedListItem">
+                  <WeightedListItem>
+                    <Value xsi:type="xsd:short">0</Value>
+                    <Weight>10</Weight>
+                  </WeightedListItem>
+                </Value>
+                <Weight>30</Weight>
+              </WeightedListItem>
+              <WeightedListItem>
+                <Value xsi:type="ArrayOfWeightedListItem">
+                  <WeightedListItem>
+                    <Value xsi:type="xsd:short">1</Value>
+                    <Weight>10</Weight>
+                  </WeightedListItem>
+                </Value>
+                <Weight>15</Weight>
+              </WeightedListItem>
+            </Values>
+          </GeneratorOptions>
+          <GeneratorType>MySqlWeightedListGeneratorNestedValues</GeneratorType>
+          <GeneratorName>Weighted List (nested)</GeneratorName>
+          <GeneratorDescription>a collection of values lists with specified frequency of occurrence</GeneratorDescription>
+        </Column>
+        <Column Name="SatO2">
+          <Checked>true</Checked>
+          <DataType>FLOAT</DataType>
+          <GeneratorOptions xsi:type="MySqlWeightedListGeneratorRangeValuesOptions">
+            <AllowEmptyStrings>false</AllowEmptyStrings>
+            <EmptyStringProportion>10</EmptyStringProportion>
+            <ColumnDataTypeName>FLOAT</ColumnDataTypeName>
+            <Scale>0</Scale>
+            <Precision>0</Precision>
+            <AllowNulls>false</AllowNulls>
+            <NullProportion>0</NullProportion>
+            <ValueDistributionMode>Seed</ValueDistributionMode>
+            <SeedValue>31</SeedValue>
+            <Unique>false</Unique>
+            <IsAlwaysUnique>false</IsAlwaysUnique>
+            <Values>
+              <WeightedListItem>
+                <Value xsi:type="WeightedListRangeItem">
+                  <From xsi:type="xsd:decimal">40</From>
+                  <To xsi:type="xsd:decimal">50</To>
+                  <DateTimeOffsetFromValue />
+                  <DateTimeOffsetToValue />
+                  <TimeSpanFromValue>-1</TimeSpanFromValue>
+                  <TimeSpanToValue>-1</TimeSpanToValue>
+                </Value>
+                <Weight>10</Weight>
+              </WeightedListItem>
+              <WeightedListItem>
+                <Value xsi:type="WeightedListRangeItem">
+                  <From xsi:type="xsd:decimal">50</From>
+                  <To xsi:type="xsd:decimal">60</To>
+                  <DateTimeOffsetFromValue />
+                  <DateTimeOffsetToValue />
+                  <TimeSpanFromValue>-1</TimeSpanFromValue>
+                  <TimeSpanToValue>-1</TimeSpanToValue>
+                </Value>
+                <Weight>25</Weight>
+              </WeightedListItem>
+              <WeightedListItem>
+                <Value xsi:type="WeightedListRangeItem">
+                  <From xsi:type="xsd:decimal">60</From>
+                  <To xsi:type="xsd:decimal">70</To>
+                  <DateTimeOffsetFromValue />
+                  <DateTimeOffsetToValue />
+                  <TimeSpanFromValue>-1</TimeSpanFromValue>
+                  <TimeSpanToValue>-1</TimeSpanToValue>
+                </Value>
+                <Weight>50</Weight>
+              </WeightedListItem>
+              <WeightedListItem>
+                <Value xsi:type="WeightedListRangeItem">
+                  <From xsi:type="xsd:decimal">70</From>
+                  <To xsi:type="xsd:decimal">80</To>
+                  <DateTimeOffsetFromValue />
+                  <DateTimeOffsetToValue />
+                  <TimeSpanFromValue>-1</TimeSpanFromValue>
+                  <TimeSpanToValue>-1</TimeSpanToValue>
+                </Value>
+                <Weight>80</Weight>
+              </WeightedListItem>
+              <WeightedListItem>
+                <Value xsi:type="WeightedListRangeItem">
+                  <From xsi:type="xsd:decimal">80</From>
+                  <To xsi:type="xsd:decimal">90</To>
+                  <DateTimeOffsetFromValue />
+                  <DateTimeOffsetToValue />
+                  <TimeSpanFromValue>-1</TimeSpanFromValue>
+                  <TimeSpanToValue>-1</TimeSpanToValue>
+                </Value>
+                <Weight>140</Weight>
+              </WeightedListItem>
+              <WeightedListItem>
+                <Value xsi:type="WeightedListRangeItem">
+                  <From xsi:type="xsd:decimal">90</From>
+                  <To xsi:type="xsd:decimal">98</To>
+                  <DateTimeOffsetFromValue />
+                  <DateTimeOffsetToValue />
+                  <TimeSpanFromValue>-1</TimeSpanFromValue>
+                  <TimeSpanToValue>-1</TimeSpanToValue>
+                </Value>
+                <Weight>230</Weight>
+              </WeightedListItem>
+            </Values>
+          </GeneratorOptions>
+          <GeneratorType>MySqlWeightedListGeneratorRangeValues</GeneratorType>
+          <GeneratorName>Weighted List (ranged)</GeneratorName>
+          <GeneratorDescription>ranged values list with specified frequency of occurrence</GeneratorDescription>
+        </Column>
+        <Column Name="Temperatura">
+          <Checked>true</Checked>
+          <DataType>FLOAT</DataType>
+          <GeneratorOptions xsi:type="MySqlWeightedListGeneratorRangeValuesOptions">
+            <AllowEmptyStrings>false</AllowEmptyStrings>
+            <EmptyStringProportion>10</EmptyStringProportion>
+            <ColumnDataTypeName>FLOAT</ColumnDataTypeName>
+            <Scale>0</Scale>
+            <Precision>0</Precision>
+            <AllowNulls>false</AllowNulls>
+            <NullProportion>0</NullProportion>
+            <ValueDistributionMode>Seed</ValueDistributionMode>
+            <SeedValue>32</SeedValue>
+            <Unique>false</Unique>
+            <IsAlwaysUnique>false</IsAlwaysUnique>
+            <Values>
+              <WeightedListItem>
+                <Value xsi:type="WeightedListRangeItem">
+                  <From xsi:type="xsd:decimal">35.5</From>
+                  <To xsi:type="xsd:decimal">36</To>
+                  <DateTimeOffsetFromValue />
+                  <DateTimeOffsetToValue />
+                  <TimeSpanFromValue>-1</TimeSpanFromValue>
+                  <TimeSpanToValue>-1</TimeSpanToValue>
+                </Value>
+                <Weight>10</Weight>
+              </WeightedListItem>
+              <WeightedListItem>
+                <Value xsi:type="WeightedListRangeItem">
+                  <From xsi:type="xsd:decimal">36</From>
+                  <To xsi:type="xsd:decimal">37</To>
+                  <DateTimeOffsetFromValue />
+                  <DateTimeOffsetToValue />
+                  <TimeSpanFromValue>-1</TimeSpanFromValue>
+                  <TimeSpanToValue>-1</TimeSpanToValue>
+                </Value>
+                <Weight>300</Weight>
+              </WeightedListItem>
+              <WeightedListItem>
+                <Value xsi:type="WeightedListRangeItem">
+                  <From xsi:type="xsd:decimal">37</From>
+                  <To xsi:type="xsd:decimal">38</To>
+                  <DateTimeOffsetFromValue />
+                  <DateTimeOffsetToValue />
+                  <TimeSpanFromValue>-1</TimeSpanFromValue>
+                  <TimeSpanToValue>-1</TimeSpanToValue>
+                </Value>
+                <Weight>150</Weight>
+              </WeightedListItem>
+              <WeightedListItem>
+                <Value xsi:type="WeightedListRangeItem">
+                  <From xsi:type="xsd:decimal">38</From>
+                  <To xsi:type="xsd:decimal">39</To>
+                  <DateTimeOffsetFromValue />
+                  <DateTimeOffsetToValue />
+                  <TimeSpanFromValue>-1</TimeSpanFromValue>
+                  <TimeSpanToValue>-1</TimeSpanToValue>
+                </Value>
+                <Weight>100</Weight>
+              </WeightedListItem>
+              <WeightedListItem>
+                <Value xsi:type="WeightedListRangeItem">
+                  <From xsi:type="xsd:decimal">39</From>
+                  <To xsi:type="xsd:decimal">40</To>
+                  <DateTimeOffsetFromValue />
+                  <DateTimeOffsetToValue />
+                  <TimeSpanFromValue>-1</TimeSpanFromValue>
+                  <TimeSpanToValue>-1</TimeSpanToValue>
+                </Value>
+                <Weight>40</Weight>
+              </WeightedListItem>
+              <WeightedListItem>
+                <Value xsi:type="WeightedListRangeItem">
+                  <From xsi:type="xsd:decimal">40</From>
+                  <To xsi:type="xsd:decimal">41</To>
+                  <DateTimeOffsetFromValue />
+                  <DateTimeOffsetToValue />
+                  <TimeSpanFromValue>-1</TimeSpanFromValue>
+                  <TimeSpanToValue>-1</TimeSpanToValue>
+                </Value>
+                <Weight>15</Weight>
+              </WeightedListItem>
+              <WeightedListItem>
+                <Value xsi:type="WeightedListRangeItem">
+                  <From xsi:type="xsd:decimal">41</From>
+                  <To xsi:type="xsd:decimal">42</To>
+                  <DateTimeOffsetFromValue />
+                  <DateTimeOffsetToValue />
+                  <TimeSpanFromValue>-1</TimeSpanFromValue>
+                  <TimeSpanToValue>-1</TimeSpanToValue>
+                </Value>
+                <Weight>5</Weight>
+              </WeightedListItem>
+            </Values>
+          </GeneratorOptions>
+          <GeneratorType>MySqlWeightedListGeneratorRangeValues</GeneratorType>
+          <GeneratorName>Weighted List (ranged)</GeneratorName>
+          <GeneratorDescription>ranged values list with specified frequency of occurrence</GeneratorDescription>
+        </Column>
+      </Columns>
+    </Table>
+    <Table Name="muestra_emp_covid">
+      <Checked>true</Checked>
+      <Settings>
+        <Truncate>true</Truncate>
+        <RowsToGenerate>0</RowsToGenerate>
+        <PopulationDetails>
+          <PopulationType>ProportionOfLookupTable</PopulationType>
+          <RowsCount>1450</RowsCount>
+          <LookupTableName>empleados</LookupTableName>
+          <LookupProportion>125</LookupProportion>
+          <ProportionOfExistingData>10</ProportionOfExistingData>
+          <TimeTicksToPopulate>100000000</TimeTicksToPopulate>
+        </PopulationDetails>
+      </Settings>
+      <Columns>
+        <Column Name="NroTesteo">
+          <Checked>true</Checked>
+          <DataType>VARCHAR</DataType>
+          <GeneratorOptions xsi:type="MySqlRegularExpressionGeneratorOptions">
+            <AllowEmptyStrings>false</AllowEmptyStrings>
+            <EmptyStringProportion>10</EmptyStringProportion>
+            <AllowNulls>false</AllowNulls>
+            <NullProportion>0</NullProportion>
+            <ValueDistributionMode>Seed</ValueDistributionMode>
+            <SeedValue>37</SeedValue>
+            <Unique>true</Unique>
+            <IsAlwaysUnique>false</IsAlwaysUnique>
+            <Expression>\d{7}</Expression>
+          </GeneratorOptions>
+          <GeneratorType>MySqlRegularExpressionGenerator</GeneratorType>
+          <GeneratorName>UK Phone Number (free)</GeneratorName>
+          <GeneratorDescription>08085923747, 08002272418, 08080541281, ...</GeneratorDescription>
+          <GeneratorCategory>Personal</GeneratorCategory>
+          <Length>45</Length>
+        </Column>
+        <Column Name="Resultado">
+          <Checked>true</Checked>
+          <DataType>VARCHAR</DataType>
+          <GeneratorOptions xsi:type="MySqlWeightedListGeneratorSingleValuesOptions">
+            <AllowEmptyStrings>false</AllowEmptyStrings>
+            <EmptyStringProportion>10</EmptyStringProportion>
+            <ColumnDataTypeName>VARCHAR</ColumnDataTypeName>
+            <Scale>0</Scale>
+            <Precision>0</Precision>
+            <Length>45</Length>
+            <AllowNulls>false</AllowNulls>
+            <NullProportion>10</NullProportion>
+            <ValueDistributionMode>Seed</ValueDistributionMode>
+            <SeedValue>38</SeedValue>
+            <Unique>false</Unique>
+            <IsAlwaysUnique>false</IsAlwaysUnique>
+            <Values>
+              <WeightedListItem>
+                <Value xsi:type="xsd:string">1</Value>
+                <Weight>5</Weight>
+              </WeightedListItem>
+              <WeightedListItem>
+                <Value xsi:type="xsd:string">0</Value>
+                <Weight>15</Weight>
+              </WeightedListItem>
+            </Values>
+          </GeneratorOptions>
+          <GeneratorType>MySqlWeightedListGeneratorSingleValues</GeneratorType>
+          <GeneratorName>Weighted List (simple)</GeneratorName>
+          <GeneratorDescription>values list with specified frequency of occurrence</GeneratorDescription>
+          <Length>45</Length>
+        </Column>
+        <Column Name="Fecha_muestra">
+          <Checked>true</Checked>
+          <DataType>DATE</DataType>
+          <GeneratorOptions xsi:type="DateGeneratorOptions">
+            <AllowNulls>false</AllowNulls>
+            <NullProportion>10</NullProportion>
+            <Unique>false</Unique>
+            <IsAlwaysUnique>false</IsAlwaysUnique>
+            <UseDefault>false</UseDefault>
+            <ValueDistributionMode>Seed</ValueDistributionMode>
+            <SeedValue>37</SeedValue>
+            <SequentialValueTicks>864000000000</SequentialValueTicks>
+            <OffsetFromColumnMaxTimeTicks>10000000</OffsetFromColumnMaxTimeTicks>
+            <OffsetFromColumnMinTimeTicks>10000000</OffsetFromColumnMinTimeTicks>
+            <DateTimeRange>MinMaxDate</DateTimeRange>
+            <UseOffsetDetails>false</UseOffsetDetails>
+            <OffsetFromColumnMinDays>0</OffsetFromColumnMinDays>
+            <OffsetFromColumnMaxDays>7</OffsetFromColumnMaxDays>
+            <MinDate>2020-03-01T00:00:00</MinDate>
+            <MaxDate>2020-06-13T00:00:00-03:00</MaxDate>
+            <IsRandomizeDate>true</IsRandomizeDate>
+          </GeneratorOptions>
+          <GeneratorType>MySqlDateGenerator</GeneratorType>
+          <GeneratorName>date</GeneratorName>
+          <GeneratorDescription>fill with date values</GeneratorDescription>
         </Column>
       </Columns>
     </Table>
@@ -1380,7 +1736,7 @@
       <Columns>
         <Column Name="Departamento_NroDepartamento">
           <Checked>true</Checked>
-          <DataType>INT</DataType>
+          <DataType>VARCHAR</DataType>
           <GeneratorOptions xsi:type="ForeignKeyGeneratorOptions">
             <Unique>true</Unique>
             <IsAlwaysUnique>false</IsAlwaysUnique>
@@ -1398,6 +1754,7 @@
           <GeneratorName>Foreign Key (auto assigned)</GeneratorName>
           <GeneratorDescription>references a column from parent table</GeneratorDescription>
           <HasForeignKey>true</HasForeignKey>
+          <Length>45</Length>
         </Column>
         <Column Name="Suministros_CodigoSuministro">
           <Checked>true</Checked>
@@ -1433,7 +1790,7 @@
             <ValueDistributionMode>Seed</ValueDistributionMode>
             <SeedValue>8</SeedValue>
             <MinValue>0</MinValue>
-            <MaxValue>25000</MaxValue>
+            <MaxValue>20000</MaxValue>
             <UseDefault>false</UseDefault>
             <DefaultValue />
           </GeneratorOptions>
@@ -1449,9 +1806,10 @@
         <Truncate>true</Truncate>
         <RowsToGenerate>0</RowsToGenerate>
         <PopulationDetails>
-          <PopulationType>RowsCount</PopulationType>
+          <PopulationType>ProportionOfLookupTable</PopulationType>
           <RowsCount>340</RowsCount>
-          <LookupProportion>30</LookupProportion>
+          <LookupTableName>departamento</LookupTableName>
+          <LookupProportion>100</LookupProportion>
           <ProportionOfExistingData>10</ProportionOfExistingData>
           <TimeTicksToPopulate>100000000</TimeTicksToPopulate>
         </PopulationDetails>
@@ -1465,9 +1823,9 @@
             <IsAlwaysUnique>false</IsAlwaysUnique>
             <AllowNulls>false</AllowNulls>
             <NullProportion>0</NullProportion>
-            <ValueDistributionMode>Sequential</ValueDistributionMode>
+            <ValueDistributionMode>Seed</ValueDistributionMode>
             <SeedValue>10</SeedValue>
-            <RepeatValues>true</RepeatValues>
+            <RepeatValues>false</RepeatValues>
             <FromTimes>1</FromTimes>
             <ToTimes>17</ToTimes>
             <ExcludeValues>false</ExcludeValues>
@@ -1480,17 +1838,17 @@
         </Column>
         <Column Name="Departamento_NroDepartamento">
           <Checked>true</Checked>
-          <DataType>INT</DataType>
+          <DataType>VARCHAR</DataType>
           <GeneratorOptions xsi:type="ForeignKeyGeneratorOptions">
-            <Unique>false</Unique>
+            <Unique>true</Unique>
             <IsAlwaysUnique>false</IsAlwaysUnique>
             <AllowNulls>false</AllowNulls>
             <NullProportion>0</NullProportion>
-            <ValueDistributionMode>Sequential</ValueDistributionMode>
+            <ValueDistributionMode>Seed</ValueDistributionMode>
             <SeedValue>11</SeedValue>
             <RepeatValues>false</RepeatValues>
             <FromTimes>1</FromTimes>
-            <ToTimes>17</ToTimes>
+            <ToTimes>10</ToTimes>
             <ExcludeValues>false</ExcludeValues>
             <ExclusionValuesPercent>1</ExclusionValuesPercent>
           </GeneratorOptions>
@@ -1498,6 +1856,7 @@
           <GeneratorName>Foreign Key (auto assigned)</GeneratorName>
           <GeneratorDescription>references a column from parent table</GeneratorDescription>
           <HasForeignKey>true</HasForeignKey>
+          <Length>45</Length>
         </Column>
       </Columns>
     </Table>
@@ -1584,9 +1943,10 @@
         <Truncate>true</Truncate>
         <RowsToGenerate>0</RowsToGenerate>
         <PopulationDetails>
-          <PopulationType>RowsCount</PopulationType>
+          <PopulationType>ProportionOfLookupTable</PopulationType>
           <RowsCount>600</RowsCount>
-          <LookupProportion>30</LookupProportion>
+          <LookupTableName>empleados</LookupTableName>
+          <LookupProportion>100</LookupProportion>
           <ProportionOfExistingData>10</ProportionOfExistingData>
           <TimeTicksToPopulate>100000000</TimeTicksToPopulate>
         </PopulationDetails>
@@ -1615,14 +1975,14 @@
         </Column>
         <Column Name="Departamento_NroDepartamento">
           <Checked>true</Checked>
-          <DataType>INT</DataType>
+          <DataType>VARCHAR</DataType>
           <GeneratorOptions xsi:type="ForeignKeyGeneratorOptions">
-            <Unique>false</Unique>
+            <Unique>true</Unique>
             <IsAlwaysUnique>false</IsAlwaysUnique>
             <AllowNulls>false</AllowNulls>
             <NullProportion>0</NullProportion>
             <ValueDistributionMode>Seed</ValueDistributionMode>
-            <SeedValue>19</SeedValue>
+            <SeedValue>15</SeedValue>
             <RepeatValues>false</RepeatValues>
             <FromTimes>1</FromTimes>
             <ToTimes>10</ToTimes>
@@ -1633,6 +1993,7 @@
           <GeneratorName>Foreign Key (auto assigned)</GeneratorName>
           <GeneratorDescription>references a column from parent table</GeneratorDescription>
           <HasForeignKey>true</HasForeignKey>
+          <Length>45</Length>
         </Column>
       </Columns>
     </Table>
@@ -2011,7 +2372,7 @@
           <GeneratorOptions xsi:type="MySqlWeightedListGeneratorNestedValuesOptions">
             <AllowEmptyStrings>false</AllowEmptyStrings>
             <EmptyStringProportion>10</EmptyStringProportion>
-            <AllowNulls>true</AllowNulls>
+            <AllowNulls>false</AllowNulls>
             <NullProportion>45</NullProportion>
             <ValueDistributionMode>Seed</ValueDistributionMode>
             <SeedValue>19</SeedValue>
@@ -2075,7 +2436,7 @@
           <GeneratorOptions xsi:type="MySqlWeightedListGeneratorNestedValuesOptions">
             <AllowEmptyStrings>false</AllowEmptyStrings>
             <EmptyStringProportion>10</EmptyStringProportion>
-            <AllowNulls>true</AllowNulls>
+            <AllowNulls>false</AllowNulls>
             <NullProportion>40</NullProportion>
             <ValueDistributionMode>Seed</ValueDistributionMode>
             <SeedValue>20</SeedValue>
@@ -2139,7 +2500,7 @@
           <GeneratorOptions xsi:type="MySqlWeightedListGeneratorNestedValuesOptions">
             <AllowEmptyStrings>false</AllowEmptyStrings>
             <EmptyStringProportion>10</EmptyStringProportion>
-            <AllowNulls>true</AllowNulls>
+            <AllowNulls>false</AllowNulls>
             <NullProportion>48</NullProportion>
             <ValueDistributionMode>Seed</ValueDistributionMode>
             <SeedValue>21</SeedValue>
@@ -2203,7 +2564,7 @@
           <GeneratorOptions xsi:type="MySqlWeightedListGeneratorNestedValuesOptions">
             <AllowEmptyStrings>false</AllowEmptyStrings>
             <EmptyStringProportion>10</EmptyStringProportion>
-            <AllowNulls>true</AllowNulls>
+            <AllowNulls>false</AllowNulls>
             <NullProportion>41</NullProportion>
             <ValueDistributionMode>Seed</ValueDistributionMode>
             <SeedValue>22</SeedValue>
@@ -2267,7 +2628,7 @@
           <GeneratorOptions xsi:type="MySqlWeightedListGeneratorNestedValuesOptions">
             <AllowEmptyStrings>false</AllowEmptyStrings>
             <EmptyStringProportion>10</EmptyStringProportion>
-            <AllowNulls>true</AllowNulls>
+            <AllowNulls>false</AllowNulls>
             <NullProportion>30</NullProportion>
             <ValueDistributionMode>Seed</ValueDistributionMode>
             <SeedValue>23</SeedValue>
@@ -2331,7 +2692,7 @@
           <GeneratorOptions xsi:type="MySqlWeightedListGeneratorNestedValuesOptions">
             <AllowEmptyStrings>false</AllowEmptyStrings>
             <EmptyStringProportion>10</EmptyStringProportion>
-            <AllowNulls>true</AllowNulls>
+            <AllowNulls>false</AllowNulls>
             <NullProportion>26</NullProportion>
             <ValueDistributionMode>Seed</ValueDistributionMode>
             <SeedValue>24</SeedValue>
@@ -2395,7 +2756,7 @@
           <GeneratorOptions xsi:type="MySqlWeightedListGeneratorNestedValuesOptions">
             <AllowEmptyStrings>false</AllowEmptyStrings>
             <EmptyStringProportion>10</EmptyStringProportion>
-            <AllowNulls>true</AllowNulls>
+            <AllowNulls>false</AllowNulls>
             <NullProportion>53</NullProportion>
             <ValueDistributionMode>Seed</ValueDistributionMode>
             <SeedValue>25</SeedValue>
@@ -2637,289 +2998,7 @@
         </Column>
       </Columns>
     </Table>
-    <Table Name="muestra">
-      <Checked>true</Checked>
-      <Settings>
-        <Truncate>true</Truncate>
-        <RowsToGenerate>0</RowsToGenerate>
-        <PopulationDetails>
-          <PopulationType>ProportionOfLookupTable</PopulationType>
-          <RowsCount>2500</RowsCount>
-          <LookupTableName>pacientes</LookupTableName>
-          <LookupProportion>100</LookupProportion>
-          <ProportionOfExistingData>10</ProportionOfExistingData>
-          <TimeTicksToPopulate>100000000</TimeTicksToPopulate>
-        </PopulationDetails>
-      </Settings>
-      <Columns>
-        <Column Name="NroTesteo">
-          <Checked>true</Checked>
-          <DataType>INT</DataType>
-          <GeneratorOptions xsi:type="MySqlIntegerGeneratorOptions">
-            <AllowNulls>false</AllowNulls>
-            <NullProportion>0</NullProportion>
-            <Unique>true</Unique>
-            <IsAlwaysUnique>false</IsAlwaysUnique>
-            <Increment xsi:type="xsd:int">1</Increment>
-            <ValueDistributionMode>Seed</ValueDistributionMode>
-            <SeedValue>31</SeedValue>
-            <MinValue>0</MinValue>
-            <MaxValue>25000000</MaxValue>
-            <UseDefault>false</UseDefault>
-            <DefaultValue />
-          </GeneratorOptions>
-          <GeneratorType>MySqlIntegerGenerator</GeneratorType>
-          <GeneratorName>int</GeneratorName>
-          <GeneratorDescription>fill with 32-bit signed integer values</GeneratorDescription>
-        </Column>
-        <Column Name="Pacientes_Personas_DNI">
-          <Checked>true</Checked>
-          <DataType>INT</DataType>
-          <GeneratorOptions xsi:type="ForeignKeyGeneratorOptions">
-            <Unique>true</Unique>
-            <IsAlwaysUnique>false</IsAlwaysUnique>
-            <AllowNulls>false</AllowNulls>
-            <NullProportion>0</NullProportion>
-            <ValueDistributionMode>Seed</ValueDistributionMode>
-            <SeedValue>31</SeedValue>
-            <RepeatValues>false</RepeatValues>
-            <FromTimes>1</FromTimes>
-            <ToTimes>10</ToTimes>
-            <ExcludeValues>false</ExcludeValues>
-            <ExclusionValuesPercent>1</ExclusionValuesPercent>
-          </GeneratorOptions>
-          <GeneratorType>ForeignKeyGenerator</GeneratorType>
-          <GeneratorName>Foreign Key (auto assigned)</GeneratorName>
-          <GeneratorDescription>references a column from parent table</GeneratorDescription>
-          <HasForeignKey>true</HasForeignKey>
-        </Column>
-        <Column Name="Resultado">
-          <Checked>true</Checked>
-          <DataType>TINYINT</DataType>
-          <GeneratorOptions xsi:type="MySqlWeightedListGeneratorNestedValuesOptions">
-            <AllowEmptyStrings>false</AllowEmptyStrings>
-            <EmptyStringProportion>10</EmptyStringProportion>
-            <AllowNulls>false</AllowNulls>
-            <NullProportion>0</NullProportion>
-            <ValueDistributionMode>Seed</ValueDistributionMode>
-            <SeedValue>31</SeedValue>
-            <Unique>false</Unique>
-            <IsAlwaysUnique>false</IsAlwaysUnique>
-            <Values>
-              <WeightedListItem>
-                <Value xsi:type="ArrayOfWeightedListItem">
-                  <WeightedListItem>
-                    <Value xsi:type="xsd:short">0</Value>
-                    <Weight>10</Weight>
-                  </WeightedListItem>
-                </Value>
-                <Weight>30</Weight>
-              </WeightedListItem>
-              <WeightedListItem>
-                <Value xsi:type="ArrayOfWeightedListItem">
-                  <WeightedListItem>
-                    <Value xsi:type="xsd:short">1</Value>
-                    <Weight>10</Weight>
-                  </WeightedListItem>
-                </Value>
-                <Weight>15</Weight>
-              </WeightedListItem>
-            </Values>
-          </GeneratorOptions>
-          <GeneratorType>MySqlWeightedListGeneratorNestedValues</GeneratorType>
-          <GeneratorName>Weighted List (nested)</GeneratorName>
-          <GeneratorDescription>a collection of values lists with specified frequency of occurrence</GeneratorDescription>
-        </Column>
-        <Column Name="SatO2">
-          <Checked>true</Checked>
-          <DataType>FLOAT</DataType>
-          <GeneratorOptions xsi:type="MySqlWeightedListGeneratorRangeValuesOptions">
-            <AllowEmptyStrings>false</AllowEmptyStrings>
-            <EmptyStringProportion>10</EmptyStringProportion>
-            <ColumnDataTypeName>FLOAT</ColumnDataTypeName>
-            <Scale>0</Scale>
-            <Precision>0</Precision>
-            <AllowNulls>false</AllowNulls>
-            <NullProportion>0</NullProportion>
-            <ValueDistributionMode>Seed</ValueDistributionMode>
-            <SeedValue>31</SeedValue>
-            <Unique>false</Unique>
-            <IsAlwaysUnique>false</IsAlwaysUnique>
-            <Values>
-              <WeightedListItem>
-                <Value xsi:type="WeightedListRangeItem">
-                  <From xsi:type="xsd:decimal">40</From>
-                  <To xsi:type="xsd:decimal">50</To>
-                  <DateTimeOffsetFromValue />
-                  <DateTimeOffsetToValue />
-                  <TimeSpanFromValue>-1</TimeSpanFromValue>
-                  <TimeSpanToValue>-1</TimeSpanToValue>
-                </Value>
-                <Weight>10</Weight>
-              </WeightedListItem>
-              <WeightedListItem>
-                <Value xsi:type="WeightedListRangeItem">
-                  <From xsi:type="xsd:decimal">50</From>
-                  <To xsi:type="xsd:decimal">60</To>
-                  <DateTimeOffsetFromValue />
-                  <DateTimeOffsetToValue />
-                  <TimeSpanFromValue>-1</TimeSpanFromValue>
-                  <TimeSpanToValue>-1</TimeSpanToValue>
-                </Value>
-                <Weight>25</Weight>
-              </WeightedListItem>
-              <WeightedListItem>
-                <Value xsi:type="WeightedListRangeItem">
-                  <From xsi:type="xsd:decimal">60</From>
-                  <To xsi:type="xsd:decimal">70</To>
-                  <DateTimeOffsetFromValue />
-                  <DateTimeOffsetToValue />
-                  <TimeSpanFromValue>-1</TimeSpanFromValue>
-                  <TimeSpanToValue>-1</TimeSpanToValue>
-                </Value>
-                <Weight>50</Weight>
-              </WeightedListItem>
-              <WeightedListItem>
-                <Value xsi:type="WeightedListRangeItem">
-                  <From xsi:type="xsd:decimal">70</From>
-                  <To xsi:type="xsd:decimal">80</To>
-                  <DateTimeOffsetFromValue />
-                  <DateTimeOffsetToValue />
-                  <TimeSpanFromValue>-1</TimeSpanFromValue>
-                  <TimeSpanToValue>-1</TimeSpanToValue>
-                </Value>
-                <Weight>80</Weight>
-              </WeightedListItem>
-              <WeightedListItem>
-                <Value xsi:type="WeightedListRangeItem">
-                  <From xsi:type="xsd:decimal">80</From>
-                  <To xsi:type="xsd:decimal">90</To>
-                  <DateTimeOffsetFromValue />
-                  <DateTimeOffsetToValue />
-                  <TimeSpanFromValue>-1</TimeSpanFromValue>
-                  <TimeSpanToValue>-1</TimeSpanToValue>
-                </Value>
-                <Weight>140</Weight>
-              </WeightedListItem>
-              <WeightedListItem>
-                <Value xsi:type="WeightedListRangeItem">
-                  <From xsi:type="xsd:decimal">90</From>
-                  <To xsi:type="xsd:decimal">98</To>
-                  <DateTimeOffsetFromValue />
-                  <DateTimeOffsetToValue />
-                  <TimeSpanFromValue>-1</TimeSpanFromValue>
-                  <TimeSpanToValue>-1</TimeSpanToValue>
-                </Value>
-                <Weight>230</Weight>
-              </WeightedListItem>
-            </Values>
-          </GeneratorOptions>
-          <GeneratorType>MySqlWeightedListGeneratorRangeValues</GeneratorType>
-          <GeneratorName>Weighted List (ranged)</GeneratorName>
-          <GeneratorDescription>ranged values list with specified frequency of occurrence</GeneratorDescription>
-        </Column>
-        <Column Name="Temperatura">
-          <Checked>true</Checked>
-          <DataType>FLOAT</DataType>
-          <GeneratorOptions xsi:type="MySqlWeightedListGeneratorRangeValuesOptions">
-            <AllowEmptyStrings>false</AllowEmptyStrings>
-            <EmptyStringProportion>10</EmptyStringProportion>
-            <ColumnDataTypeName>FLOAT</ColumnDataTypeName>
-            <Scale>0</Scale>
-            <Precision>0</Precision>
-            <AllowNulls>false</AllowNulls>
-            <NullProportion>0</NullProportion>
-            <ValueDistributionMode>Seed</ValueDistributionMode>
-            <SeedValue>32</SeedValue>
-            <Unique>false</Unique>
-            <IsAlwaysUnique>false</IsAlwaysUnique>
-            <Values>
-              <WeightedListItem>
-                <Value xsi:type="WeightedListRangeItem">
-                  <From xsi:type="xsd:decimal">35.5</From>
-                  <To xsi:type="xsd:decimal">36</To>
-                  <DateTimeOffsetFromValue />
-                  <DateTimeOffsetToValue />
-                  <TimeSpanFromValue>-1</TimeSpanFromValue>
-                  <TimeSpanToValue>-1</TimeSpanToValue>
-                </Value>
-                <Weight>10</Weight>
-              </WeightedListItem>
-              <WeightedListItem>
-                <Value xsi:type="WeightedListRangeItem">
-                  <From xsi:type="xsd:decimal">36</From>
-                  <To xsi:type="xsd:decimal">37</To>
-                  <DateTimeOffsetFromValue />
-                  <DateTimeOffsetToValue />
-                  <TimeSpanFromValue>-1</TimeSpanFromValue>
-                  <TimeSpanToValue>-1</TimeSpanToValue>
-                </Value>
-                <Weight>300</Weight>
-              </WeightedListItem>
-              <WeightedListItem>
-                <Value xsi:type="WeightedListRangeItem">
-                  <From xsi:type="xsd:decimal">37</From>
-                  <To xsi:type="xsd:decimal">38</To>
-                  <DateTimeOffsetFromValue />
-                  <DateTimeOffsetToValue />
-                  <TimeSpanFromValue>-1</TimeSpanFromValue>
-                  <TimeSpanToValue>-1</TimeSpanToValue>
-                </Value>
-                <Weight>150</Weight>
-              </WeightedListItem>
-              <WeightedListItem>
-                <Value xsi:type="WeightedListRangeItem">
-                  <From xsi:type="xsd:decimal">38</From>
-                  <To xsi:type="xsd:decimal">39</To>
-                  <DateTimeOffsetFromValue />
-                  <DateTimeOffsetToValue />
-                  <TimeSpanFromValue>-1</TimeSpanFromValue>
-                  <TimeSpanToValue>-1</TimeSpanToValue>
-                </Value>
-                <Weight>100</Weight>
-              </WeightedListItem>
-              <WeightedListItem>
-                <Value xsi:type="WeightedListRangeItem">
-                  <From xsi:type="xsd:decimal">39</From>
-                  <To xsi:type="xsd:decimal">40</To>
-                  <DateTimeOffsetFromValue />
-                  <DateTimeOffsetToValue />
-                  <TimeSpanFromValue>-1</TimeSpanFromValue>
-                  <TimeSpanToValue>-1</TimeSpanToValue>
-                </Value>
-                <Weight>40</Weight>
-              </WeightedListItem>
-              <WeightedListItem>
-                <Value xsi:type="WeightedListRangeItem">
-                  <From xsi:type="xsd:decimal">40</From>
-                  <To xsi:type="xsd:decimal">41</To>
-                  <DateTimeOffsetFromValue />
-                  <DateTimeOffsetToValue />
-                  <TimeSpanFromValue>-1</TimeSpanFromValue>
-                  <TimeSpanToValue>-1</TimeSpanToValue>
-                </Value>
-                <Weight>15</Weight>
-              </WeightedListItem>
-              <WeightedListItem>
-                <Value xsi:type="WeightedListRangeItem">
-                  <From xsi:type="xsd:decimal">41</From>
-                  <To xsi:type="xsd:decimal">42</To>
-                  <DateTimeOffsetFromValue />
-                  <DateTimeOffsetToValue />
-                  <TimeSpanFromValue>-1</TimeSpanFromValue>
-                  <TimeSpanToValue>-1</TimeSpanToValue>
-                </Value>
-                <Weight>5</Weight>
-              </WeightedListItem>
-            </Values>
-          </GeneratorOptions>
-          <GeneratorType>MySqlWeightedListGeneratorRangeValues</GeneratorType>
-          <GeneratorName>Weighted List (ranged)</GeneratorName>
-          <GeneratorDescription>ranged values list with specified frequency of occurrence</GeneratorDescription>
-        </Column>
-      </Columns>
-    </Table>
-    <Table Name="muestra_empleado">
+    <Table Name="muestra_empleados">
       <Checked>true</Checked>
       <Settings>
         <Truncate>true</Truncate>
@@ -2928,41 +3007,44 @@
           <PopulationType>ProportionOfLookupTable</PopulationType>
           <RowsCount>1450</RowsCount>
           <LookupTableName>empleados</LookupTableName>
-          <LookupProportion>150</LookupProportion>
+          <LookupProportion>125</LookupProportion>
           <ProportionOfExistingData>10</ProportionOfExistingData>
           <TimeTicksToPopulate>100000000</TimeTicksToPopulate>
         </PopulationDetails>
       </Settings>
       <Columns>
-        <Column Name="NroTesteo">
+        <Column Name="muestra_emp_covid_NroTesteo">
           <Checked>true</Checked>
           <DataType>VARCHAR</DataType>
-          <GeneratorOptions xsi:type="MySqlRegularExpressionGeneratorOptions">
-            <AllowEmptyStrings>false</AllowEmptyStrings>
-            <EmptyStringProportion>10</EmptyStringProportion>
+          <GeneratorOptions xsi:type="ForeignKeyGeneratorOptions">
+            <Unique>true</Unique>
+            <IsAlwaysUnique>false</IsAlwaysUnique>
             <AllowNulls>false</AllowNulls>
             <NullProportion>0</NullProportion>
             <ValueDistributionMode>Seed</ValueDistributionMode>
-            <SeedValue>34</SeedValue>
-            <Unique>true</Unique>
-            <IsAlwaysUnique>false</IsAlwaysUnique>
-            <Expression>A\d{3}R\d{3}</Expression>
+            <SeedValue>39</SeedValue>
+            <RepeatValues>false</RepeatValues>
+            <FromTimes>1</FromTimes>
+            <ToTimes>10</ToTimes>
+            <ExcludeValues>false</ExcludeValues>
+            <ExclusionValuesPercent>1</ExclusionValuesPercent>
           </GeneratorOptions>
-          <GeneratorType>MySqlStringRegularExpressionGenerator</GeneratorType>
-          <GeneratorName>Reg Exp</GeneratorName>
-          <GeneratorDescription>values based on a regular expression</GeneratorDescription>
+          <GeneratorType>ForeignKeyGenerator</GeneratorType>
+          <GeneratorName>Foreign Key (auto assigned)</GeneratorName>
+          <GeneratorDescription>references a column from parent table</GeneratorDescription>
+          <HasForeignKey>true</HasForeignKey>
           <Length>45</Length>
         </Column>
         <Column Name="empleados_Personas_DNI">
           <Checked>true</Checked>
           <DataType>INT</DataType>
           <GeneratorOptions xsi:type="ForeignKeyGeneratorOptions">
-            <Unique>false</Unique>
+            <Unique>true</Unique>
             <IsAlwaysUnique>false</IsAlwaysUnique>
             <AllowNulls>false</AllowNulls>
             <NullProportion>0</NullProportion>
             <ValueDistributionMode>Seed</ValueDistributionMode>
-            <SeedValue>34</SeedValue>
+            <SeedValue>40</SeedValue>
             <RepeatValues>false</RepeatValues>
             <FromTimes>1</FromTimes>
             <ToTimes>10</ToTimes>
@@ -2974,63 +3056,64 @@
           <GeneratorDescription>references a column from parent table</GeneratorDescription>
           <HasForeignKey>true</HasForeignKey>
         </Column>
-        <Column Name="Resultado">
+      </Columns>
+    </Table>
+    <Table Name="muestra_paciente">
+      <Checked>true</Checked>
+      <Settings>
+        <Truncate>true</Truncate>
+        <RowsToGenerate>0</RowsToGenerate>
+        <PopulationDetails>
+          <PopulationType>ProportionOfLookupTable</PopulationType>
+          <RowsCount>1450</RowsCount>
+          <LookupTableName>muestra</LookupTableName>
+          <LookupProportion>100</LookupProportion>
+          <ProportionOfExistingData>10</ProportionOfExistingData>
+          <TimeTicksToPopulate>100000000</TimeTicksToPopulate>
+        </PopulationDetails>
+      </Settings>
+      <Columns>
+        <Column Name="muestra_NroTesteo">
           <Checked>true</Checked>
-          <DataType>VARCHAR</DataType>
-          <GeneratorOptions xsi:type="MySqlWeightedListGeneratorSingleValuesOptions">
-            <AllowEmptyStrings>false</AllowEmptyStrings>
-            <EmptyStringProportion>10</EmptyStringProportion>
-            <ColumnDataTypeName>VARCHAR</ColumnDataTypeName>
-            <Scale>0</Scale>
-            <Precision>0</Precision>
-            <Length>45</Length>
-            <AllowNulls>false</AllowNulls>
-            <NullProportion>10</NullProportion>
-            <ValueDistributionMode>Seed</ValueDistributionMode>
-            <SeedValue>35</SeedValue>
-            <Unique>false</Unique>
+          <DataType>INT</DataType>
+          <GeneratorOptions xsi:type="ForeignKeyGeneratorOptions">
+            <Unique>true</Unique>
             <IsAlwaysUnique>false</IsAlwaysUnique>
-            <Values>
-              <WeightedListItem>
-                <Value xsi:type="xsd:string">1</Value>
-                <Weight>5</Weight>
-              </WeightedListItem>
-              <WeightedListItem>
-                <Value xsi:type="xsd:string">0</Value>
-                <Weight>71</Weight>
-              </WeightedListItem>
-            </Values>
+            <AllowNulls>false</AllowNulls>
+            <NullProportion>0</NullProportion>
+            <ValueDistributionMode>Seed</ValueDistributionMode>
+            <SeedValue>41</SeedValue>
+            <RepeatValues>false</RepeatValues>
+            <FromTimes>1</FromTimes>
+            <ToTimes>10</ToTimes>
+            <ExcludeValues>false</ExcludeValues>
+            <ExclusionValuesPercent>1</ExclusionValuesPercent>
           </GeneratorOptions>
-          <GeneratorType>MySqlWeightedListGeneratorSingleValues</GeneratorType>
-          <GeneratorName>Weighted List (simple)</GeneratorName>
-          <GeneratorDescription>values list with specified frequency of occurrence</GeneratorDescription>
-          <Length>45</Length>
+          <GeneratorType>ForeignKeyGenerator</GeneratorType>
+          <GeneratorName>Foreign Key (auto assigned)</GeneratorName>
+          <GeneratorDescription>references a column from parent table</GeneratorDescription>
+          <HasForeignKey>true</HasForeignKey>
         </Column>
-        <Column Name="Fecha_muestra">
+        <Column Name="pacientes_Personas_DNI">
           <Checked>true</Checked>
-          <DataType>DATE</DataType>
-          <GeneratorOptions xsi:type="DateGeneratorOptions">
-            <AllowNulls>false</AllowNulls>
-            <NullProportion>10</NullProportion>
-            <Unique>false</Unique>
+          <DataType>INT</DataType>
+          <GeneratorOptions xsi:type="ForeignKeyGeneratorOptions">
+            <Unique>true</Unique>
             <IsAlwaysUnique>false</IsAlwaysUnique>
-            <UseDefault>false</UseDefault>
+            <AllowNulls>false</AllowNulls>
+            <NullProportion>0</NullProportion>
             <ValueDistributionMode>Seed</ValueDistributionMode>
-            <SeedValue>34</SeedValue>
-            <SequentialValueTicks>864000000000</SequentialValueTicks>
-            <OffsetFromColumnMaxTimeTicks>10000000</OffsetFromColumnMaxTimeTicks>
-            <OffsetFromColumnMinTimeTicks>10000000</OffsetFromColumnMinTimeTicks>
-            <DateTimeRange>MinMaxDate</DateTimeRange>
-            <UseOffsetDetails>false</UseOffsetDetails>
-            <OffsetFromColumnMinDays>0</OffsetFromColumnMinDays>
-            <OffsetFromColumnMaxDays>7</OffsetFromColumnMaxDays>
-            <MinDate>2020-04-01T00:00:00-03:00</MinDate>
-            <MaxDate>2020-06-05T00:00:00-03:00</MaxDate>
-            <IsRandomizeDate>true</IsRandomizeDate>
+            <SeedValue>42</SeedValue>
+            <RepeatValues>false</RepeatValues>
+            <FromTimes>1</FromTimes>
+            <ToTimes>10</ToTimes>
+            <ExcludeValues>false</ExcludeValues>
+            <ExclusionValuesPercent>1</ExclusionValuesPercent>
           </GeneratorOptions>
-          <GeneratorType>MySqlDateGenerator</GeneratorType>
-          <GeneratorName>date</GeneratorName>
-          <GeneratorDescription>fill with date values</GeneratorDescription>
+          <GeneratorType>ForeignKeyGenerator</GeneratorType>
+          <GeneratorName>Foreign Key (auto assigned)</GeneratorName>
+          <GeneratorDescription>references a column from parent table</GeneratorDescription>
+          <HasForeignKey>true</HasForeignKey>
         </Column>
       </Columns>
     </Table>
@@ -3865,7 +3948,6 @@
     </Table>
   </Tables>
   <SynchronizationOptions xsi:type="DataSyncOptionGroup">
-    <SynchronizeType>File</SynchronizeType>
     <OpenScriptInEditor>true</OpenScriptInEditor>
     <SynchronizationFileName>D:\Bruno\Favaloro\4 Año\BD\Trabajos Practivos\COVID-19\dbDummy.sql</SynchronizationFileName>
     <IncludeUseDatabase>false</IncludeUseDatabase>

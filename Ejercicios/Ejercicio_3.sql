@@ -13,5 +13,7 @@ FROM(
 	GROUP BY
 		medicamento_idMedicamento
 	ORDER BY
-		cuenta DESC LIMIT 1) AS tabla NATURAL JOIN medicamento;
+		cuenta DESC LIMIT 1) AS tabla 
+        
+	NATURAL JOIN medicamento;
 

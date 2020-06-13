@@ -146,7 +146,7 @@ DEFAULT CHARACTER SET = utf8;
 DROP TABLE IF EXISTS `covid19`.`departamento` ;
 
 CREATE TABLE IF NOT EXISTS `covid19`.`departamento` (
-  `NroDepartamento` INT NOT NULL,
+  `NroDepartamento` VARCHAR(45) NOT NULL,
   `EspecialidadDepto` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`NroDepartamento`))
 ENGINE = InnoDB
@@ -159,7 +159,7 @@ DEFAULT CHARACTER SET = utf8;
 DROP TABLE IF EXISTS `covid19`.`departamento_suminstro` ;
 
 CREATE TABLE IF NOT EXISTS `covid19`.`departamento_suminstro` (
-  `Departamento_NroDepartamento` INT NOT NULL,
+  `Departamento_NroDepartamento` VARCHAR(45) NOT NULL,
   `Suministros_CodigoSuministro` VARCHAR(6) NOT NULL,
   `CantSum` INT UNSIGNED NOT NULL,
   INDEX `fk_Departamento_Suminstro_Departamento1_idx` (`Departamento_NroDepartamento` ASC) VISIBLE,
@@ -181,7 +181,7 @@ DROP TABLE IF EXISTS `covid19`.`departamentos_hospital` ;
 
 CREATE TABLE IF NOT EXISTS `covid19`.`departamentos_hospital` (
   `Hospital_NroHospital` INT UNSIGNED NOT NULL,
-  `Departamento_NroDepartamento` INT NOT NULL,
+  `Departamento_NroDepartamento` VARCHAR(45) NOT NULL,
   INDEX `fk_Departamentos_Hospital_Hospital1_idx` (`Hospital_NroHospital` ASC) VISIBLE,
   INDEX `fk_Departamentos_Hospital_Departamento1_idx` (`Departamento_NroDepartamento` ASC) VISIBLE,
   CONSTRAINT `fk_Departamentos_Hospital_Departamento1`
@@ -235,7 +235,7 @@ DROP TABLE IF EXISTS `covid19`.`empleado_departamento` ;
 
 CREATE TABLE IF NOT EXISTS `covid19`.`empleado_departamento` (
   `Empleados_Personas_DNI` INT UNSIGNED NOT NULL,
-  `Departamento_NroDepartamento` INT NOT NULL,
+  `Departamento_NroDepartamento` VARCHAR(45) NOT NULL,
   INDEX `fk_Empleado_Departamento_Empleados1_idx` (`Empleados_Personas_DNI` ASC) VISIBLE,
   INDEX `fk_Empleado_Departamento_Departamento1_idx` (`Departamento_NroDepartamento` ASC) VISIBLE,
   CONSTRAINT `fk_Empleado_Departamento_Departamento1`
@@ -290,13 +290,13 @@ DEFAULT CHARACTER SET = utf8;
 DROP TABLE IF EXISTS `covid19`.`horario` ;
 
 CREATE TABLE IF NOT EXISTS `covid19`.`horario` (
-  `Lunes` TIME NULL,
-  `Martes` TIME NULL,
-  `Miercoles` TIME NULL,
-  `Jueves` TIME NULL,
-  `Viernes` TIME NULL,
-  `Sabado` TIME NULL,
-  `Domingo` TIME NULL,
+  `Lunes` TIME NOT NULL,
+  `Martes` TIME NOT NULL,
+  `Miercoles` TIME NOT NULL,
+  `Jueves` TIME NOT NULL,
+  `Viernes` TIME NOT NULL,
+  `Sabado` TIME NOT NULL,
+  `Domingo` TIME NOT NULL,
   `PersonalMedico_Empleados_Personas_DNI` INT UNSIGNED NOT NULL,
   INDEX `fk_Horario_PersonalMedico1_idx` (`PersonalMedico_Empleados_Personas_DNI` ASC) VISIBLE,
   CONSTRAINT `fk_Horario_PersonalMedico1`
@@ -423,15 +423,10 @@ DROP TABLE IF EXISTS `covid19`.`muestra` ;
 
 CREATE TABLE IF NOT EXISTS `covid19`.`muestra` (
   `NroTesteo` INT NOT NULL,
-  `Pacientes_Personas_DNI` INT UNSIGNED NOT NULL,
   `Resultado` TINYINT NOT NULL,
   `SatO2` FLOAT NOT NULL,
   `Temperatura` FLOAT NOT NULL,
-  PRIMARY KEY (`NroTesteo`),
-  INDEX `fk_Muestra_Pacientes1_idx` (`Pacientes_Personas_DNI` ASC) VISIBLE,
-  CONSTRAINT `fk_Muestra_Pacientes1`
-    FOREIGN KEY (`Pacientes_Personas_DNI`)
-    REFERENCES `covid19`.`pacientes` (`Personas_DNI`))
+  PRIMARY KEY (`NroTesteo`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
@@ -563,8 +558,6 @@ CREATE TABLE IF NOT EXISTS `covid19`.`pm_suministros` (
   `PrecioPagado` FLOAT NULL,
   PRIMARY KEY (`NroPedido`),
   UNIQUE INDEX `NroPedido_UNIQUE` (`NroPedido` ASC) VISIBLE,
-  UNIQUE INDEX `PersonalMedico_Empleados_Personas_DNI_UNIQUE` (`PersonalMedico_Empleados_Personas_DNI` ASC) VISIBLE,
-  UNIQUE INDEX `Suministros_CodigoSuministro_UNIQUE` (`Suministros_CodigoSuministro` ASC) VISIBLE,
   INDEX `fk_PM_Suministros_PersonalMedico1_idx` (`PersonalMedico_Empleados_Personas_DNI` ASC) VISIBLE,
   INDEX `fk_PM_Suministros_Suministros1_idx` (`Suministros_CodigoSuministro` ASC) VISIBLE,
   CONSTRAINT `fk_PM_Suministros_PersonalMedico1`
@@ -683,22 +676,15 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `covid19`.`muestra_empleado`
+-- Table `covid19`.`muestra_emp_covid`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `covid19`.`muestra_empleado` ;
+DROP TABLE IF EXISTS `covid19`.`muestra_emp_covid` ;
 
-CREATE TABLE IF NOT EXISTS `covid19`.`muestra_empleado` (
+CREATE TABLE IF NOT EXISTS `covid19`.`muestra_emp_covid` (
   `NroTesteo` VARCHAR(45) NOT NULL,
-  `empleados_Personas_DNI` INT UNSIGNED NOT NULL,
   `Resultado` VARCHAR(45) NULL,
   `Fecha_muestra` DATE NULL,
-  PRIMARY KEY (`NroTesteo`),
-  INDEX `fk_muestra_empleado_empleados1_idx` (`empleados_Personas_DNI` ASC) VISIBLE,
-  CONSTRAINT `fk_muestra_empleado_empleados1`
-    FOREIGN KEY (`empleados_Personas_DNI`)
-    REFERENCES `covid19`.`empleados` (`Personas_DNI`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+  PRIMARY KEY (`NroTesteo`))
 ENGINE = InnoDB;
 
 
@@ -738,6 +724,52 @@ CREATE TABLE IF NOT EXISTS `covid19`.`empleado_hospital` (
   CONSTRAINT `fk_empleado_hospital_hospital1`
     FOREIGN KEY (`hospital_NroHospital`)
     REFERENCES `covid19`.`hospital` (`NroHospital`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `covid19`.`muestra_paciente`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `covid19`.`muestra_paciente` ;
+
+CREATE TABLE IF NOT EXISTS `covid19`.`muestra_paciente` (
+  `muestra_NroTesteo` INT NOT NULL,
+  `pacientes_Personas_DNI` INT UNSIGNED NOT NULL,
+  INDEX `fk_muestra_paciente_muestra1_idx` (`muestra_NroTesteo` ASC) VISIBLE,
+  INDEX `fk_muestra_paciente_pacientes1_idx` (`pacientes_Personas_DNI` ASC) VISIBLE,
+  CONSTRAINT `fk_muestra_paciente_muestra1`
+    FOREIGN KEY (`muestra_NroTesteo`)
+    REFERENCES `covid19`.`muestra` (`NroTesteo`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_muestra_paciente_pacientes1`
+    FOREIGN KEY (`pacientes_Personas_DNI`)
+    REFERENCES `covid19`.`pacientes` (`Personas_DNI`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `covid19`.`muestra_empleados`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `covid19`.`muestra_empleados` ;
+
+CREATE TABLE IF NOT EXISTS `covid19`.`muestra_empleados` (
+  `muestra_emp_covid_NroTesteo` VARCHAR(45) NOT NULL,
+  `empleados_Personas_DNI` INT UNSIGNED NOT NULL,
+  INDEX `fk_muestra_empleados_muestra_emp_covid1_idx` (`muestra_emp_covid_NroTesteo` ASC) VISIBLE,
+  INDEX `fk_muestra_empleados_empleados1_idx` (`empleados_Personas_DNI` ASC) VISIBLE,
+  CONSTRAINT `fk_muestra_empleados_muestra_emp_covid1`
+    FOREIGN KEY (`muestra_emp_covid_NroTesteo`)
+    REFERENCES `covid19`.`muestra_emp_covid` (`NroTesteo`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_muestra_empleados_empleados1`
+    FOREIGN KEY (`empleados_Personas_DNI`)
+    REFERENCES `covid19`.`empleados` (`Personas_DNI`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;

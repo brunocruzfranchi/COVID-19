@@ -10,7 +10,7 @@ DROP VIEW IF EXISTS t3; -- cambio de nombre de las variables de la tabla proveed
 
 CREATE VIEW t1 AS( 
 	SELECT
-		CodigoSuministro AS Codigo, Precio_Unidad, Empleados_Personas_DNI AS DNI, Nombre AS suministro
+		CodigoSuministro AS Codigo, Precio_Unidad, Empleados_Personas_DNI AS DNI, Nombre AS Suministro
 	FROM
 		(SELECT
 			Suministros_CodigoSuministro AS CodigoSuministro, ROUND(PrecioPagado / Cant_Repuesto, 2) AS Precio_Unidad,
