@@ -1738,7 +1738,7 @@
           <Checked>true</Checked>
           <DataType>VARCHAR</DataType>
           <GeneratorOptions xsi:type="ForeignKeyGeneratorOptions">
-            <Unique>true</Unique>
+            <Unique>false</Unique>
             <IsAlwaysUnique>false</IsAlwaysUnique>
             <AllowNulls>false</AllowNulls>
             <NullProportion>0</NullProportion>
@@ -1977,7 +1977,7 @@
           <Checked>true</Checked>
           <DataType>VARCHAR</DataType>
           <GeneratorOptions xsi:type="ForeignKeyGeneratorOptions">
-            <Unique>true</Unique>
+            <Unique>false</Unique>
             <IsAlwaysUnique>false</IsAlwaysUnique>
             <AllowNulls>false</AllowNulls>
             <NullProportion>0</NullProportion>
@@ -3948,6 +3948,7 @@
     </Table>
   </Tables>
   <SynchronizationOptions xsi:type="DataSyncOptionGroup">
+    <SynchronizeType>File</SynchronizeType>
     <OpenScriptInEditor>true</OpenScriptInEditor>
     <SynchronizationFileName>D:\Bruno\Favaloro\4 Año\BD\Trabajos Practivos\COVID-19\dbDummy.sql</SynchronizationFileName>
     <IncludeUseDatabase>false</IncludeUseDatabase>
