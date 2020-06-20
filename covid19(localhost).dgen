@@ -494,7 +494,7 @@
           <PopulationType>ProportionOfLookupTable</PopulationType>
           <RowsCount>1450</RowsCount>
           <LookupTableName>empleados</LookupTableName>
-          <LookupProportion>125</LookupProportion>
+          <LookupProportion>150</LookupProportion>
           <ProportionOfExistingData>10</ProportionOfExistingData>
           <TimeTicksToPopulate>100000000</TimeTicksToPopulate>
         </PopulationDetails>
@@ -787,26 +787,6 @@
           <GeneratorType>MySqlRegularExpressionGenerator</GeneratorType>
           <GeneratorName>Phone Number (local)</GeneratorName>
           <GeneratorDescription>352-5422, 114-6587, 025-9635, 267-4128, 725-5250, ...</GeneratorDescription>
-          <GeneratorCategory>Personal</GeneratorCategory>
-          <Length>45</Length>
-        </Column>
-        <Column Name="Persona_de_contacto">
-          <Checked>true</Checked>
-          <DataType>VARCHAR</DataType>
-          <GeneratorOptions xsi:type="MySqlRegularExpressionGeneratorOptions">
-            <AllowEmptyStrings>false</AllowEmptyStrings>
-            <EmptyStringProportion>10</EmptyStringProportion>
-            <AllowNulls>false</AllowNulls>
-            <NullProportion>0</NullProportion>
-            <ValueDistributionMode>Seed</ValueDistributionMode>
-            <SeedValue>45</SeedValue>
-            <Unique>true</Unique>
-            <IsAlwaysUnique>false</IsAlwaysUnique>
-            <Expression>(($"FirstNamesMale.txt")|($"FirstNamesFemale.txt")) ($"LastNames.txt")</Expression>
-          </GeneratorOptions>
-          <GeneratorType>MySqlRegularExpressionGenerator</GeneratorType>
-          <GeneratorName>Full Name</GeneratorName>
-          <GeneratorDescription>Malik Whitmore, Sherill Gaskin, Rigoberto Mundy, Joelle Childers, Vanna Doss, ...</GeneratorDescription>
           <GeneratorCategory>Personal</GeneratorCategory>
           <Length>45</Length>
         </Column>
@@ -1486,21 +1466,49 @@
         <Column Name="Especialidad">
           <Checked>true</Checked>
           <DataType>VARCHAR</DataType>
-          <GeneratorOptions xsi:type="MySqlRegularExpressionGeneratorOptions">
+          <GeneratorOptions xsi:type="MySqlWeightedListGeneratorSingleValuesOptions">
             <AllowEmptyStrings>false</AllowEmptyStrings>
             <EmptyStringProportion>10</EmptyStringProportion>
+            <ColumnDataTypeName>VARCHAR</ColumnDataTypeName>
+            <Scale>0</Scale>
+            <Precision>0</Precision>
+            <Length>45</Length>
             <AllowNulls>false</AllowNulls>
             <NullProportion>10</NullProportion>
             <ValueDistributionMode>Seed</ValueDistributionMode>
-            <SeedValue>44</SeedValue>
-            <Unique>true</Unique>
+            <SeedValue>58</SeedValue>
+            <Unique>false</Unique>
             <IsAlwaysUnique>false</IsAlwaysUnique>
-            <Expression>\d{5}</Expression>
+            <Values>
+              <WeightedListItem>
+                <Value xsi:type="xsd:string">Enfermeria</Value>
+                <Weight>45</Weight>
+              </WeightedListItem>
+              <WeightedListItem>
+                <Value xsi:type="xsd:string">Medico</Value>
+                <Weight>15</Weight>
+              </WeightedListItem>
+              <WeightedListItem>
+                <Value xsi:type="xsd:string">Limpieza</Value>
+                <Weight>6</Weight>
+              </WeightedListItem>
+              <WeightedListItem>
+                <Value xsi:type="xsd:string">Auxiliar</Value>
+                <Weight>10</Weight>
+              </WeightedListItem>
+              <WeightedListItem>
+                <Value xsi:type="xsd:string">Trabajadora Social</Value>
+                <Weight>2</Weight>
+              </WeightedListItem>
+              <WeightedListItem>
+                <Value xsi:type="xsd:string">Cirujano</Value>
+                <Weight>10</Weight>
+              </WeightedListItem>
+            </Values>
           </GeneratorOptions>
-          <GeneratorType>MySqlRegularExpressionGenerator</GeneratorType>
-          <GeneratorName>ID (random)</GeneratorName>
-          <GeneratorDescription>54470, 16912, 43814, 06728, 36017, 82433, 95664, ...</GeneratorDescription>
-          <GeneratorCategory>Business</GeneratorCategory>
+          <GeneratorType>MySqlWeightedListGeneratorSingleValues</GeneratorType>
+          <GeneratorName>Weighted List (simple)</GeneratorName>
+          <GeneratorDescription>values list with specified frequency of occurrence</GeneratorDescription>
           <Length>45</Length>
         </Column>
       </Columns>
@@ -1566,7 +1574,7 @@
           <Checked>true</Checked>
           <DataType>INT</DataType>
           <GeneratorOptions xsi:type="MySqlUnsignedIntegerGeneratorOptions">
-            <AllowNulls>true</AllowNulls>
+            <AllowNulls>false</AllowNulls>
             <NullProportion>10</NullProportion>
             <Unique>true</Unique>
             <IsAlwaysUnique>false</IsAlwaysUnique>
@@ -3007,7 +3015,7 @@
           <PopulationType>ProportionOfLookupTable</PopulationType>
           <RowsCount>1450</RowsCount>
           <LookupTableName>empleados</LookupTableName>
-          <LookupProportion>125</LookupProportion>
+          <LookupProportion>150</LookupProportion>
           <ProportionOfExistingData>10</ProportionOfExistingData>
           <TimeTicksToPopulate>100000000</TimeTicksToPopulate>
         </PopulationDetails>
@@ -3039,7 +3047,7 @@
           <Checked>true</Checked>
           <DataType>INT</DataType>
           <GeneratorOptions xsi:type="ForeignKeyGeneratorOptions">
-            <Unique>true</Unique>
+            <Unique>false</Unique>
             <IsAlwaysUnique>false</IsAlwaysUnique>
             <AllowNulls>false</AllowNulls>
             <NullProportion>0</NullProportion>
@@ -3493,7 +3501,7 @@
         <RowsToGenerate>0</RowsToGenerate>
         <PopulationDetails>
           <PopulationType>RowsCount</PopulationType>
-          <RowsCount>50</RowsCount>
+          <RowsCount>10</RowsCount>
           <LookupProportion>30</LookupProportion>
           <ProportionOfExistingData>10</ProportionOfExistingData>
           <TimeTicksToPopulate>100000000</TimeTicksToPopulate>
@@ -3948,7 +3956,6 @@
     </Table>
   </Tables>
   <SynchronizationOptions xsi:type="DataSyncOptionGroup">
-    <SynchronizeType>File</SynchronizeType>
     <OpenScriptInEditor>true</OpenScriptInEditor>
     <SynchronizationFileName>D:\Bruno\Favaloro\4 Año\BD\Trabajos Practivos\COVID-19\dbDummy.sql</SynchronizationFileName>
     <IncludeUseDatabase>false</IncludeUseDatabase>
