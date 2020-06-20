@@ -1,6 +1,6 @@
 CREATE DEFINER=`root`@`localhost` TRIGGER `set_stock` AFTER INSERT ON `pm_suministros` FOR EACH ROW BEGIN
 	DECLARE nroDepartamento VARCHAR(45);
-    DECLARE nroHospital int;
+    DECLARE hospt int unsigned;
 
 /*--------------------Aca hago la actualizacion en la tabla Departamento_suministro------------------------*/
 	SELECT empleado_departamento.Departamento_NroDepartamento											-- Lo que hago es encontrar el valor del
@@ -9,14 +9,14 @@ CREATE DEFINER=`root`@`localhost` TRIGGER `set_stock` AFTER INSERT ON `pm_sumini
 
 	UPDATE departamento_suminstro
 		SET  CantSum = CantSum+NEW.Cant_Repuesto
-		WHERE nroDepartamento=Departamento_NroDepartamento AND Suministros_CodigoSuministro=NEW.Suministros_CodigoSuministro;
+		WHERE (nroDepartamento=Departamento_NroDepartamento AND Suministros_CodigoSuministro=NEW.Suministros_CodigoSuministro);
       
 /*--------------------Aca hago la actualizacion en la tabla Almacen_Hospital------------------------*/
-	SELECT empleado_hospital.hospital_NroHospital														-- Lo que hago es encontrar el valor del
-	INTO nroHospital FROM empleado_hospital																-- hospital correspondiente a la personas
-	WHERE (empleado_hospital.empleados_Personas_DNI = NEW.PersonalMedico_Empleados_Personas_DNI);		-- que hizo el pedido
+	SELECT t1.hospital_NroHospital																		-- Lo que hago es encontrar el valor del
+	INTO hospt FROM empleado_hospital	as t1														-- hospital correspondiente a la personas
+	WHERE (t1.empleados_Personas_DNI = NEW.PersonalMedico_Empleados_Personas_DNI);						-- que hizo el pedido
     
     UPDATE almacen_hospital
-		SET  Cant_TotalSum = Cant_TotalSum+NEW.Cant_Repuesto
-		WHERE nroHospital=Departamento_NroDepartamento AND CodigoSuministro=NEW.Suministros_CodigoSuministro;
+		SET  Cant_TotalSum = Cant_TotalSum + NEW.Cant_Repuesto
+		WHERE (hospt = NroHospital AND strcmp(CodigoSuministro,NEW.Suministros_CodigoSuministro)=0);
 END

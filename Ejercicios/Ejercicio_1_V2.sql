@@ -6,7 +6,7 @@ comenzó a registrarse los datos de la pandemia, en marzo de 2020, mes a mes.
 DROP VIEW IF EXISTS Datos;
 
 CREATE VIEW Datos AS (
-SELECT Dia_de_Ingreso, CheckOut, Resultado 
+SELECT Persona_DNI, Dia_de_Ingreso, CheckOut, Resultado
     FROM (SELECT NroTesteo, pacientes_Personas_DNI as Persona_DNI, Resultado					-- Aca obtengo los datos de los pacientes que dieron
 	FROM muestra NATURAL JOIN (																	-- Covid positivo. Esta tabla nos dio de un n=1324
 	SELECT muestra_NroTesteo as NroTesteo, pacientes_Personas_DNI FROM muestra_paciente) AS A	-- 
