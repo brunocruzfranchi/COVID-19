@@ -30,7 +30,7 @@ CREATE VIEW t1 AS(
 
 CREATE VIEW t2 AS(
 	SELECT
-		dni, nombre, apellido
+		dni, nombre, apellido, empleado_hospital.hospital_NroHospital AS hospital
 	FROM
 		personas NATURAL JOIN empleado_hospital
 	WHERE
@@ -45,8 +45,9 @@ CREATE VIEW t3 AS(
 		proveedores_suministros.Proveedores_NroProveedores = NroProveedores);
 
 SELECT 
-	DNI, Nombre, Apellido, suministro, Precio_Unidad, Proveedor, Telefono, direccion, mail
+	DNI, Nombre, Apellido, hospital.Nombre_Hospital AS hospital, suministro, Precio_Unidad, Proveedor, Telefono, direccion, mail
 FROM 
 	T1 NATURAL JOIN T3
-		NATURAL JOIN T2;
+		NATURAL JOIN T2
+        INNER JOIN hospital ON hospital.NroHospital = t2.hospital;
         
