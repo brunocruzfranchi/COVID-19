@@ -18,7 +18,7 @@ FROM HOLA GROUP BY Tiempo_Transcurrido
 HAVING Tiempo_Transcurrido>0
 ORDER BY CheckOut, Tiempo_Transcurrido ASC)
 
-SELECT AVG(Tiempo_Transcurrido), CheckOut 
+SELECT AVG(Tiempo_Transcurrido) as 'Promedio del Tiempo Transcurrido dentro del Hospital', CheckOut 
 FROM TEST
 GROUP BY CheckOut;
 

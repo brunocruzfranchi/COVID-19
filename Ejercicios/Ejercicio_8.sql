@@ -4,7 +4,7 @@ muertos en personas mayores de 70 años, separando por sexo y por lugar de
 residencia (Ciudad Autónoma de Buenos Aires, Gran Buenos Aires, otros)
 */
 
--- DROP VIEW Mayores;
+DROP VIEW Mayores;
 
 CREATE VIEW Mayores AS (
 SELECT DNI, Sexo, CheckOut, Hospital_NroHospital, FH_Salida, Localidad
@@ -29,9 +29,9 @@ on t4.personas_DNI=t1.Internado_Personas_DNI
 SELECT Nombre_Hospital, Sexo, CheckOut, Promedio as 'Promedio Semanal'
 FROM(
 SELECT Hospital_NroHospital as NroHospital, Sexo, CheckOut, Localidad, AVG(Cant) as Promedio FROM (
-SELECT Hospital_NroHospital, Sexo, yearweek(FH_Salida) as Semana, CheckOut, Localidad, count(*) as Cant
-FROM Mayores
-GROUP BY Hospital_NroHospital, Sexo, Localidad, Checkout) as t6
+	SELECT Hospital_NroHospital, Sexo, yearweek(FH_Salida) as Semana, CheckOut, Localidad, count(*) as Cant
+	FROM Mayores
+	GROUP BY Hospital_NroHospital, Sexo, Localidad, Checkout) as t6
 GROUP BY Hospital_NroHospital, Sexo, Checkout
 ORDER BY Hospital_NroHospital, Sexo ASC) AS t5
 NATURAL JOIN hospital;
