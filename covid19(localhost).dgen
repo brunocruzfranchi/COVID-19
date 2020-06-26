@@ -1722,7 +1722,7 @@
           <PopulationType>ProportionOfLookupTable</PopulationType>
           <RowsCount>340</RowsCount>
           <LookupTableName>departamento</LookupTableName>
-          <LookupProportion>200</LookupProportion>
+          <LookupProportion>100</LookupProportion>
           <ProportionOfExistingData>10</ProportionOfExistingData>
           <TimeTicksToPopulate>100000000</TimeTicksToPopulate>
         </PopulationDetails>
@@ -1784,7 +1784,7 @@
             <ValueDistributionMode>Seed</ValueDistributionMode>
             <SeedValue>8</SeedValue>
             <MinValue>10</MinValue>
-            <MaxValue>100</MaxValue>
+            <MaxValue>1000</MaxValue>
             <UseDefault>false</UseDefault>
             <DefaultValue />
           </GeneratorOptions>
