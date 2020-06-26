@@ -1,9 +1,7 @@
 /*
 19) Mostrar, para cada hospital, aquellos suministros que están agotados/próximos a agotarse. 
-Las características deben ser: menos del 20% del total de pacientes del hospital (osea, solo 2
-de cada 10 pacientes podran recibir el suministro), el ultimo mes se hayan consumido mas del 50%  
-del suministro) del almacén y/o no haya proveedores que brinden dicho suministro (o cualquier 
-combinación de estas)
+Las características deben ser que, el el almacen del hospital, hay menos suministros que el 
+total de pacientes
 */
 
 WITH Tabla AS(
@@ -26,7 +24,10 @@ INNER JOIN
     
 ON B.HospitalB = C.HospitalC)
 
-SELECT HospitalB AS Hospital, Nombre, Cant_Pacientes, Cant_Suministro
-FROM Tabla
-	INNER JOIN suministros ON suministros.CodigoSuministro = Tabla.CodigoSuministro;
-    
+SELECT *
+FROM(
+	SELECT HospitalB AS Hospital, Nombre, Cant_Pacientes, Cant_Suministro
+	FROM Tabla
+		INNER JOIN suministros ON suministros.CodigoSuministro = Tabla.CodigoSuministro) AS A
+WHERE Cant_Suministro < Cant_Pacientes;
+

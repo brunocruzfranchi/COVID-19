@@ -1,7 +1,7 @@
 /*
 15) Mostrar aquellas personas, cuyo estado evovlutivo es grave, junto a su fecha de ingreso,
 la saturacion de O2 y temperatura de la muestra (para asi tener una nocion de la evolucion
-del virus). Ademas, listar el hospital donde se encuentra y la cama donde se encuentra.
+del virus). Ademas, listar el hospital y la cama donde se encuentra.
 */
 
 -- FECHA DE INGRESO, HOSPITAL, CAMA

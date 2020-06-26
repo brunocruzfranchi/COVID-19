@@ -1,8 +1,7 @@
 /*
 16) Mostrar los hospitales que tienen el 65% de las camas normales ocupadas. 
 Indicar cuantas camas tienen desocupadas. Ademas, indicar cuantos pacientes fueron
-internados en el ultimo mes (Para poder planear con un mes de anticipacion) ademas 
-la cantidad de camas totales
+internados en el ultimo mes (Para poder planear con un mes de anticipacion).
 */ 
 
 WITH Tabla AS(

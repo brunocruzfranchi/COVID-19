@@ -6,6 +6,7 @@
 -- Client version: 4.1
 --
 
+
 INSERT INTO covid19.departamento_suminstro(Departamento_NroDepartamento, Suministros_CodigoSuministro, CantSum) VALUES
 ('D572P95', 'AR5976', 92),
 ('D592P68', 'AR3549', 59),
