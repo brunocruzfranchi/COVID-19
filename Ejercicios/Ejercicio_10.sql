@@ -5,11 +5,11 @@ profesionales que trabajan en el mismo departamento para testearlos y decidir si
 ponerlos en cuarentena
 */
 
-SELECT *
+SELECT Fecha_Muestra, Apellido, personas.Nombre, TelParticular, convivientes.Nombre
 FROM t1 
 	INNER JOIN personas ON t1.empleados_personas_DNI = personas.DNI
     INNER JOIN convivientes ON t1.empleados_personas_DNI = convivientes.Personas_DNI
-HAVING resultado = 1;
+where resultado = 1;
 
 SELECT Departamento, Empleados_Personas_DNI AS DNI, Apellido, Nombre
 FROM(
