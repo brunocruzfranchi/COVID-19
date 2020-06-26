@@ -13,7 +13,7 @@ CREATE DEFINER=`root`@`localhost` TRIGGER `use_stock` AFTER INSERT ON `utilizaci
       
 /*--------------------Aca hago la actualizacion en la tabla Almacen_Hospital------------------------*/
 	SELECT t1.hospital_NroHospital																		-- Lo que hago es encontrar el valor del
-	INTO hospt FROM empleado_hospital	as t1														-- hospital correspondiente a la personas
+	INTO hospt FROM empleado_hospital as t1														-- hospital correspondiente a la personas
 	WHERE (t1.empleados_Personas_DNI = NEW.personalmedico_Empleados_Personas_DNI);						-- que hizo el pedido
     
     UPDATE almacen_hospital

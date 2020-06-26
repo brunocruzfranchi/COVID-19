@@ -29,9 +29,10 @@
         <Truncate>true</Truncate>
         <RowsToGenerate>0</RowsToGenerate>
         <PopulationDetails>
-          <PopulationType>RowsCount</PopulationType>
+          <PopulationType>ProportionOfLookupTable</PopulationType>
           <RowsCount>5000</RowsCount>
-          <LookupProportion>30</LookupProportion>
+          <LookupTableName>pacienteinternado</LookupTableName>
+          <LookupProportion>100</LookupProportion>
           <ProportionOfExistingData>10</ProportionOfExistingData>
           <TimeTicksToPopulate>100000000</TimeTicksToPopulate>
         </PopulationDetails>
@@ -1598,9 +1599,10 @@
         <Truncate>true</Truncate>
         <RowsToGenerate>0</RowsToGenerate>
         <PopulationDetails>
-          <PopulationType>RowsCount</PopulationType>
+          <PopulationType>ProportionOfLookupTable</PopulationType>
           <RowsCount>5000</RowsCount>
-          <LookupProportion>30</LookupProportion>
+          <LookupTableName>camas</LookupTableName>
+          <LookupProportion>100</LookupProportion>
           <ProportionOfExistingData>10</ProportionOfExistingData>
           <TimeTicksToPopulate>100000000</TimeTicksToPopulate>
         </PopulationDetails>
@@ -1734,9 +1736,10 @@
         <Truncate>true</Truncate>
         <RowsToGenerate>0</RowsToGenerate>
         <PopulationDetails>
-          <PopulationType>RowsCount</PopulationType>
+          <PopulationType>ProportionOfLookupTable</PopulationType>
           <RowsCount>340</RowsCount>
-          <LookupProportion>30</LookupProportion>
+          <LookupTableName>departamento</LookupTableName>
+          <LookupProportion>200</LookupProportion>
           <ProportionOfExistingData>10</ProportionOfExistingData>
           <TimeTicksToPopulate>100000000</TimeTicksToPopulate>
         </PopulationDetails>
@@ -1798,7 +1801,7 @@
             <ValueDistributionMode>Seed</ValueDistributionMode>
             <SeedValue>8</SeedValue>
             <MinValue>0</MinValue>
-            <MaxValue>20000</MaxValue>
+            <MaxValue>6000</MaxValue>
             <UseDefault>false</UseDefault>
             <DefaultValue />
           </GeneratorOptions>
@@ -3131,9 +3134,10 @@
         <Truncate>true</Truncate>
         <RowsToGenerate>0</RowsToGenerate>
         <PopulationDetails>
-          <PopulationType>RowsCount</PopulationType>
+          <PopulationType>ProportionOfLookupTable</PopulationType>
           <RowsCount>3500</RowsCount>
-          <LookupProportion>30</LookupProportion>
+          <LookupTableName>camas</LookupTableName>
+          <LookupProportion>40</LookupProportion>
           <ProportionOfExistingData>10</ProportionOfExistingData>
           <TimeTicksToPopulate>100000000</TimeTicksToPopulate>
         </PopulationDetails>
@@ -3171,7 +3175,7 @@
           <PopulationType>ProportionOfLookupTable</PopulationType>
           <RowsCount>1450</RowsCount>
           <LookupTableName>personas</LookupTableName>
-          <LookupProportion>100</LookupProportion>
+          <LookupProportion>43</LookupProportion>
           <ProportionOfExistingData>10</ProportionOfExistingData>
           <TimeTicksToPopulate>100000000</TimeTicksToPopulate>
         </PopulationDetails>
@@ -3821,9 +3825,10 @@
         <Truncate>true</Truncate>
         <RowsToGenerate>0</RowsToGenerate>
         <PopulationDetails>
-          <PopulationType>RowsCount</PopulationType>
+          <PopulationType>ProportionOfLookupTable</PopulationType>
           <RowsCount>1500</RowsCount>
-          <LookupProportion>30</LookupProportion>
+          <LookupTableName>paciente_cama</LookupTableName>
+          <LookupProportion>60</LookupProportion>
           <ProportionOfExistingData>10</ProportionOfExistingData>
           <TimeTicksToPopulate>100000000</TimeTicksToPopulate>
         </PopulationDetails>

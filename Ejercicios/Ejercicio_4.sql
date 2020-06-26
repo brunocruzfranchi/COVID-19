@@ -14,7 +14,7 @@ INNER JOIN
 ON t1.Internado_Personas_DNI = t2.pacienteinternado_Internado_Personas_DNI) as t
 GROUP by dayname(FH_Salida) 
 ORDER BY Muertes DESC
-LIMIT 1) as t4;
+LIMIT 1,1) as t4;
 
 
 SELECT DNI as Empleados FROM (
