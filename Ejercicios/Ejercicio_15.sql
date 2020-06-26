@@ -4,7 +4,7 @@ la saturacion de O2 y temperatura de la muestra (para asi tener una nocion de la
 del virus). Ademas, listar el hospital y la cama donde se encuentra.
 */
 
--- FECHA DE INGRESO, HOSPITAL, CAMA
+-- Como cada informacion necesaria esta en otra tabla, concateno INNER JOINs
 SELECT Apellido, Nombre, SatO2, Temperatura, Dia_De_Ingreso,Nombre_Hospital AS Hospital, Camas_NroCama AS Cama 
 FROM(
 	SELECT Internado_Personas_DNI AS DNI

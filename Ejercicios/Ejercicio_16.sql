@@ -4,20 +4,28 @@ Indicar cuantas camas tienen desocupadas. Ademas, indicar cuantos pacientes fuer
 internados en el ultimo mes (Para poder planear con un mes de anticipacion).
 */ 
 
+-- Aquí, WITH funciona perfectamente
+
+-- la primera tabla es la lista de aquellos hospitalos donde el 65% o mas de las camas 
+-- esta ocupada. Muestra tanto las camas totales del hospital como las camas disponibles.
+-- En la segunda tabla, se aprecia la lista completa de hospitales, junto a la cantidad
+-- de pacientes que fueron aceptados en el ultimo mes 
 WITH Tabla AS(
 
 SELECT *
-FROM(
-	SELECT Nombre_Hospital AS Hospital, Camas_Disponibles
-	FROM(
-		SELECT Hospital_NroHospital AS NroCama, count(Camas_NroCama) AS Camas_Disponibles
+FROM(	-- Uno la lista de cantidad de camas por hospital junto a la tabla hospital, donde
+		-- la informacion restante de los hospitales, como su nombre
+ 	SELECT Nombre_Hospital AS Hospital, Camas_Disponibles
+	FROM( -- Proyecto las camas disponibles por cada hospital
+		SELECT Hospital_NroHospital AS NroHospital, count(Camas_NroCama) AS Camas_Disponibles
 		FROM camas_hospital
 		GROUP BY Hospital_NroHospital) AS A
-		INNER JOIN hospital ON hospital.NroHospital = A.NroCama) AS B
+		INNER JOIN hospital ON hospital.NroHospital = A.NroHospital) AS B
 
+-- Como ambas tablas son de 20 filas (todos los hospitales) puedo hacer un NATURAL JOIN
 NATURAL JOIN
 
-(
+( -- Proyecto las camas utilizadas por cada hospital
 SELECT Nombre_Hospital AS Hospital, count(NroCama) AS Camas_Utilizadas
 FROM(
 	SELECT NroCama, Internado_Personas_DNI AS DNI
@@ -33,6 +41,7 @@ FROM Tabla
 WHERE Camas_Utilizadas / Camas_Disponibles >= 0.9 
 	AND Camas_Utilizadas / Camas_Disponibles < 1;
     
+-- Aquí creo la segunda tabla
 SELECT Hospital, count(Hospital) AS Cuenta
 FROM(
 	SELECT Nombre_Hospital AS Hospital, Dia_de_Ingreso
