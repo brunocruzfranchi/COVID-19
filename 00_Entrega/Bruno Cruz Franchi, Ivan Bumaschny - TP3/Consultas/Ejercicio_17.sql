@@ -3,7 +3,7 @@
 de los pacientes internados agrupados según su estado evolutivo y si ha fallecido, recuperado.
 */
 
-DROP VIEW HOLA;
+DROP VIEW IF EXISTS HOLA;
 
 /*
 El objetivo de este ejercicio es determinal el plazo de tiempo que pasa una personas

@@ -1,7 +1,7 @@
 /*
 7) Chequear que el costo unitario de los suministros farmacéuticos no sea mayor a $20.000
 */
- 
+
 alter table personas
 	DROP CONSTRAINT check_Sexo;
     

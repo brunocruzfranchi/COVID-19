@@ -2,11 +2,11 @@ CREATE DEFINER=`root`@`localhost` TRIGGER `before_set_stock` BEFORE INSERT ON `p
 	DECLARE Depto VARCHAR(45);
     -- DECLARE nroHospital int;
     
-    /*--------------------Aca hago la actualizacion en la tabla Departamento_suministro------------------------*/
 	SELECT empleado_departamento.Departamento_NroDepartamento											-- Lo que hago es encontrar el valor del
 	INTO Depto FROM empleado_departamento																-- departamento correspondiente a la persona
 	WHERE (empleado_departamento.Empleados_Personas_DNI = NEW.PersonalMedico_Empleados_Personas_DNI);	-- que hizo el pedido
 		
+	 /*--------------------Aca hago el insert del producto en caso de que no exista en Dep_Suministro------------------------*/
 	IF NOT EXISTS (
     SELECT 1 FROM departamento_suminstro AS t1
     WHERE (t1.Suministros_CodigoSuministro = NEW.Suministros_CodigoSuministro
